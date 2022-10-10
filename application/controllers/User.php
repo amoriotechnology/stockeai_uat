@@ -65,6 +65,7 @@ class User extends CI_Controller {
         $data1['user_type'] = $this->input->post('user_type');
         $data1['cid'] = $last_insert_id;
         $this->db->insert('user_login', $data1);
+      
         redirect(base_url('User'));
     }
 
