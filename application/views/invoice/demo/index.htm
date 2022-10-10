@@ -1,0 +1,322 @@
+﻿
+
+
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+
+        <div class="header-icon">
+
+            <i class="pe-7s-note2"></i>
+
+        </div>
+
+        <div class="header-title">
+
+            <h1><?php echo display('manage_invoice') ?></h1>
+
+            <small><?php echo display('manage_your_invoice') ?></small>
+
+            <ol class="breadcrumb">
+
+                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
+
+                <li><a href="#"><?php echo display('invoice') ?></a></li>
+
+                <li class="active"><?php echo display('manage_invoice') ?></li>
+
+            </ol>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="content">
+
+        <!-- Alert Message -->
+
+        <?php
+
+        $message = $this->session->userdata('message');
+
+        if (isset($message)) {
+
+            ?>
+
+            <div class="alert alert-info alert-dismissable">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+                <?php echo $message ?>                    
+
+            </div>
+
+            <?php
+
+            $this->session->unset_userdata('message');
+
+        }
+
+        $error_message = $this->session->userdata('error_message');
+
+        if (isset($error_message)) {
+
+            ?>
+
+            <div class="alert alert-danger alert-dismissable">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+                <?php echo $error_message ?>                    
+
+            </div>
+
+            <?php
+
+            $this->session->unset_userdata('error_message');
+
+        }
+
+        ?>
+
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+               
+
+    <?php if($this->permission1->method('new_invoice','create')->access()){ ?>
+
+                    <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?> </a>
+
+                <?php }?>
+
+           <!--    <?php if($this->permission1->method('pos_invoice','create')->access()){ ?>
+
+                    <a href="<?php echo base_url('Cinvoice/pos_invoice') ?>" class="btn btn-primary m-b-5 m-r-2"><i class="ti-align-justify"> </i>  <?php echo display('pos_invoice') ?> </a>
+
+                <?php }?>
+
+<?php if($this->permission1->method('gui_pos','create')->access()){ ?>
+                   
+            <a href="<?php echo base_url('Cinvoice/gui_pos') ?>" class="btn btn-primary m-b-5 m-r-2"><?php echo display('gui_pos') ?></a></li>
+                    <?php } ?> -->
+
+                
+
+            </div>
+
+        </div>
+
+
+
+        <!-- date between search -->
+
+        <div class="row">
+
+             <div class="col-sm-12">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-body"> 
+
+                        <div class="col-sm-10">
+
+                        <?php echo form_open('', array('class' => 'form-inline', 'method' => 'get')) ?>
+
+                        <?php
+
+                      
+
+                        $today = date('Y-m-d');
+
+                        ?>
+
+                        <div class="form-group">
+
+                            <label class="" for="from_date"><?php echo display('start_date') ?></label>
+
+                            <input type="text" name="from_date" class="form-control datepicker" id="from_date" value="" placeholder="<?php echo display('start_date') ?>" >
+
+                        </div> 
+
+
+
+                        <div class="form-group">
+
+                            <label class="" for="to_date"><?php echo display('end_date') ?></label>
+
+                            <input type="text" name="to_date" class="form-control datepicker" id="to_date" placeholder="<?php echo display('end_date') ?>" value="">
+
+                        </div>  
+
+
+
+                        <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
+
+
+
+                        <?php echo form_close() ?>
+
+                    </div>
+
+                  
+
+          
+
+                </div>
+
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="row"> 
+        <div class="container-fluid">
+            <div class="row">
+               
+                <div class="col-md-12">
+                <!--    <button id="append" type="button" class="btn btn-default">Append</button>
+                    <button id="clear" type="button" class="btn btn-default">Clear</button>
+                    <button id="removeSelected" type="button" class="btn btn-default">Remove Selected</button>
+                    <button id="destroy" type="button" class="btn btn-default">Destroy</button>
+                    <button id="init" type="button" class="btn btn-default">Init</button>
+                    <button id="clearSearch" type="button" class="btn btn-default">Clear Search</button>
+                    <button id="clearSort" type="button" class="btn btn-default">Clear Sort</button>
+                    <button id="getCurrentPage" type="button" class="btn btn-default">Current Page Index</button>
+                    <button id="getRowCount" type="button" class="btn btn-default">Row Count</button>
+                    <button id="getTotalRowCount" type="button" class="btn btn-default">Total Row Count</button>
+                    <button id="getTotalPageCount" type="button" class="btn btn-default">Total Page Count</button>
+                    <button id="getSearchPhrase" type="button" class="btn btn-default">Search Phrase</button>
+                    <button id="getSortDictionary" type="button" class="btn btn-default">Sort Dictionary</button>
+                    <button id="getSelectedRows" type="button" class="btn btn-default">Selected Rows</button>-->
+                    <!--div class="table-responsive"-->
+                        <table id="grid" class="table table-condensed table-hover table-striped" data-selection="true" data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                            <thead>
+                                <tr>
+                                    <th data-column-id="id" data-identifier="true" data-type="numeric" data-align="right" data-width="40">ID</th>
+                                    <th data-column-id="sender" data-order="asc" data-align="center" data-header-align="center" data-width="75%">Sender</th>
+                                    <th data-column-id="received" data-css-class="cell" data-header-css-class="column" data-filterable="true">Received</th>
+                                    <th data-column-id="link" data-formatter="link" data-sortable="false" data-width="75px">Link</th>
+                                    <th data-column-id="status" data-type="numeric" data-visible="false">Status</th>
+                                    <th data-column-id="hidden" data-visible="false" data-visible-in-selection="false">Hidden</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                            </tbody>
+                        </table>
+                    <!--/div-->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/jquery.bootgrid.js"></script>
+        <script src="../js/jquery.bootgrid.fa.js"></script>
+        <script>
+       
+        </script>
+        </div>
+
+        <!-- Manage Invoice report -->
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <div class="panel panel-bd lobidrag">
+
+                    <div class="panel-heading">
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="table-responsive" >
+                        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css'>
+
+
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.min.js'></script>
+
+                            
+
+                        </div>
+
+                       
+
+
+
+                    </div>
+
+                </div>
+
+                <input type="hidden" id="total_invoice" value="<?php echo $total_invoice;?>" name="">
+
+                 <input type="hidden" id="currency" value="{currency}" name="">
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- Manage Invoice End -->
+
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+
+
+<script>
+$(document).ready(function(){
+ 
+ $("#grid").bootgrid({
+  
+})
+});
+
+
+  $(function() {
+        $.ajax({
+    url: '../assets/Fetch_Data_New_Sale.php',
+        type: "GET",
+        dataType: "html",
+        success: function(json)
+        { 
+            console.log(json);
+            var a = JSON.parse(json);
+for (const item of a) {
+  var tr = $('<tr>')
+  //get datas from json 
+  $('<td>' + item.sales_by + '</td>').appendTo(tr)
+  $('<td>' + item.customer_id + '</td>').appendTo(tr)
+  $('<td>' + item.customer_name + '</td>').appendTo(tr)
+  $('<td>' + item.customer_name + '</td>').appendTo(tr)
+  $('<td>' + item.customer_name + '</td>').appendTo(tr)
+  $('<td>' + item.customer_name + '</td>').appendTo(tr)
+ 
+    tr.appendTo('#grid > tbody');
+
+}
+
+}
+});
+})
+ 
+
+ </script>
+ </script>

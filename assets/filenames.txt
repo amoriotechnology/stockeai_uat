@@ -1,0 +1,40 @@
+ Volume in drive E is New Volume
+ Volume Serial Number is 203A-920A
+
+ Directory of E:\wamp\www\stockeai_new\assets
+
+28-09-2022  17:37    <DIR>          .
+20-09-2022  11:14    <DIR>          ..
+20-09-2022  11:14               539 add_company.php
+20-09-2022  11:14               403 config.php
+20-09-2022  11:14    <DIR>          css
+20-09-2022  11:14    <DIR>          data
+20-09-2022  11:14    <DIR>          datatables
+20-09-2022  11:14    <DIR>          dbimport
+20-09-2022  11:14                 4 demo_test.txt
+20-09-2022  11:14    <DIR>          dist
+21-09-2022  18:01             8,085 Download_Send_Mail.php
+20-09-2022  11:14             5,095 editpage.php
+23-09-2022  11:35               470 Fetch_Data_from_db.php
+28-09-2022  17:43                 0 filenames.txt
+20-09-2022  11:14    <DIR>          fonts
+20-09-2022  11:14               313 getproduct.php
+23-09-2022  11:35               273 get_acc&remarks_data.php
+20-09-2022  11:14                19 get_product.php
+20-09-2022  11:14               361 Get_Stock_Update.php
+20-09-2022  11:14    <DIR>          images
+20-09-2022  11:14                33 index.php
+23-09-2022  15:39    <DIR>          insert
+21-09-2022  18:01             8,561 Invoice_PDF.php
+20-09-2022  11:14    <DIR>          js
+20-09-2022  11:14    <DIR>          plugins
+27-09-2022  11:42               852 saverole.php
+21-09-2022  18:01             2,057 send_email_with_pdf.php
+20-09-2022  11:14               290 test.php
+20-09-2022  11:14               873 updaterole.php
+20-09-2022  11:14               864 update_email.php
+20-09-2022  11:14             1,897 update_invoice.php
+20-09-2022  11:14             1,005 update_templates.php
+20-09-2022  11:14    <DIR>          vendor
+              20 File(s)         31,994 bytes
+              13 Dir(s)  453,108,207,616 bytes free

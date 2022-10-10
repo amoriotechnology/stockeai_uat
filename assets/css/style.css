@@ -1,0 +1,2164 @@
+.category >.nav-tabs > li.active > a {
+
+  background-color: #A020F0 !important;
+
+  color: #fff !important;
+
+  border-radius: 4;
+
+}
+
+.category >.nav-tabs > li> a {
+
+  background-color: #1C93C7 !important;
+
+  color: #fff !important;
+
+  border-radius: 4;
+
+}
+
+
+
+.select2-container {
+
+    width: 100% !important;
+
+}
+
+.cat-tabcontent{
+
+	padding: 20px;
+
+}
+
+
+
+.product-supplier{
+
+	margin-top: 10px;
+
+}
+
+.productbarcode-margin{
+
+	margin-left: 250px;
+
+}
+
+.barcode-toptd{
+
+	border: 1px solid black ;padding: 5px;
+
+}
+
+
+
+.barcode-innerdiv{
+
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+	text-align: center; position: relative;
+
+}
+
+
+
+.barcode-productname{
+
+	text-transform: uppercase;
+
+	line-height: 10px;
+
+	font-weight: 600;
+
+	font-size: 12px;
+
+	margin-bottom: 3px;
+
+}
+
+
+
+.barcode-modelname{
+
+	font-weight: 600;
+
+	 font-size: 8px;
+
+     position: absolute;
+
+     top: 0;
+
+     right: 0;"
+
+}
+
+
+
+.barcode-image{
+
+	display: block;margin-left: auto;
+
+	margin-right: auto;height: 60px;
+
+	width: 143px;
+
+}
+
+
+
+.barcode-productdetails{
+
+	font-size: 11px;letter-spacing: 0.5px;
+
+	font-weight: 600;
+
+	text-transform: uppercase;
+
+	line-height: 10px;
+
+}
+
+.barcode-price{
+
+	font-weight: 500;
+
+	line-height: 10px;
+
+	 margin-top: 5px;
+
+    font-weight: 500;
+
+    line-height: 10px;
+
+    margin-top: 5px;
+
+}
+
+
+
+.barcode-vat{
+
+	font-weight: 600;
+
+	font-size: 9px;
+
+}
+
+.qrcode-image{
+
+	display: block;
+
+	margin-left: auto;
+
+	margin-right: auto;
+
+	height:150px
+
+}
+
+
+
+.qrcode-productdetails{
+
+	font-size: 11px;
+
+	letter-spacing: 0.5px;
+
+	font-weight: 600;
+
+	text-transform: uppercase;
+
+	line-height: 8px;
+
+}
+
+
+
+.barcode-collaps{
+
+	border-collapse: collapse;
+
+}
+
+ .text-right{
+
+	text-align: right !important;
+
+}
+
+ .text-left{
+
+	text-align: left !important;
+
+}
+
+
+
+
+
+
+
+.print-button{
+
+	float:right;
+
+}
+
+
+
+#bank_div{
+
+	display: none;
+
+}
+
+
+
+.purchasedetails-header{
+
+	border-bottom:2px #333 solid;
+
+}
+
+
+
+.purchasedetails-address{
+
+	display: inline-block;
+
+	width: 64%;
+
+}
+
+
+
+.companyname{
+
+	font-size: 20px;
+
+}
+
+
+
+.usablity{
+
+	text-align:left;
+
+	font-size:15px;
+
+	color: #A020F0;
+
+	font-weight: bold;
+
+}
+.bg-darkgreen{
+    background-color: #dac37d;
+}
+
+
+.invoice-details-billing{
+
+	display: inline-block;
+
+	margin-left: 5px;
+
+}
+
+
+
+.details-address{
+
+	margin-top:10px;
+
+	width: 200px;
+
+}
+
+
+
+    #bank_info_hide
+
+    {
+
+        display:none;
+
+    }
+
+    #payment_from_2
+
+    {
+
+        display:none;
+
+    }
+
+.hiddenRow {
+
+  display: none;
+
+}
+
+
+
+.product_field{
+
+	width: 220px;
+
+}
+
+
+
+.invoice_fields{
+
+	width: 100px;
+
+}
+
+
+
+.margin-top10{
+
+	margin-top:10px;
+
+}
+
+
+
+#quotation_service{
+
+	display: none;
+
+}
+
+
+
+#service_quotation_div{
+
+	margin-left: 20px;
+
+}
+
+
+
+/*invoice print part*/
+
+
+
+
+
+.print_header{
+
+	border-bottom:2px #333 solid;
+
+}
+
+
+
+.company-content{
+
+	display: inline-block;
+
+	width: 64%;
+
+}
+
+
+
+.img-bottom-m{
+
+	margin-bottom:10px;
+
+}
+
+
+
+.margin-top10{
+
+	margin-top:10px;
+
+}
+
+
+
+.company_name_p{
+
+	font-size: 20px; 
+
+}
+
+
+
+.invoice-address{
+
+	display: inline-block;
+
+	margin-left: 5px;
+
+}
+
+
+
+.customer_name_p{
+
+	margin-top:10px;
+
+	width: 200px
+
+}
+
+
+
+.c_name{
+
+	font-size: 20px;
+
+}
+
+
+
+.productdatalineheight{
+
+	line-height: 0.42857143;
+
+}
+
+.inline-block{
+
+	display: inline-block;
+
+}
+
+
+
+.invoicefooter-content{
+
+	display: inline-block;
+
+	width: 66%;
+
+}
+
+
+
+.border-bottom-top{
+
+	border-top: 0; 
+
+	border-bottom: 0;
+
+}
+
+
+
+.inv-footer-left{
+
+	float:left;width:35%;
+
+	text-align:center;
+
+	border-top:1px solid #e4e5e7;
+
+	font-weight: bold;
+
+}
+
+
+
+.inv-footer-right{
+
+	float:left;width:35%;
+
+	text-align:right;
+
+	float: right;
+
+	border-top:1px solid #e4e5e7;
+
+	font-weight: bold;
+
+}
+
+
+
+.margin-top50{
+
+	margin-top: 50px;
+
+}
+
+
+
+.minpos-bordertop{
+
+	border-top:#333 1px solid;
+
+}
+
+.sig_div{
+
+	margin-top:30px;
+
+	float:right;width:90%;
+
+	text-align:center;
+
+	border-top:1px solid #e4e5e7;
+
+	font-weight: bold;
+
+}
+
+.pthead{
+
+	font-weight: bold;
+
+}
+
+
+
+.posprint-head{
+
+	border-bottom:2px #333 solid;
+
+}
+
+.posprint-com-info{
+
+	font-size: 17pt;
+
+	 font-weight:bold;
+
+}
+
+
+
+.pprint-unit{
+
+	padding:4px;
+
+}
+
+
+
+/*quotation details css*/
+
+.marginleft5{
+
+ margin-left: 5px;
+
+}
+
+
+
+.fl-left{
+
+	display: flex;
+
+}
+
+
+
+.logo-content{
+
+	width: 40%;
+
+	 margin-top: 5px;
+
+}
+
+
+
+.com-content{
+
+	width: 30%;
+
+	 margin-top: 5px;
+
+}
+
+
+
+.title-text{
+
+	border:1px;
+
+	background-color: #DDE4EB;
+
+	color:#000;
+
+}
+
+
+
+.desc-div{
+
+	width: 50%;
+
+	 margin-left: 30px;
+
+}
+
+
+
+
+
+/*common Report Header part*/
+
+
+
+.print-table-tr{
+
+	border-bottom:2px #333 solid;
+
+}
+
+
+
+.print-cominfo{
+
+	border-bottom:2px #333 solid;
+
+	padding-right: 100px;
+
+}
+
+
+
+.company-txt{
+
+	font-size: 17pt; font-weight:bold;
+
+}
+
+
+
+
+
+.fa-folder{
+
+color:#D4AC0D;
+
+}
+
+.fa-folder-open-o{
+
+color:#D4AC0D;
+
+}
+
+
+
+.navbar .btn-success{
+
+    margin: 13px 2px;
+
+}
+
+.prints{
+
+    background-color: #3ca5de;
+
+    color:#fff;
+
+}
+
+
+
+.phdiv{
+
+	margin:0;
+
+	font-family:Arial,Helvetica,sans-serif;
+
+	border-bottom:1;
+
+	background-color: #ffffff;
+
+    color: #000000;
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-size: 10pt;
+
+}
+
+
+
+.psigpart{
+
+	margin-top:10px;
+
+	float:right;width:30%;
+
+	text-align:center;border-top:1px solid #e4e5e7;
+
+}
+
+
+
+.print-footercolor{
+
+	color: #fff;
+
+}
+
+
+
+.ledgrhead{
+
+	background-color: #7EA48E ;
+
+	color:#fff;
+
+}
+
+
+
+.prbalance{
+
+	float: right;
+
+}
+
+
+
+.footersignature{
+
+	border-top: solid 1px #000;
+
+}
+
+
+
+.signaturetable{
+
+	margin-top: 50px;
+
+}
+
+
+
+.profilossphead{
+
+	font-size:20px;
+
+	 font-weight:bold;
+
+	 border-right:solid 1px #000; 
+
+	 border-left:solid 1px #000;
+
+	  border-top:solid 1px #000;
+
+	  color: #A020F0;
+
+}
+
+
+
+.profitlossbranchead{
+
+	border-left:solid 1px #000; border-top:solid 1px #000; 
+
+}
+
+
+
+.font-bold{
+
+	 font-weight:bold;
+
+}
+
+
+
+.profitlossbrancheadamount{
+
+border-left:solid 1px #000; 
+
+ border-right:solid 1px #000;
+
+  border-top:solid 1px #000;
+
+}
+
+
+
+.profitlosstablehead{
+
+font-size:18px; 
+
+border-left:solid 1px #000; 
+
+border-top:solid 1px #000;	
+
+}
+
+
+
+.profitloss-result{
+
+	background-color: #A020F0;
+
+	color: #fff;
+
+}
+
+
+
+.totalliability{
+
+	border-style: double;
+
+    border-left: none;
+
+    border-right:none;
+
+    border-top:none;
+
+}
+
+
+
+.cashflowparticular{
+
+	padding-left:10px; 
+
+	border:1px solid #000;
+
+}
+
+
+
+.cashflowamount{
+
+	padding-left:10px;
+
+	 padding-right:10px; 
+
+	  border:1px solid #000;
+
+}
+
+
+
+.paddingleft10px{
+
+	padding-left:10px; 
+
+}
+
+
+
+.cashflowamnt{
+
+	padding-right:10px; 
+
+	border-left: solid 1px #000;
+
+	 border-right:solid 1px #000;
+
+}
+
+
+
+.paddingleftright10{
+
+	padding-left:10px;
+
+	 padding-right:10px; 
+
+}
+
+
+
+.totalopeninig{
+
+	padding-right:10px; 
+
+	border-top: solid 1px #000; 
+
+	border-bottom: solid 1px #000;
+
+}
+
+
+
+.padddingwithunderline{
+
+	padding-left:10px;
+
+	text-decoration:underline;
+
+}
+
+
+
+.pddingright10{
+
+	padding-right:10px; 
+
+}
+
+
+
+.noncurcss{
+
+	padding-right:10px;
+
+	 border-top:solid 1px #000;
+
+	  border-bottom: solid 1px #000;
+
+}
+
+
+
+.paddin5ps{
+
+	padding:5px;
+
+}
+
+
+
+.resumehead{
+
+	text-align: center; 
+
+	font-size: 25px;
+
+}
+
+
+
+.rpthtext{
+
+color:#3D9970;
+
+font-size: 50px; 
+
+font-weight: bold;
+
+font-family: Stencil Std, fantasy;
+
+font-variant: small-caps
+
+}
+
+
+
+.rptname{
+
+	color:black;
+
+	 font-size: 20px; 
+
+	 font-weight: bold;
+
+	  font-family:cursive;
+
+}
+
+
+
+.payrolladditiondeduction{
+
+	text-decoration: underline;font-weight: bold;
+
+}
+
+
+
+.paddingtop30{
+
+	padding-top:30px;
+
+}
+
+
+
+.padding10{
+
+	padding:10px;
+
+}
+
+
+
+.bankpayment{
+
+	width: 100%;
+
+}
+
+
+
+.appsettingqr{
+
+	display: block;
+
+	margin-left: auto;
+
+	margin-right: auto;
+
+	height:150px;
+
+}
+
+
+
+.appsettingqrtxt{
+
+	font-weight: bold; 
+
+	margin-left: 25%;
+
+}
+
+
+
+.playstorelink{
+
+	border:1px solid #e4e5e7;
+
+}
+
+
+
+     .small-box {
+
+  border-radius: 2px;
+
+  position: relative;
+
+  display: block;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
+    background: #f1f3f6;
+
+    box-shadow: 0 0.5rem 1rem rgb(18 38 63 / 10%) !important;
+
+    border-radius: 10px !important;
+
+}
+
+
+.small-box .box-para {
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    text-align: center;
+}
+
+.small-box .box-para span{
+    font-size: 30px;
+    font-weight: 500;
+}
+.small-box .box-para p{
+    font-size: 17px;
+    color: #000;
+    font-weight: 500;
+}
+   
+
+.small-box > .inner {
+
+  padding: 10px;
+
+}
+
+.small-box > .small-box-footer {
+
+  position: relative;
+
+  text-align: center;
+
+  padding: 3px 0;
+
+  color: #fff;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  display: block;
+
+  z-index: 10;
+
+  background: #2c2c2c;
+
+  text-decoration: none;
+
+}
+
+.small-box:hover .small-box-footer {
+    background: #0d1758;
+}
+
+.small-box h3 {
+
+  font-size: 38px;
+
+  font-weight: bold;
+
+  margin: 0 0 10px 0;
+
+  white-space: nowrap;
+
+  padding: 0;
+
+}
+
+.small-box p {
+
+  font-size: 15px;
+
+  color:#fff;
+
+}
+
+
+
+.small-box p > small {
+
+  display: block;
+
+  font-size: 13px;
+
+  margin-top: 5px;
+
+  color:#fff;
+
+}
+
+.small-box h3,
+
+.small-box p {
+
+  z-index: 5;
+
+  color:#fff;
+
+}
+
+.small-box .icon {
+
+  -webkit-transition: all 0.3s linear;
+
+  -o-transition: all 0.3s linear;
+
+  transition: all 0.3s linear;
+
+  /* position: absolute;
+
+  top: -10px;
+
+  right: 10px;
+
+  z-index: 0; */
+
+  font-size: 28px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 1px;
+  height: 48px;
+  width: 48px;
+  text-align: center;
+  color: #2f5ae5;
+  background-color: #393A3D;
+  color: #fff;
+  align-items: center;
+}
+
+.small-box:hover {
+
+  text-decoration: none;
+
+  color: #f9f9f9;
+
+}
+
+.small-box:hover .icon {
+
+    /* font-size: 36px; */
+    color: #fff !important;
+
+}
+
+@media (max-width: 767px) {
+
+  .small-box {
+
+    text-align: center;
+
+  }
+
+  .small-box .icon {
+
+    display: none;
+
+  }
+
+
+
+}
+
+
+
+.whitecolor{
+
+	color:#fff;
+
+}
+
+
+
+.bg-pase{
+
+	background-color: #3ca5de;
+
+}
+
+
+
+.bg-bringal{
+
+	background-color:#125889;
+
+}
+
+
+
+.bg-dark#A020F0{
+
+	background-color:#749057;
+
+}
+
+
+
+.best-sale-title{
+
+	display: inline-block; 
+
+	line-height: 34px !important;
+
+}
+
+
+
+.best-sale-seeall{
+
+	display: inline-block;
+
+	 float: right;
+
+}
+.best-sale-seeall:hover {
+    background-color: #38469f;
+
+}
+
+
+
+.marginpadding-right0{
+
+	margin-right: 0px;
+
+	padding-right: 0px;
+
+}
+
+
+
+.marginpaddingleft0{
+
+	margin-left: 0px;
+
+	padding-left: 0px;
+
+}
+
+
+
+.filterbutton{
+
+	background-color: #fa9e1c;
+
+	color:#fff;
+
+}
+
+.filterbutton:hover{
+    color: #fff;
+    background-color: #ef922b;
+}
+
+
+
+.piechartcontainer{
+
+	height: 280px; width: 100%;
+
+}
+
+
+
+.charttitle{
+
+	display: inline-block;
+
+	 line-height: 34px;
+
+}
+
+
+
+.todayssaletitle{
+
+	overflow: scroll;
+
+	 height: 300px;
+
+}
+
+
+
+.altmsg{
+
+	display: none;
+
+}
+
+
+
+.error{
+
+	color: red !important;
+
+}
+
+
+
+#rcv_form{
+
+	margin-top: 250px;
+
+}
+
+
+
+.rcv{
+
+	background-color: #E3F8E9;
+
+}
+
+
+
+.page-loader-wrapper {
+
+    z-index: 99999999;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    bottom: 0;
+
+    right: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #eee;
+
+    overflow: hidden;
+
+    text-align: center
+
+}
+
+
+
+.page-loader-wrapper p {
+
+    font-size: 13px;
+
+    margin-top: 10px;
+
+    font-weight: 700;
+
+    color: #444
+
+}
+
+
+
+.page-loader-wrapper .loader {
+
+    position: relative;
+
+    top: calc(50% - 30px)
+
+}
+
+
+
+.preloader {
+
+    display: inline-block;
+
+    position: relative;
+
+    width: 50px;
+
+    height: 50px;
+
+    -webkit-animation: container-rotate 1568ms linear infinite;
+
+    animation: container-rotate 1568ms linear infinite
+
+}
+
+
+
+.spinner-layer {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    border-color: #f44336;
+
+    -ms-opacity: 1;
+
+    opacity: 1;
+
+    -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(.4, 0, .2, 1) infinite both;
+
+    animation: fill-unfill-rotate 5332ms cubic-bezier(.4, 0, .2, 1) infinite both
+
+}
+
+
+
+.spinner-layer.pl-#A020F0 {
+
+    border-color: #A020F0
+
+}
+
+
+
+.right {
+
+    float: right!important
+
+}
+
+
+
+.gap-patch {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 45%;
+
+    width: 10%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border-color: inherit
+
+}
+
+
+
+.gap-patch.circle {
+
+    width: 1000%;
+
+    left: -450%
+
+}
+
+
+
+.circle-clipper {
+
+    display: inline-block;
+
+    position: relative;
+
+    width: 50%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border-color: inherit
+
+}
+
+
+
+.circle-clipper .circle {
+
+    width: 200%;
+
+    height: 100%;
+
+    border-width: 3px;
+
+    border-style: solid;
+
+    border-color: inherit;
+
+    border-bottom-color: transparent!important;
+
+    border-radius: 50%;
+
+    -webkit-animation: none;
+
+    animation: none;
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    bottom: 0
+
+}
+
+
+
+.circle-clipper.left .circle {
+
+    left: 0;
+
+    border-right-color: transparent!important;
+
+    -webkit-transform: rotate(129deg);
+
+    transform: rotate(129deg);
+
+    -webkit-animation: left-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both;
+
+    animation: left-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both
+
+}
+
+
+
+.circle-clipper.right .circle {
+
+    left: -100%;
+
+    border-left-color: transparent!important;
+
+    -webkit-transform: rotate(-129deg);
+
+    transform: rotate(-129deg);
+
+    -webkit-animation: right-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both;
+
+    animation: right-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both
+
+}
+
+
+
+@-webkit-keyframes container-rotate {
+
+    to {
+
+        -webkit-transform: rotate(360deg);
+
+        transform: rotate(360deg)
+
+    }
+
+}
+
+
+
+@keyframes container-rotate {
+
+    to {
+
+        -webkit-transform: rotate(360deg);
+
+        transform: rotate(360deg)
+
+    }
+
+}
+
+
+
+@-webkit-keyframes fill-unfill-rotate {
+
+    12.5% {
+
+        -webkit-transform: rotate(135deg);
+
+        transform: rotate(135deg)
+
+    }
+
+    25% {
+
+        -webkit-transform: rotate(270deg);
+
+        transform: rotate(270deg)
+
+    }
+
+    37.5% {
+
+        -webkit-transform: rotate(405deg);
+
+        transform: rotate(405deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(540deg);
+
+        transform: rotate(540deg)
+
+    }
+
+    62.5% {
+
+        -webkit-transform: rotate(675deg);
+
+        transform: rotate(675deg)
+
+    }
+
+    75% {
+
+        -webkit-transform: rotate(810deg);
+
+        transform: rotate(810deg)
+
+    }
+
+    87.5% {
+
+        -webkit-transform: rotate(945deg);
+
+        transform: rotate(945deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(1080deg);
+
+        transform: rotate(1080deg)
+
+    }
+
+}
+
+
+
+@keyframes fill-unfill-rotate {
+
+    12.5% {
+
+        -webkit-transform: rotate(135deg);
+
+        transform: rotate(135deg)
+
+    }
+
+    25% {
+
+        -webkit-transform: rotate(270deg);
+
+        transform: rotate(270deg)
+
+    }
+
+    37.5% {
+
+        -webkit-transform: rotate(405deg);
+
+        transform: rotate(405deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(540deg);
+
+        transform: rotate(540deg)
+
+    }
+
+    62.5% {
+
+        -webkit-transform: rotate(675deg);
+
+        transform: rotate(675deg)
+
+    }
+
+    75% {
+
+        -webkit-transform: rotate(810deg);
+
+        transform: rotate(810deg)
+
+    }
+
+    87.5% {
+
+        -webkit-transform: rotate(945deg);
+
+        transform: rotate(945deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(1080deg);
+
+        transform: rotate(1080deg)
+
+    }
+
+}
+
+
+
+@-webkit-keyframes left-spin {
+
+    from {
+
+        -webkit-transform: rotate(130deg);
+
+        transform: rotate(130deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(-5deg);
+
+        transform: rotate(-5deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(130deg);
+
+        transform: rotate(130deg)
+
+    }
+
+}
+
+
+
+@keyframes left-spin {
+
+    from {
+
+        -webkit-transform: rotate(130deg);
+
+        transform: rotate(130deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(-5deg);
+
+        transform: rotate(-5deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(130deg);
+
+        transform: rotate(130deg)
+
+    }
+
+}
+
+
+
+@-webkit-keyframes right-spin {
+
+    from {
+
+        -webkit-transform: rotate(-130deg);
+
+        transform: rotate(-130deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(5deg);
+
+        transform: rotate(5deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(-130deg);
+
+        transform: rotate(-130deg)
+
+    }
+
+}
+
+
+
+@keyframes right-spin {
+
+    from {
+
+        -webkit-transform: rotate(-130deg);
+
+        transform: rotate(-130deg)
+
+    }
+
+    50% {
+
+        -webkit-transform: rotate(5deg);
+
+        transform: rotate(5deg)
+
+    }
+
+    to {
+
+        -webkit-transform: rotate(-130deg);
+
+        transform: rotate(-130deg)
+
+    }
+
+}
+
+
+
+/*Adding custom css for invoice*/
+
+#invoice{padding-top:50px; background:#f5f5f5;}
+
+
+.shipToFrom #top-head{border-bottom:5px solid #000;}
+.shipToFrom #top-head .title {font-size:25px; line-height:30px;  text-transform:uppercase;}
+.shipToFrom #top-head .detail{text-align:right; font-size:15px;}
+.shipToFrom #order .title{font-size:30px; text-align:center; border:1px solid #000; padding:10px 20px; text-transform:uppercase;}
+
+.invoice-form .form-control {width:auto; border:none; border-bottom:1px solid #000; margin:0px; padding:0px; border-radius:0px; box-shadow:none; height:25px;}
+
+.notes {border:2px solid #333; padding:10px 10px;}
+
+.shipToFrom #addresstd{font-weight;400;}
+
+.spreadSheetGroup{
+    /*font:0.75em/1.5 sans-serif;
+    font-size:14px;
+  */
+    color:#333;
+    background-color:#fff;
+    padding:1em;
+}
+
+/* Tables */
+.spreadSheetGroup table{
+    width:100%;
+    margin-bottom:1em;
+    border-collapse: collapse;
+}
+.spreadSheetGroup .proposedWork th{
+    background-color:#eee;
+}
+.tableBorder th{
+  background-color:#eee;
+}
+.spreadSheetGroup th,
+.spreadSheetGroup tbody td{
+    padding:0.5em;
+
+}
+.spreadSheetGroup tfoot td{
+    padding:0.5em;
+
+}
+.spreadSheetGroup td:focus { 
+  border:1px solid #fff;
+  -webkit-box-shadow:inset 0px 0px 0px 2px #5292F7;
+  -moz-box-shadow:inset 0px 0px 0px 2px #5292F7;
+  box-shadow:inset 0px 0px 0px 2px #5292F7;
+  outline: none;
+}
+.spreadSheetGroup .spreadSheetTitle{ 
+  font-weight: bold;
+}
+.spreadSheetGroup tr td{
+  text-align:center;
+}
+/*
+.spreadSheetGroup tr td:nth-child(2){
+  text-align:left;
+  width:100%;
+}
+*/
+
+/*
+.documentArea.active tr td.calculation{
+  background-color:#fafafa;
+  text-align:right;
+  cursor: not-allowed;
+}
+*/
+.spreadSheetGroup .calculation::before, .spreadSheetGroup .groupTotal::before{
+  /*content: "$";*/
+}
+.spreadSheetGroup .trAdd{
+  background-color: #007bff !important;
+  color:#fff;
+  font-weight:800;
+  cursor: pointer;
+}
+.spreadSheetGroup .tdDelete{
+  background-color: #eee;
+  color:#888;
+  font-weight:800;
+  cursor: pointer;
+}
+.spreadSheetGroup .tdDelete:hover{
+  background-color: #df5640;
+  color:#fff;
+  border-color: #ce3118;
+}
+.documentControls{
+  text-align:right;
+}
+.spreadSheetTitle span{
+  padding-right:10px;
+}
+
+.spreadSheetTitle a{
+  font-weight: normal;
+  padding: 0 12px;
+}
+.spreadSheetTitle a:hover, .spreadSheetTitle a:focus, .spreadSheetTitle a:active{
+  text-decoration:none;
+}
+.spreadSheetGroup .groupTotal{
+  text-align:right;
+}
+
+
+
+table.style1 tr td:first-child{
+  font-weight:bold;
+  white-space:nowrap;
+  text-align:right;
+}
+table.style1 tr td:last-child{
+  border-bottom:1px solid #000;
+}
+
+
+
+table.proposedWork td,
+table.proposedWork th,
+table.exclusions td,
+table.exclusions th{
+  border:1px solid #000;
+}
+table.proposedWork thead th, table.exclusions thead th{
+  font-weight:bold;
+}
+table.proposedWork td,
+table.proposedWork th:first-child,
+table.exclusions th, table.exclusions td{
+  text-align:center;
+  vertical-align:top;
+}
+
+
+table.proposedWork td.amountColumn, table.proposedWork th.amountColumn,
+table.proposedWork td:last-child, table.proposedWork th:last-child{
+  text-align:center;
+  vertical-align:top;
+  
+}
+
+.amount:before, .total:before{
+  content: "$";
+}
+table.proposedWork tfoot td:first-child{
+  border:none;
+  text-align:right;
+}
+table.proposedWork tfoot tr:last-child td{
+  font-size:16px;
+  font-weight:bold;
+}
+
+table.style1 tr td:last-child{
+  width:100%;
+}
+table.style1 td:last-child{
+  text-align:left;
+}
+td.tdDelete{
+  width:1%;
+}
+
+table.coResponse td{text-align:left}
+table.shipToFrom td, table.shipToFrom th{text-align:left; vertical-align:text-top}
+
+.docEdit{border:0 !important}
+
+.tableBorder td, .tableBorder th{
+  border:1px solid #000;
+}
+.tableBorder th, .tableBorder td{text-align:center}
+
+table.proposedWork td, table.proposedWork th{text-align:center}
+table.proposedWork td.description{text-align:center;}
+
+
+
+
+#ocean .shipToFrom .oc-head1, .oc-head2, .oc-head3{ border:1px solid #000;}
+#ocean .shipToFrom .oc-head3 p{border-bottom:1px solid #000; padding:0px; text-align:center;}
+#ocean .shipToFrom .oc-head3{padding:0px; }
+#ocean .booking{min-height:200px; border:1px solid #000;}
+
+#ocean .spreadSheetGroup table{margin-bottom:0px;}
+
+#ocean .spreadSheetGroup tr{border: 1px solid black;
+border-collapse: collapse;}
+
+#ocean .maeask{border:1px solid #000; border-collapse:collpse; padding:0px}
+#ocean .maeask td{padding:0px;}
+#ocean .maeask p{border-bottom:1px solid #000; padding:0px}
+
+#price p{text-align:left;}
+#price tbody, tr{border-radius:20px;}
+
+#ocean .spreadSheetGroup tr{border-radius:20px;}
+
+#ocean .shipToFrom tbody{border-radius:20px; border-collapse:inherit;}
+
+#ocean .verify .copy{font-size:120px; line-height:100px; color:#ccc; opacity:0.7; position:absolute;}
+#ocean .verify{position: absolute;
+text-transform:uppercase;
+    bottom: -15%;
+    left: 30%;
+  text-align:center;
+    font-weight: 900;}
+  
+  
+  
+  /* trucking */
+  
+#trucking .address{text-align:center; float:left;}  
+
+#trucking .title{font-size:25px; font-weight:700; vertical-align:top; text-align:right;} 
+#trucking .date{float:right;}
+
+#trucking .col-md-6{padding:0px;}
+#trucking .date p{background:#000; color:#fff; margin-bottom:0px;}
+#trucking .date .no{border:1px solid #000;}
+#trucking .date td{border:none;}
+#trucking .billto {background:#000; color:#fff;}
+#trucking table.proposedWork td, table.proposedWork th{border:none; border-right:1px solid #000;}
+#trucking .spreadSheetGroup .proposedWork th{background:#000; color:#fff;}
+#PROFORMA .detail {text-align:right; vertical-align: top;}
+
+#PROFORMA .title {text-align: center;
+    float: right;}
+  
+#PROFORMA .proforma input{margin-bottom:20px; border:none; box-shadow:none; border-bottom:1px solid #000; border-radius:0px;} 
+#PROFORMA .description {font-size:22px; font-weight:900; line-height:30px; padding-left:40px;}
+  #proforma .mail{padding-left:40px;}
+  
+#PROFORMA .title{vertical-align:middle; text-align:center; font-size:22px; font-weight:700;}  
+#PROFORMA .Exporter tr td{text-align:left; vertical-align:top;} 
+#PROFORMA .destination {vertical-align:bottom; 
+    bottom: -81px; }
+
+#PROFORMA .shipToFrom tr{border:none; border-top:1px solid #000; border-bottom:1px solid #000;} 
+#PROFORMA .unit {text-align:left;}
+#PROFORMA .account-detail {text-align:left; vertical-align:bottom;}
+#PROFORMA .spreadSheetGroup {padding:0px; border:1px solid #000;}
+
+#packing .logo img{text-align:center; margin:0 auto;}
+#packing .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>thead>tr>td{border:1px solid #000; font-size:14px; font-weight:500;}
+
+
+#packing .table-bordered>tbody>tr>th{border: 1px solid #000;}
+
+
+#expence .detail{float:right; text-align:left;}
+#expence  .title {vertical-align:top;}
+#expence #address td{vertical-align:top;}
+#expence .invoice{border:1px solid #000; text-align:center; padding:0px;}
+#expence .invoice p{border-bottom:1px solid #000; border:collapse; padding:11px 12px; margin-bottom:0px;}
+
+#expence .invoice .num{padding:0px; border-right:1px solid #000;} 
+#expence .description {padding-left:30px; text-align:left;}
+
+#expence .spreadSheetGroup .proposedWork th {
+    background-color: #8f8d8d;
+}
+
+#Commercial .commer-address{vertical-align:top; }
+
+#Commercial .title h3 {text-align:center; font-weight:800; font-size:30px;}
+#Commercial .commer-address img{margin:0 auto;}
+#Commercial .bill {border:1px solid #ccc; margin-left:50px;}
+#Commercial .bill .head{background:#DCE9F1; color:#6190BB; padding-left:20px;}
+#Commercial .detail{padding-left:20px;}
+#Commercial .spreadSheetGroup .proposedWork th{background:#DCE9F1; color:#6190BB;}
+#Commercial  .shipToFrom td{border:none;}
+
+
+
+
+
+
+
+
+

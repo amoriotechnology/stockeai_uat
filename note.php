@@ -1,0 +1,1 @@
+baseurl=base_url('Ccpurchase/trucking') 
