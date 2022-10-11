@@ -46,10 +46,21 @@
 		            <div class="panel-body"> 
 		            	<div class="row">
 		            	<div class="col-sm-2">
-		            		 <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
+		            		
+
+		            		<?php 
+
+		            		if($role[4]['create']==1)
+
+		            			{ ?>
                     <a href="<?php echo base_url('Cpurchase/purchase_order') ?>" class="btn btn-info m-b-5 m-r-2">Create PO</a>
-                       <?php } ?>
+                     <?php } ?> 
 		            	</div>
+		            	<?php 
+
+		            		if($role[4]['read']==1)
+
+		            			{ ?>
 		            	<div class="col-sm-7">
 		             
 		             		<?php echo form_open('','class="form-inline"')?>
@@ -68,6 +79,7 @@
 		                  
 		             <?php echo form_close()?>
 		            </div>
+		          <?php } ?>
 		           
 		        </div>
 		    </div>
@@ -88,6 +100,12 @@
 		                </div>
 		              
 		            </div>
+		            <?php 
+if($role[4]['read']==1)
+                             {
+
+?>
+
 		            <div class="panel-body">
 		                <div class="table-responsive">
 		                    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="PurOrderList"> 
@@ -119,6 +137,7 @@
 		                </div>
 		               
 		            </div>
+		          <?php } ?>
 		        </div>
 		    </div>
 		      <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">

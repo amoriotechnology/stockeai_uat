@@ -354,7 +354,8 @@ public function availability($product_nam,$product_model){
 
 
 
-      if($this->permission1->method('manage_invoice','update')->access()){
+      if($_SESSION['sale_update']==1)
+          {
 
          $button .=' <a href="'.$base_url.'Cinvoice/invoice_update_form/'.$record->invoice_id.'" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="'. display('update').'"><i class="fa fa-pencil" aria-hidden="true"></i></a> ';
 
@@ -705,7 +706,8 @@ public function availability($product_nam,$product_model){
  
  
  
-       if($this->permission1->method('manage_invoice','update')->access()){
+       if($_SESSION['sale_update']==1)
+       {
  
           $button .=' <a href="'.$base_url.'Cinvoice/profarma_invoice_update_form/'.$record->purchase_id.'" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="'. display('update').'"><i class="fa fa-pencil" aria-hidden="true"></i></a> ';
  
@@ -847,7 +849,8 @@ public function availability($product_nam,$product_model){
           $jsaction = "return confirm('Are You Sure ?')";
 
            $button .='  <a href="'.$base_url.'Cinvoice/ocean_export_tracking_details_data/'.$record->ocean_export_tracking_id.'" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="'.display('purchase_details').'"><i class="fa fa-window-restore" aria-hidden="true"></i></a>';
-      if($this->permission1->method('manage_purchase','update')->access()){
+ if($_SESSION['sale_update']==1)
+          {
          $button .=' <a href="'.$base_url.'Cinvoice/ocean_export_tracking_update_form/'.$record->ocean_export_tracking_id.'" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="'. display('update').'"><i class="fa fa-pencil" aria-hidden="true"></i></a> ';
      }
 
@@ -961,7 +964,8 @@ public function availability($product_nam,$product_model){
           $jsaction = "return confirm('Are You Sure ?')";
 
            $button .='  <a href="'.$base_url.'Cinvoice/trucking_details_data/'.$record->trucking_id.'" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="'.display('purchase_details').'"><i class="fa fa-window-restore" aria-hidden="true"></i></a>';
-      if($this->permission1->method('manage_purchase','update')->access()){
+       if($_SESSION['sale_update']==1)
+          {
          $button .=' <a href="'.$base_url.'Cinvoice/trucking_update_form/'.$record->trucking_id.'" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="'. display('update').'"><i class="fa fa-pencil" aria-hidden="true"></i></a> ';
      }
 

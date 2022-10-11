@@ -46,7 +46,11 @@
                     <div class="panel-body"> 
                         <div class="row">
                         <div class="col-sm-3">
-                             <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
+                             <?php 
+
+                             if($role[0]['create']==1)
+                             {
+                                ?>
                     <a href="<?php echo base_url('Cinvoice/ocean_export_tracking') ?>" class="btn btn-info m-b-5 m-r-2">Create Ocean Import Invoice</a>
                        <?php } ?>
                         </div>
@@ -54,6 +58,12 @@
                      
                             <?php echo form_open('','class="form-inline"')?>
 
+                            <?php 
+
+                            if($role[0]['read']==1)
+                             {
+
+                                ?>
                             <div class="form-group">
                                 <label class="" for="from_date"><?php echo display('from') ?></label>
                                 <input type="text" name="from_date" class="form-control datepicker" id="from_date" value="" placeholder="<?php echo display('start_date') ?>" >
@@ -65,7 +75,7 @@
                             </div>  
 
                             <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
-                          
+                          <?php } ?>
                      <?php echo form_close()?>
                     </div>
                    
@@ -88,6 +98,12 @@
                         </div>
                       
                     </div>
+                    <?php 
+if($role[0]['read']==1)
+                             {
+
+?>
+
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="oceanExport"> 
@@ -122,6 +138,7 @@
                         </div>
                        
                     </div>
+                <?php } ?>
                 </div>
             </div>
               <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">

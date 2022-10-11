@@ -51,7 +51,7 @@ class Cpurchase extends CI_Controller {
         $this->template->full_admin_html_view($content);
     }
 
-    public function manage_ocean_import_tracking() {
+    public function manage_ocean_import_tracking() {    
         $this->load->library('lpurchase');
         $content = $this->lpurchase->ocean_import_list();
         $this->template->full_admin_html_view($content);

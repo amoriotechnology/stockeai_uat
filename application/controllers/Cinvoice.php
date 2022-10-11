@@ -54,12 +54,19 @@ public function insert_profarma_invoice(){
 
         $CI->auth->check_admin_auth();
 
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
+        
+
         $CI->load->library('linvoice');
         $data=array();
        // echo $content = $CI->linvoice->invoice_add_form();
        $CI->load->model('Invoices');
        $data['customer'] = $CI->Invoices->profarma_invoice_customer();
        $data['voucher_no'] = $CI->Invoices->profarma_voucher_no();
+        $data['role']=$assign_role;
+
         $content = $this->load->view('invoice/profarma_invoice', $data, true);
         //$content='';
         $this->template->full_admin_html_view($content);
@@ -801,8 +808,15 @@ die();
         $CI->load->library('linvoice');
 
         $CI->load->model('Invoices');
+        $CI->load->model('Permission_model');
+                $assign_role=$CI->Permission_model->assign_role();
+
+        $assign_role= json_decode(json_encode($assign_role), true);
+
 
         $data['invoice'] = $CI->Invoices->get_profarma_invoice();
+        $_SESSION['sale_update'] =$assign_role[0]['update'];
+        $data['role']=$assign_role;
 
         $content = $this->load->view('invoice/profarma_invoice_list', $data, true);
     

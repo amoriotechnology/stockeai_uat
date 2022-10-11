@@ -93,8 +93,14 @@
 
 
 
-                
-                    <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?> </a>
+                    <?php 
+
+                    if($role[0]['create']==1)
+                    {
+
+                    ?>
+                    <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?></a>
+                <?php } ?>
                  
 
            <!--    <?php if($this->permission1->method('pos_invoice','create')->access()){ ?>
@@ -138,6 +144,12 @@
 
                         ?>
 
+
+<?php 
+
+if($role[0]['read']==1)
+{
+?>
                         <div class="form-group">
 
                             <label class="" for="from_date"><?php echo display('start_date') ?></label>
@@ -145,6 +157,7 @@
                             <input type="text" name="from_date" class="form-control datepicker" id="from_date" value="" placeholder="<?php echo display('start_date') ?>" >
 
                         </div> 
+                        
 
 
 
@@ -155,12 +168,13 @@
                             <input type="text" name="to_date" class="form-control datepicker" id="to_date" placeholder="<?php echo display('end_date') ?>" value="">
 
                         </div>  
+                       
 
 
 
                         <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
 
-
+                        <?php } ?>
 
                         <?php echo form_close() ?>
 
@@ -188,13 +202,19 @@
 
             <div class="col-sm-12">
 
-                <div class="panel panel-bd lobidrag">
+                <div class="panel panel-bd lobidrag" style='<?php if($role[0]['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'>
 
                     <div class="panel-heading">
 
                     </div>
+                        <?php 
+                                //    if($role[0]['read']==1)
+                                //    {
+                                    
+                                
+                        ?>
 
-                    <div class="panel-body">
+                    <div class="panel-body" >
 
                         <div class="table-responsive" >
 

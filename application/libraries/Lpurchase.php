@@ -143,6 +143,10 @@ class Lpurchase {
         $category_list = $CI->Categories->category_list_product();
 
         $unit_list     = $CI->Units->unit_list();
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
+
 
 
         $data = array(
@@ -160,6 +164,7 @@ class Lpurchase {
             'discount_type' => $currency_details[0]['discount_type'],
 
             'bank_list'     => $bank_list,
+            'role'  => $assign_role,
 
         );
 
@@ -319,12 +324,22 @@ class Lpurchase {
         $CI->load->model('Web_settings');
 
         $CI->load->library('occational');
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
+
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
 
         $company_info = $CI->Purchases->retrieve_company();
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
+
+        $_SESSION['expense_update']=$assign_role;
+
 
         $data = array(
 
@@ -335,6 +350,7 @@ class Lpurchase {
             'currency'       => $currency_details[0]['currency'],
 
             'total_purhcase' => $CI->Purchases->count_purchase(),
+            'role'  => $assign_role,
 
         );
 
@@ -351,6 +367,7 @@ class Lpurchase {
 
         $CI = & get_instance();
 
+
         $CI->load->model('Purchases');
 
         $CI->load->model('Web_settings');
@@ -362,6 +379,9 @@ class Lpurchase {
         $company_info = $CI->Purchases->retrieve_company();
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
 
         $data = array(
 
@@ -372,6 +392,7 @@ class Lpurchase {
             'currency'       => $currency_details[0]['currency'],
 
             'total_purhcase' => $CI->Purchases->count_purchase_order(),
+            'role'  => $assign_role,
 
         );
 
@@ -404,6 +425,10 @@ class Lpurchase {
         $company_info = $CI->Purchases->retrieve_company();
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $CI->load->model('Permission_model');
+        $assign_role=$CI->Permission_model->assign_role();
+        $assign_role= json_decode(json_encode($assign_role), true);
+
 
         $data = array(
 
@@ -414,6 +439,8 @@ class Lpurchase {
             'currency'       => $currency_details[0]['currency'],
 
             'total_purhcase' => $CI->Purchases->count_ocean_import(),
+            'total_purhcase' => $CI->Purchases->count_ocean_import(),
+            'role'  => $assign_role,
 
         );
 

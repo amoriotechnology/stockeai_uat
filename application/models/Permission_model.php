@@ -33,11 +33,12 @@ class Permission_model extends CI_Model {
     public function assign_role()
     {
 
-        $uid=$_SESSION['user_id'];
-         $sql='SELECT b.* from sec_userrole as a join role_permission b on b.role_id=a.roleid where a.user_id='.$uid;
+        // $uid=$_SESSION['user_id'];
+        $uid=2;
+          $sql='SELECT b.* from sec_userrole as a join role_permission b on b.role_id=a.roleid where a.user_id='.$uid;
         $query = $this->db->query($sql);  
 
-        return $query->result();
+         return $query->result();
 
     }
 

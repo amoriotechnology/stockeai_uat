@@ -46,10 +46,21 @@
                     <div class="panel-body"> 
                         <div class="row">
                         <div class="col-sm-2">
-                             <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
+                           <?php 
+if($role[0]['create']==1)
+                             {
+
+?>
+
                     <a href="<?php echo base_url('Cinvoice/trucking') ?>" class="btn btn-info m-b-5 m-r-2">Create Trucking Invoice</a>
                        <?php } ?>
                         </div>
+                         <?php 
+if($role[0]['create']==1)
+                             {
+
+?>
+
                         <div class="col-sm-7">
                      
                             <?php echo form_open('','class="form-inline"')?>
@@ -65,9 +76,12 @@
                             </div>  
 
                             <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
-                          
+                             
+
+
                      <?php echo form_close()?>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
          </div>
@@ -85,6 +99,12 @@
                         </div>
                       
                     </div>
+                    <?php 
+if($role[0]['read']==1)
+                             {
+
+?>
+
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="truckingList"> 
@@ -119,6 +139,7 @@
                         </div>
                        
                     </div>
+                <?php }?>
                 </div>
             </div>
               <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">

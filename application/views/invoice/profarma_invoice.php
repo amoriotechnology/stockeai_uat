@@ -1,4 +1,4 @@
-<!-- Product Purchase js -->
+    <!-- Product Purchase js -->
 <?php    ?>
 
 <script src="<?php echo base_url() ?>my-assets/js/admin_js/proforma.js" type="text/javascript"></script>
@@ -11,7 +11,7 @@
         </div>
         <div class="header-title">
             <h1>Proforma Invoice</h1>
-            <small>Generate New Proforma Invoice</small>
+            <small>Generate New Proforma Invoice 2</small>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
                 <li><a href="#">Proforma</a></li>
