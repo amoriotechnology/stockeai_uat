@@ -1258,7 +1258,7 @@ class Llpurchase {
             'title'            => display('purchase_details'),
 
             'trucking_id'      => $purchase_detail[0]['trucking_id'],
-
+'grand_total' => $purchase_detail[0]['grand_total_amount'],
             'invoice_no' =>  $purchase_detail[0]['invoice_no'],
 
             'invoice_date' => $purchase_detail[0]['invoice_date'],
