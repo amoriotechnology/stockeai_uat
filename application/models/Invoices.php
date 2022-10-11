@@ -146,6 +146,16 @@ $query = $this->db->get()->result();
 
 return $query;
 }
+public function get_email_data(){
+    $id=$_SESSION['user_id'];
+    $this->db->select('*');
+    $this->db->from('invoice_email');
+    $this->db->where('uid', $id);
+   // $this->db->where('customer_name', $value);
+    $query = $this->db->get()->result();
+     return $query;
+
+}
 public function getcustomer_data($value){
     $this->db->select('*');
     $this->db->from('customer_information');
@@ -154,7 +164,6 @@ public function getcustomer_data($value){
      return $query;
 
 }
-
 public function availability($product_nam,$product_model){
  
     $this->db->select('p_quantity,price');
@@ -1551,7 +1560,7 @@ public function availability($product_nam,$product_model){
 
                 ->from('customer_information')
                 ->where('create_by',$this->session->userdata('user_id'))
-                ->where('customer_name', 'Walking Customer')
+              //  ->where('customer_name', 'Walking Customer')
 
                 ->get();
 

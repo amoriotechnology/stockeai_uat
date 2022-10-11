@@ -154,13 +154,13 @@
                             </div>
                         </div>
 
-
+                        
 
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <label for="details" class="col-sm-2 col-form-label">Add Image Of Shape and Size</label>
                                 <div class="col-sm-4">
-		            		                     <a href="https://interactivewebtech.net/mxgraph/javascript/examples/grapheditor/www/index.html" target="_blank" class="btn btn-info m-b-5 m-r-2">Click here</a>
+		            		                     <a href="<?php echo base_url('mxgraph/javascript/examples/grapheditor/www/index.html') ?>" target="_blank" class="btn btn-info m-b-5 m-r-2">Click here</a>
                        		            	</div>
                             </div>
                         </div>

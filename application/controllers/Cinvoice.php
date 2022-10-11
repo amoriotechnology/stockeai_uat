@@ -59,12 +59,28 @@ public function insert_profarma_invoice(){
        // echo $content = $CI->linvoice->invoice_add_form();
        $CI->load->model('Invoices');
        $data['customer'] = $CI->Invoices->profarma_invoice_customer();
-       $data['voucher_no'] = $CI->Invoices->profarma_voucher_no();
+       $data=array(
+        'customer' => $CI->Invoices->profarma_invoice_customer(),
+        'voucher_no' => $CI->Invoices->profarma_voucher_no()
+       );
+
+      
         $content = $this->load->view('invoice/profarma_invoice', $data, true);
         //$content='';
         $this->template->full_admin_html_view($content);
 
     }
+    public function get_email_data(){
+        $CI = & get_instance();
+        $this->auth->check_admin_auth();
+        $CI->load->model('Invoices');
+       // $value = $this->input->post('customer_name',TRUE);
+        $email_info = $CI->Invoices->get_email_data();
+        echo json_encode($email_info);
+    }
+
+
+
     public function getcustomer_data(){
         $CI = & get_instance();
         $this->auth->check_admin_auth();
@@ -1945,7 +1961,7 @@ die();
         $list[''] = '';
 
         foreach ($product_info as $value) {
-
+          
             $json_product[] = array('label'=>$value['product_name'].'('.$value['product_model'].')','value'=>$value['product_id']);
 
         } 
@@ -2456,18 +2472,27 @@ die();
         $CI->auth->check_admin_auth();
         $CI->load->library('linvoice');
         $data=array();
-         //print_r($this->input->post()); die;
+       
+        $output = new stdClass;
+        $output->csrfName = $this->security->get_csrf_token_name();
+        $output->csrfHash = $this->security->get_csrf_hash();
+        $output->formdata=    $formdata['available_quantity'];
+        echo json_encode($output);
+    
          $purchase_id = date('YmdHis');
-         $billing_address=$this->input->post('billing_address');
-         foreach ($post as $id)
-         {
-         $this->model_admin->delete_admin_user($id);
-         }
+         $chalan_no=$this->input->post('chalan_no');
+        echo $chalan_no;
+        $postData = $this->input->post();
+        print_r($postData);
+       // foreach ($post as $id)
+       //  {
+      //   $this->model_admin->delete_admin_user($id);
+      //   }
          $data = array(
                     'purchase_id' => $purchase_id,
                     'chalan_no'=>$this->input->post('chalan_no'),
                     'purchase_date'=>$this->input->post('date'),
-                    'billing_address'=> $billing_address,
+                    'billing_address'=> 'no',
                     'customer_id'=>$this->input->post('customer_id'),
                     'pre_carriage'=>$this->input->post('pre_carriage'),
                     'receipt'=>$this->input->post('eta'),
@@ -2484,15 +2509,15 @@ die();
               //  $CI->load->model('Invoices');
                 // $this->Invoices->add_profarma_invoice($data);
                  $this->db->insert('profarma_invoice', $data);
-               //  echo   $this->db->last_query();
-              //   echo json_encode($data);
+                 echo   $this->db->last_query();
+                echo json_encode($data);
               //   var_dump($_POST);
                  $avl = $this->input->post('available_quantity');
                  $p_id = $this->input->post('product_id');
                  $quantity = $this->input->post('product_quantity');
                  $rate = $this->input->post('product_rate');
                  $t_price = $this->input->post('total_price');
-                 if(is_countable($avl)) {
+              
                  for ($i = 0, $n = count($avl); $i < $n; $i++) {
                     $product_quantity = $quantity[$i];
                     $product_rate = $rate[$i];
@@ -2512,8 +2537,7 @@ die();
                     echo   $this->db->last_query();
                  echo json_encode($data1);
                 }
-            } else{
-            }
+          
      //   $this->session->set_userdata(array('message' => display('successfully_added')));
      //   redirect(base_url('Cinvoice/manage_profarma_invoice'));
           //  exit;

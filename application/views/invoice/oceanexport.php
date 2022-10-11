@@ -174,7 +174,8 @@
     text-align: center;
     font-size: 13px;
     font-weight: 600;">
-                                       <img src="https://interactivewebtech.net/erpwork/my-assets/image/logo/truck.png" width="20%">
+ 
+                                       <img src="  <?php echo base_url('my-assets/image/logo/truck.png') ?>" width="20%">
                                   
                                     <span>PHASE III TRUCKING, INC. <br>  2151 ATCO AVE, <br> ATCO, NJ 06005 <br>809-561-1599 + FAX 809-561-2069</span> 
 

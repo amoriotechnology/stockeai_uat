@@ -116,10 +116,10 @@
             $error_message = $this->session->userdata('error_message');
             if (isset($error_message)) {
         ?>
-        <div class="alert alert-danger alert-dismissable">
+       <!-- <div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <?php echo $error_message ?>                    
-        </div>
+            <?php //echo $error_message ?>                    
+        </div>-->
         <?php 
             $this->session->unset_userdata('error_message');
             }
@@ -978,9 +978,37 @@ $(function() {
 
 </script>
 </script>
-
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+              
 <script type="text/javascript">
-
+ $("#supplier_id").change(function() {
+        var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+       var data = {
+         
+      
+       };
+       data[csrfName] = csrfHash;
+   
+       $.ajax({
+           type:'POST',
+           data: data, 
+          dataType:"json",
+         
+           url:'<?php echo base_url();?>Cpurchase/product_search_by_supplier',
+           success: function(result, statut) {
+            console.log(result);
+               if(result.csrfName){
+                  csrfName = result.csrfName;
+                  csrfHash = result.csrfHash;
+               }
+               console.log(result[0]['label']);
+              // $('#name_email').val(result[0]['label']);
+              // $('#subject_email').val(result[0]['subject']);
+             //  $('#message_email').html(result[0]['message']);
+           }
+       });
+   });
 $(function(){
     $(".add_category").hide();
 $("#add_category").click(function() {
