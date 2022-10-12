@@ -80,7 +80,45 @@ public function insert_profarma_invoice(){
     }
 
 
+    public function sendmail()
+    {
+    //Load email library
+$this->load->library('email');
 
+$receiver_mail = $this->input->post('mailid',TRUE);
+$name_email = $this->input->post('name_email',TRUE);
+$subject_email = $this->input->post('subject_email',TRUE);
+$message_email = $this->input->post('message_email',TRUE);
+//SMTP & mail configuration
+$config = array(
+    'protocol'  => 'smtp',
+    'smtp_host' => 'ssl://smtp.googlemail.com',
+    'smtp_port' => 465,
+    'smtp_user' => 'suryavenkatesh3093@gmail.com',
+    'smtp_pass' => 'hdafyzlzbjqppnlq',
+    'mailtype'  => 'text',
+    'charset'   => 'utf-8'
+);
+$this->email->initialize($config);
+$this->email->set_mailtype("html");
+$this->email->set_newline("\r\n");
+
+//Email content
+$htmlContent = '<h1>Greeting from AmorioTech</h1>';
+$htmlContent .= $name_email;
+$htmlContent .= $message_email;
+
+$this->email->to($receiver_mail);
+$this->email->from('suryavenkatesh3093@gmail.com','AmorioTech');
+$this->email->subject($subject_email);
+$this->email->message($htmlContent);
+
+//Send email
+$this->email->send();
+$this->session->set_flashdata('msg', 'Mail Sent !!!');
+redirect('Cinvoice');  
+    
+    }
     public function getcustomer_data(){
         $CI = & get_instance();
         $this->auth->check_admin_auth();
@@ -354,7 +392,7 @@ die();
 
         }
 
-
+print_r($data);
 
         echo json_encode($data);
 

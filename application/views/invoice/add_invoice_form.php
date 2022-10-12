@@ -1517,8 +1517,8 @@ gtotal();
 				<div class="alert alert-danger hidden" id="contactError">
 					<strong>Error!</strong> There was an error sending your message.
 				</div>
-				
-				<form id="contactForm" action="php/contact-form.php" method="POST">
+             
+			
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
@@ -1549,10 +1549,10 @@ gtotal();
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<input type="submit" value="Send Message" class="btn btn-primary btn-lg mb-xlg" data-loading-text="Loading...">
+							<input type="submit" value="Send Message" id="email_send" name="email_send" class="btn btn-primary btn-lg mb-xlg" data-loading-text="Loading...">
 						</div>
 					</div>
-				</form>
+                   
 
 			</div>
 		</div>
@@ -1704,6 +1704,33 @@ $('#send_email').show();
                 count++
     }
 }
+$('#email_send').click(function(){
+      
+      var data = {
+        mailid:$('#email_info').val(),
+        name_email:$('#name_email').val(),
+        subject_email:$('#subject_email').val(),
+        message_email:$('#message_email').val()
+      };
+      data[csrfName] = csrfHash;
+  
+      $.ajax({
+          type:'POST',
+          data: data, 
+         dataType:"json",
+          url:'<?php echo base_url();?>Cinvoice/sendmail',
+          success: function(result, statut) {
+              if(result.csrfName){
+                 csrfName = result.csrfName;
+                 csrfHash = result.csrfHash;
+              }
+              console.log(result);
+            // $('#date1').val(result);
+         }
+      });
+  });
+
+
 </script>
 
 
