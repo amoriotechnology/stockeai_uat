@@ -14,6 +14,11 @@ echo "Ajithkumar";
     //     return false;
     // }
 
+    <section></section>
+    <div></div>
+    <input></input>
+    <label>
+    </label>
     echo "ajith";
     echo "kumar";
 ?>
