@@ -385,15 +385,15 @@
 
                                     <div class="col-sm-8">
                                         <input class="form-control" placeholder="Commercial Invoice Number" type="text" name="commercial_invoice_number"  value="<?php if(!empty($voucher_no[0]['voucher'])){
-                                $curYear = date('Y'); 
-                                $month = date('m');
-                               $vn = substr($voucher_no[0]['voucher'],9)+1;
-                               echo $voucher_n = 'NS'. $curYear.$month.'-'.$vn;
-                             }else{
-                                    $curYear = date('Y'); 
-                                $month = date('m');
-                               echo $voucher_n = 'NS'. $curYear.$month.'-'.'1';
-                             } ?>" readonly />
+                                        $curYear = date('Y'); 
+                                        $month = date('m');
+                                    $vn = substr($voucher_no[0]['voucher'],9)+1;
+                                    echo $voucher_n = 'NS'. $curYear.$month.'-'.$vn;
+                                    }else{
+                                            $curYear = date('Y'); 
+                                        $month = date('m');
+                                    echo $voucher_n = 'NS'. $curYear.$month.'-'.'1';
+                                    } ?>" readonly />
                                     </div>
                                 </div>
 
@@ -433,8 +433,7 @@
 
                                 <div class="form-group row">
 
-                                    <label for="port_of_discharge
-" class="col-sm-4 col-form-label">Port of discharge</label>
+                                    <label for="port_of_discharge" class="col-sm-4 col-form-label">Port of discharge</label>
 
                                     <div class="col-sm-8">
 
