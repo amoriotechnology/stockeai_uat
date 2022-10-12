@@ -138,7 +138,7 @@ if (quantity < 0 || discount < 0) {
     } 
 else {
           console.log("hello6");
-       // var n = parseFloat(quantity) * price_item;
+        var n = parseFloat(quantity) * price_item;
         console.log(price_item+"/"+"surya");
         console.log("satyam|"+quantity);
         var c = quantity * price_item * total_tax;
@@ -536,7 +536,7 @@ $(document).ready(function(){
             },
             error: function(xhr)
             {
-                alert('failed ok!');
+              //  alert('failed ok!');
             }
         });
     });
@@ -552,7 +552,7 @@ $(document).ready(function(){
     "use strict";
      function invoice_productList(sl) {
 
- var priceClass = 'price_item'+sl;
+ var priceClass = 'product_rate_'+sl;
         var available_quantity = 'available_quantity_'+sl;
         var unit = 'unit_'+sl;
         var tax = 'total_tax_'+sl;
@@ -603,12 +603,14 @@ $(document).ready(function(){
                             console.log(data);
 
                             var obj = jQuery.parseJSON(data);
+                            console.log(obj);
                            //  for (var i = 0; i < (obj.txnmber); i++) {
                            //  var txam = obj.taxdta[i];
                            //  var txclass = 'total_tax'+i+'_'+sl;
                            // $('.'+txclass).val(obj.taxdta[i]);
                            //  }
-                            $('.'+priceClass).val(obj.price);
+
+                            $('#'+priceClass).val(obj.price);
                             $('.'+available_quantity).val(obj.total_product.toFixed(2,2));
                             $('.'+unit).val(obj.unit);
                             $('.'+tax).val(obj.tax);
@@ -674,7 +676,7 @@ $(document).ready(function() {
             },
             error: function(xhr)
             {
-                alert('failed ok1!');
+               // alert('failed ok1!');
             }
 
         });

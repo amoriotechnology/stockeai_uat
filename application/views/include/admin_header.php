@@ -162,25 +162,25 @@ ul.dropdown-submenu>li>a:hover{
                   <div class="menuCol col-xl-3 col-lg-3 col-md-12">
                     <ul class="dropdown-submenu">
 
-                        <li class="menu-title">Manage Settingsss</li>
-                         <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/edit_profile"><i class="pe-7s-users"></i>myManage Companys</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/dashboardsetting"><i class="ti-dashboard"></i>Add Company</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/change_password_form"><i class="pe-7s-settings"></i>Manage Company </a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Language </a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Currency</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Setting </a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Mail Setting </a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Help</a></li>
+                        <li class="menu-title">Manage Setting</li>
+                         <li><a href="<?php echo base_url('Admin_dashboard/edit_profile') ?>"><i class="pe-7s-users"></i>myManage Companys</a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/dashboardsetting') ?>"><i class="ti-dashboard"></i>Add Company</a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/change_password_form') ?>"><i class="pe-7s-settings"></i>Manage Company </a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Language </a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Currency</a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Setting </a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Mail Setting </a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Help</a></li>
                     </ul>
                   </div>
-                
+               
                   
                   <div class="menuCol col-xl-3 col-lg-3 col-md-12">
                     <ul class="dropdown-submenu">
                           <li class="menu-title">Role Permission</li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Permission/add_role"><i class="pe-7s-users"></i>Add Role</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Permission/role_list"><i class="ti-dashboard"></i>Role List</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Permission/user_assign"><i class="pe-7s-settings"></i>User Assign Role</a></li>
+                        <li><a href=" <?php echo base_url('Permission/add_role') ?>"><i class="pe-7s-users"></i>Add Role</a></li>
+                        <li><a href="<?php echo base_url('Permission/role_list') ?>"><i class="ti-dashboard"></i>Role List</a></li>
+                        <li><a href=" <?php echo base_url('Permission/user_assign') ?>"><i class="pe-7s-settings"></i>User Assign Role</a></li>
                        
                     </ul>
                   </div>
@@ -189,18 +189,18 @@ ul.dropdown-submenu>li>a:hover{
                     <ul class="dropdown-submenu">
 
                          <li class="menu-title">SMS</li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Csms/configure"><i class="pe-7s-users"></i>SMS Configure</a></li>
+                        <li><a href=" <?php echo base_url('Csms/configure') ?>"><i class="pe-7s-users"></i>SMS Configure</a></li>
                     </ul>
                   </div>
-
+                  
                   <div class="menuCol col-xl-3 col-lg-3 col-md-12">
                     <ul class="dropdown-submenu">
 
                          <li class="menu-title">Admin Details</li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/edit_profile"><i class="pe-7s-users"></i>User Profile</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/dashboardsetting"><i class="ti-dashboard"></i>Dashboard Settings</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/change_password_form"><i class="pe-7s-settings"></i>Change Password</a></li>
-                        <li><a href="https://interactivewebtech.net/erpwork/Admin_dashboard/logout"><i class="pe-7s-key"></i>Logout</a></li>
+                        <li><a href="  <?php echo base_url('Admin_dashboard/edit_profile') ?>"><i class="pe-7s-users"></i>User Profile</a></li>
+                        <li><a href=" <?php echo base_url('Admin_dashboard/dashboardsetting') ?>"><i class="ti-dashboard"></i>Dashboard Settings</a></li>
+                        <li><a href=" <?php echo base_url('Admin_dashboard/change_password_form') ?>"><i class="pe-7s-settings"></i>Change Password</a></li>
+                        <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Logout</a></li>
                     </ul>
                   </div>
                 

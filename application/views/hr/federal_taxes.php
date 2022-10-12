@@ -166,9 +166,9 @@
                                         
                                         <td>Federal Income Tax</td>
 
-
+                                        <?php echo base_url('Chrm/add_taxes_detail') ?>
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -180,7 +180,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -194,7 +194,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -206,7 +206,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -350,7 +350,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -362,7 +362,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -376,7 +376,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -387,7 +387,7 @@
 
 
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
@@ -396,9 +396,9 @@
                                         
                                         <td>NJ FLI</td>
 
-
+                                        <?php echo base_url('Chrm/add_taxes_detail') ?>
                                         
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Chrm/add_taxes_detail" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Chrm/add_taxes_detail') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add Taxes Detail"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 

@@ -50,11 +50,11 @@
 
                               <br>
 
-                              <form action="../assets/update_email.php" method="post">
+                              <form  method="post">
                                   <div class="first">
                                      <input type="radio" name="radio"  value="full">Full Details<br>
                                      <input type="radio" name="radio" value="summary">Summarised Details <br>
-                                     <input type="checkbox" name="pdf" >PDF Attached (Invoice copy has to attached ) <br>
+                                     <input type="checkbox" name="pdf" id="pdf" >PDF Attached (Invoice copy has to attached ) <br>
 
                                   </div>
                                   <hr>
@@ -64,11 +64,11 @@
                               <p style="font-size: 10px;">Edit email your customer get with evey sales reciept</p>
                               <div class="secound">
                                 <label>Subject</label>
-                                <input type="text" name="subject" class="form-control" placeholder="Sale Reciept[Sales Reciept No.] from infinity Stone Erope Srl "> <br>
+                                <input type="text" name="subject" id="subject" class="form-control" placeholder="Sale Reciept[Sales Reciept No.] from infinity Stone Erope Srl "> <br>
                                 (this setting  applies to all sales reciepts)<br>
                                 <input type="checkbox" name="greeting" id="greeting"> Use gretting 
                                 <div class="greeting">
-                                <select name='dear'  style='width: 30%;'>
+                                <select name='dear'  id="select1" style='width: 30%;'>
                                     <option>Dear</option>
                                     <option>Mr</option>
                                     <option>Mrs</option>
@@ -76,7 +76,7 @@
                                     
                                 </select>
                                
-                                <select name='first'  style='width: 30%;'>
+                                <select name='first' id="select2" style='width: 30%;'>
                                     <option>First Name</option>
                                     <option>Full Name</option>
                                     <option>Company Name</option>
@@ -87,12 +87,12 @@
                                 <br>
                                 <label>Message to customer</label>
                                 <br>
-                                <textarea style="    width: 100%;" name="message">
+                                <textarea style="width: 100%;" id="message"  name="message">
                          
                                 </textarea>
                                 <input type="hidden" name="uid" value="<?php echo $_SESSION['user_id']; ?>">
-                                <input type="submit" name="" value="Save" class="btn btn-success">  
-                              
+                                <input type="submit" name="save" value="Save" id="save" class="btn btn-success">  
+                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                               </form>
 
   </div>    </div></div>
@@ -178,7 +178,46 @@
         $("#uploadlogo").toggle();
 
     });
-      /////////////Ajax////////////////////
+    var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+
+
+
+    //create data object here so we can dynamically set new csrfName/Hash
+    $('#save').click(function(){
+      
+    var data = {
+      
+        subject:$('#subject').val(),
+        select1:$('#select1').val(),
+        select2:$('#select2').val(),
+        message:$('#message').val(),
+        pdf:$('#pdf').val()
+   };
+
+    data[csrfName] = csrfHash;
+   
+    $.ajax({
+        type:'POST',
+        data: data, 
+        dataType:"text",
+        url:'<?php echo base_url();?>Cweb_setting/insert_email',
+        success: function(result, statut) {
+            if(result.csrfName){
+               //assign the new csrfName/Hash
+               csrfName = result.csrfName;
+               csrfHash = result.csrfHash;
+            }
+           // var parsedData = JSON.parse(result);
+          //  alert(result[0].p_quantity);
+       //   $(".available_quantity_"+ id).val(result[0]['p_quantity']);
+        //  $("#product_rate_"+ id).val(result[0]['price']);
+          //  $('#available_quantity_'+ id).html(result[0].p_quantity);
+            console.log(result);
+        }
+    });
+
+});
 
          $("#header").blur(function(){
     var value=$(this).val();
@@ -204,7 +243,7 @@
          });
 
 ///////////////Ajax Dot////////
-function dot(value)
+/*function dot(value)
 {
     var uid='<?php echo $_SESSION['user_id']; ?>';
   
@@ -215,7 +254,8 @@ function dot(value)
       
   }});
  }
-    
+  
+ */
 
 </script>
 

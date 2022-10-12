@@ -602,7 +602,7 @@ from you. See the instructions for your income tax return.</p>
 
 
 
-                         <?php echo form_open_multipart('Chrm/create_employee','id="validate"', ) ?>
+                         <?php echo form_open_multipart('Chrm/employee_create','id="validate"', ) ?>
 
                     <div class="form-group row">
 
@@ -618,7 +618,7 @@ from you. See the instructions for your income tax return.</p>
 
                         <div class="col-sm-4">
 
-                            <input name="last_name" class="form-control" type="text" placeholder="<?php echo display('last_name') ?>" id="last_name">
+                            <input name="last_name" class="form-control" type="text" placeholder="<?php echo display('last_name') ?>" required id="last_name">
 
                         </div>
 
@@ -745,11 +745,11 @@ from you. See the instructions for your income tax return.</p>
 
                     <div class="form-group row">
 
-                         <label for="picture" class="col-sm-2 col-form-div">W4 Form</label>
+                         <label for="picture" class="col-sm-2 col-form-div">Image</label>
 
                         <div class="col-sm-4">
 
-                            <input type="file" name="w4from" class="form-control"  placeholder="<?php echo display('picture') ?>" id="w4from">
+                            <input type="file" name="image" class="form-control"  placeholder="<?php echo display('picture') ?>" id="image">
 
                         </div>
 

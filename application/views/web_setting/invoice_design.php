@@ -1192,12 +1192,13 @@ $csrf = array(
 
 $("#header").blur(function(){
     var value=$(this).val();
-    var uid='<?php echo $_SESSION['user_id']; ?>';
+
+    var uid='<?php echo  $this->session->userdata('user_id'); ?>';
     var cct = "<?php echo $csrf ['hash']; ?>";
       var tokenHash=jQuery("input[name=csrf_test_name]").val();
 $.ajax({
   method: "POST",
-  url: "../Cweb_setting/invoice_desgn",
+  url:'<?php   base_url() ?>'+ "invoice_desgn",
   data: { value: value, uid: uid ,'<?php echo $this->security->get_csrf_token_name(); ?>':'<?php echo $this->security->get_csrf_hash(); ?>'},
 beforeSend: function (xhr) 
         {       

@@ -213,15 +213,15 @@
                                 </thead>
 
                                 <tbody>
-
+                               
                                     <tr role="row" class="odd">
                                         <td tabindex="0">1</td>
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Cinvoice/invoice_inserted_data/5124714587" class="">1000</a></td>
+                                        <td>  <a href="<?php echo base_url('Cinvoice/invoice_inserted_data/5124714587') ?>" class="">1000</a></td>
                                         <td>Admin User</td>
                                         <td>Stonemart Corp</td>
                                         <td>20 - NOV - 2021</td>
                                         <td class=" total_sale text-right">$0.00</td>
-                                        <td>  <a href="https://interactivewebtech.net/erpwork/Cinvoice/packing_invoice_inserted_data" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="View Invoice"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                        <td>  <a href="<?php echo base_url('Cinvoice/packing_invoice_inserted_data') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="View Invoice"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 

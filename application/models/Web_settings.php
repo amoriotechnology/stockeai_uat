@@ -94,8 +94,7 @@ class Web_settings extends CI_Model {
     $this->db->from('invoice_design');
     $this->db->where('uid', $_POST['uid'] );
     $query = $this->db->get();
-   echo $query;
-    die();
+ 
 if ($query->num_rows() > 0 )
     {
         if($fomdata['input']=='header')

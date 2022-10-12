@@ -1235,15 +1235,30 @@ class Llpurchase {
 
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
-
+        $CII = & get_instance();
+        $CC = & get_instance();
         $company_info = $CI->Ppurchases->retrieve_company();
+        $CII->load->model('invoice_design');
+        $CC->load->model('invoice_content');
 
-        $data = array(
-
+       $dataw = $CII->invoice_design->retrieve_data();
+       $datacontent = $CI->invoice_content->retrieve_data();
+     $data = array(
+            'header'=> $dataw[0]['header'],
+            'logo'=> $dataw[0]['logo'],
+            'color'=> $dataw[0]['color'],
+            'template'=> $dataw[0]['template'],
+            'address'=>$datacontent[0]['address'],
+            'cname'=>$datacontent[0]['business_name'],
+            'phone'=>$datacontent[0]['phone'],
+            'email'=>$datacontent[0]['email'],
+            'reg_number'=>$datacontent[0]['reg_number'],
+            'website'=>$datacontent[0]['website'],
+            'address'=>$datacontent[0]['address'],
             'title'            => display('purchase_details'),
 
             'trucking_id'      => $purchase_detail[0]['trucking_id'],
-
+'grand_total' => $purchase_detail[0]['grand_total_amount'],
             'invoice_no' =>  $purchase_detail[0]['invoice_no'],
 
             'invoice_date' => $purchase_detail[0]['invoice_date'],

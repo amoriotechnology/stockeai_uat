@@ -175,7 +175,7 @@ var options = {
 
         if(data=='No Product Found')
         {
-             $('.product_name').val('');
+            // $('.product_name').val('');
             alert('Please select product from the list');
         }
         else{

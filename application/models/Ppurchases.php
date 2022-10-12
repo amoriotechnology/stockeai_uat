@@ -500,7 +500,8 @@ class Ppurchases extends CI_Model {
           $button = '';
           $base_url = base_url();
           $jsaction = "return confirm('Are You Sure ?')";
-
+          $button .='  <a href="'.$base_url.'Ccpurchase/trucking_details_data/'.$record->trucking_id.'" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="'.display('purchase_details').'"><i class="fa fa-window-restore" aria-hidden="true"></i></a>';
+    
            $button .='  <a href="'.$base_url.'Ccpurchase/trucking_details_data/'.$record->trucking_id.'" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="'.display('purchase_details').'"><i class="fa fa-window-restore" aria-hidden="true"></i></a>';
       if($this->permission1->method('manage_purchase','update')->access()){
          $button .=' <a href="'.$base_url.'Ccpurchase/trucking_update_form/'.$record->trucking_id.'" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="'. display('update').'"><i class="fa fa-pencil" aria-hidden="true"></i></a> ';
@@ -2022,6 +2023,7 @@ class Ppurchases extends CI_Model {
         $this->db->where('a.trucking_id', $purchase_id);
         //$this->db->group_by('d.product_id');
         $query = $this->db->get();
+        echo $this->db->last_query();
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }

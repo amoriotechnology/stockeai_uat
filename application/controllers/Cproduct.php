@@ -45,7 +45,7 @@ class Cproduct extends CI_Controller {
 
         }
         $sup_price = $this->input->post('supplier_price',TRUE);
-        $s_id = $this->input->post('supplier_id',TRUE);
+        $s_id = $this->input->post('product_id',TRUE);
         $product_model = $this->input->post('model',TRUE);
         for ($i = 0, $n = count($s_id); $i < $n; $i++) {
             if($sup_price[$i])
@@ -64,7 +64,7 @@ class Cproduct extends CI_Controller {
                 'supplier_price' => $supplier_price,
                 'products_model' => $product_model = $this->input->post('model',TRUE)
             );
-
+print_r($supp_prd);
             $this->db->insert('supplier_product', $supp_prd);
         }
 
@@ -457,22 +457,62 @@ class Cproduct extends CI_Controller {
 
     
     }
+    public function scrape(){
+      
+        $this->load->library('simple_html_dom');
+$html = file_get_html('https://www.x-rates.com/table/?from=USD&amount=1');
+foreach($html->find('table.table-dark') as $elements) {
+    // echo $elements->plaintext;
+    $output = preg_replace('!\s+!', ' ', $elements->plaintext);
+    $output = str_replace("Today's Best Exchange Rate Currency Buy Rate Sell Rate","",$output);
+  
+     //break;
+ }
+ $se = explode(' ', $output);
+ $s = '';
+ 
+ $i = 0;
+ while ($i < count($se)) {
+     $i++;
+     $s .= $se[$i+1];
+     if ($i !== count($se)) {
+         if ($i%3 == 0) {
+             $s .= '\n';
+         } else {
+             $s .= ' ';
+         }
+     }
+ }
+ $split = explode('\n', $s);
+ foreach ($split as $spl){
+ $val=explode(' ', $spl);
+  $dat=array(
+'currency' => $val[0],
+'buy'  => $val[1],
+'sell' => $val[2]
+
+    );
+    $this->db->insert('currency_details',$dat);
+    echo json_encode($dat);
+ }
+
+}
+   // }
+    public function get_all_tax(){
+        $CI = & get_instance();
+        $taxfield = $CI->db->select('tax_id,tax')
+        ->from('tax_information')
+        ->get()
+        ->result_array();
+       echo json_encode($taxfield);
+    }
     public function get_all_product1(){
         $CI = & get_instance();
         $prodt = $CI->db->select('product_name,product_model,p_quantity')
             ->from('product_information')
             ->get()
             ->result_array();
-          
-            $data2 = array(
-               
-                'product'           => $prodt,
-               
-            );
-            print_r($data2);
-          //  $invoiceForm1 = $CI->parser->parse('invoice/add_invoice_form', $data2, true);
-            $invoiceForm1 = $CI->parser->parse('invoice/profarma_invoice', $data2, true);
-            return $invoiceForm1;
+       echo json_encode($prodt);
     }
 public function get_all_product(){
     $CI = & get_instance();
@@ -480,14 +520,14 @@ public function get_all_product(){
         ->from('product_information')
         ->get()
         ->result_array();
-       
+ 
         $data2 = array(
            
             'product'           => $prodt,
            
         );
         $invoiceForm1 = $CI->parser->parse('invoice/add_invoice_form', $data2, true);
-    //    $invoiceForm1 = $CI->parser->parse('invoice/profarma_invoice', $data2, true);
+     //   $invoiceForm1 = $CI->parser->parse('invoice/profarma_invoice', $data2, true);
         return $invoiceForm1;
 }
     public function CheckProductList(){

@@ -121,7 +121,7 @@
 
                     <div class="panel-heading">
 
-                        <a href="#"><img src="https://interactivewebtech.net/erpwork/my-assets/image/logo/233deb0f402440c907ab85a36b70f9de.JPG"></a>
+                        <a href="#"><img src="<?php echo base_url('my-assets/image/logo/233deb0f402440c907ab85a36b70f9de.JPG') ?>"></a>
                        
                          
                     </div>

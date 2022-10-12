@@ -156,16 +156,25 @@
 
                                 <div class="form-group row">
 
-                                    <label for="customer_name" class="col-sm-3 col-form-label"><?php
+                                    <label for="customer_name" class="col-sm-4 col-form-label"><?php
 
                                         echo display('customer_name');
 
                                         ?> </label>
 
                                     <div class="col-sm-6">
+   
+                                    <select name="customer_name" class="form-control customer_name"  id="customer_name">
 
-                                        <input type="text" size="100"  name="customer_name" class=" form-control" placeholder='<?php echo display('customer_name').'/'.display('phone') ?>' id="customer_name" tabindex="1" onkeyup="customer_autocomplete()"  />
+<option value="">Select Customer</option>
 
+<?php foreach($customer_details as $customer){?>
+
+    <option value="<?php echo html_escape($customer['customer_name'])?>"><?php echo html_escape($customer['customer_name']);?></option>
+
+<?php }?>
+
+</select>
 
 
                                         <input id="autocomplete_customer_id" class="customer_hidden_value abc" type="hidden" name="customer_id" value="{customer_id}">
@@ -174,11 +183,11 @@
 
                                      <?php if($this->permission1->method('add_customer','create')->access()){ ?>
 
-                                    <div  class=" col-sm-3">
+                                  
 
                                          <a href="#" class="client-add-btn btn btn-info" aria-hidden="true" data-toggle="modal" data-target="#cust_info"><i class="ti-plus m-r-2"></i></a>
 
-                                    </div>
+                                  
 
                                 <?php } ?>
 
@@ -385,15 +394,15 @@
 
                                     <div class="col-sm-8">
                                         <input class="form-control" placeholder="Commercial Invoice Number" type="text" name="commercial_invoice_number"  value="<?php if(!empty($voucher_no[0]['voucher'])){
-                                $curYear = date('Y'); 
-                                $month = date('m');
-                               $vn = substr($voucher_no[0]['voucher'],9)+1;
-                               echo $voucher_n = 'NS'. $curYear.$month.'-'.$vn;
-                             }else{
-                                    $curYear = date('Y'); 
-                                $month = date('m');
-                               echo $voucher_n = 'NS'. $curYear.$month.'-'.'1';
-                             } ?>" readonly />
+                                        $curYear = date('Y'); 
+                                        $month = date('m');
+                                    $vn = substr($voucher_no[0]['voucher'],9)+1;
+                                    echo $voucher_n = 'NS'. $curYear.$month.'-'.$vn;
+                                    }else{
+                                            $curYear = date('Y'); 
+                                        $month = date('m');
+                                    echo $voucher_n = 'NS'. $curYear.$month.'-'.'1';
+                                    } ?>" readonly />
                                     </div>
                                 </div>
 
@@ -433,8 +442,7 @@
 
                                 <div class="form-group row">
 
-                                    <label for="port_of_discharge
-" class="col-sm-4 col-form-label">Port of discharge</label>
+                                    <label for="port_of_discharge" class="col-sm-4 col-form-label">Port of discharge</label>
 
                                     <div class="col-sm-8">
 
@@ -579,7 +587,7 @@
                                                                   </td>
 
                                        <td class="wt">
-                                                <input type="text" id="available_quantity[]" class="form-control text-right available_quantity_1" placeholder="0.00" readonly/>
+                                                <input type="text" id="available_quantity[]" name="available_quantity[]" class="form-control text-right available_quantity_1" placeholder="0.00" readonly/>
                                             </td>
                                         
                                             <td class="text-right">
@@ -617,7 +625,7 @@
                                         <td class="text-right">
                                             <input type="text" id="gtotal" class="text-right form-control" name="gtotal" value="0.00" readonly="readonly" />
                                         </td>
-                                        <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item"   tabindex="9"><i class="fa fa-plus"></i></button>
+                                        <td> <button type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item" onclick="addInputField('addPurchaseItem');"  tabindex="9" ><i class="fa fa-plus"></i></button>
 
                                             <input type="hidden" name="baseUrl" class="baseUrl" value="<?php echo base_url();?>"/></td>
                                     </tr>
@@ -637,6 +645,10 @@
                             <div class="col-sm-6">
                                 <input type="submit" id="add_purchase" class="btn btn-primary btn-large" name="add-purchase" value="<?php echo display('Save') ?>" />
                                 <input type="submit" value="<?php echo display('submit_and_add_another') ?>" name="add-purchase-another" class="btn btn-large btn-success" id="add_purchase_another" >
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#formModal" id="send_email">
+Send Email
+</button>
+                          
                             </div>
                         </div>
 
@@ -680,6 +692,7 @@
                                <?php echo form_close()?>
                               <input type="hidden" id="hdn"/>
                     </div>
+
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                  <script>
                     $( document ).ready(function() {
@@ -842,7 +855,7 @@ function sumArray(array) {
 
 function total_amt(id){
     var sum=0.0;
-   
+   debugger;
 var total='total_price_'+id;
 var quantity='cartoon_'+id;
 var amount = 'product_rate_'+ id;
@@ -1131,6 +1144,8 @@ gtotal();
                             <div class="col-sm-6">
 
                                 <input type="submit" id="add-product" class="btn btn-primary btn-large" name="add-product" value="<?php echo display('save') ?>" tabindex="10"/>
+
+                            
                                 <input type="submit" value="<?php echo display('save_and_add_another') ?>" name="add-product-another" class="btn btn-large btn-success" id="add-product-another" tabindex="9">
                             </div>
                         </div>
@@ -1486,14 +1501,100 @@ gtotal();
     </section>
 
 </div>
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="formModalLabel">Contact Us</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-success hidden" id="contactSuccess">
+					<strong>Success!</strong> Your message has been sent to us.
+				</div>
 
+				<div class="alert alert-danger hidden" id="contactError">
+					<strong>Error!</strong> There was an error sending your message.
+				</div>
+             
+			
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-6">
+								<label>Your name *</label>
+								<input type="text"  data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name_email" required>
+							</div>
+							<div class="col-md-6">
+								<label>Your email address *</label>
+								<input type="email"  data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email_info" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-12">
+								<label>Subject</label>
+								<input type="text"  data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="subject" id="subject_email" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-12">
+								<label>Message *</label>
+								<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message_email" required></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="submit" value="Send Message" id="email_send" name="email_send" class="btn btn-primary btn-lg mb-xlg" data-loading-text="Loading...">
+						</div>
+					</div>
+                   
+
+			</div>
+		</div>
+	</div>
+</div>
 <!-- Invoice Report End -->
 
 <script type="text/javascript">
+    $('#add_purchase').on('click', function() {
+$('#send_email').show();
+
+    });
+     $(function() { 
+        $('#send_email').hide();
+       var data = {
+         
+      
+       };
+       data[csrfName] = csrfHash;
+   
+       $.ajax({
+           type:'POST',
+           data: data, 
+          dataType:"json",
+           url:'<?php echo base_url();?>Cinvoice/get_email_data',
+           success: function(result, statut) {
+            console.log(result);
+               if(result.csrfName){
+                  csrfName = result.csrfName;
+                  csrfHash = result.csrfHash;
+               }
+               $('#name_email').val(result[0]['greeting']);
+               $('#subject_email').val(result[0]['subject']);
+               $('#message_email').html(result[0]['message']);
+           }
+       });
+   });
+
+
       $('.product_name').on('select', function () {
        console.log('You selected: ' + this.value);
     }).change();
-    $('#customer_name').blur(function(e){
+    $('#customer_name').change(function(e){
        
     var data = {
       
@@ -1511,8 +1612,8 @@ gtotal();
                csrfName = result.csrfName;
                csrfHash = result.csrfHash;
             }
-            $('#billing_address').html(result[0]['customer_address']+'<br>'+result[0]['email_address']+'<br>'+result[0]['phone']);
-    
+            $('#billing_address').html(result[0]['customer_address']+'<br>'+result[0]['customer_email']+'<br>'+result[0]['phone']);
+    $('#email_info').val(result[0]['customer_email']);
         }
     });
 });
@@ -1544,6 +1645,89 @@ gtotal();
        });
    });
  
+
+   function addInputField(t) {
+    //debugger;
+    var row = $("#normalinvoice tbody tr").length;
+    var count = row + 1;
+      var  tab1 = 0;
+      var  tab2 = 0;
+      var  tab3 = 0;
+      var  tab4 = 0;
+      var  tab5 = 0;
+      var  tab6 = 0;
+      var  tab7 = 0;
+      var  tab8 = 0;
+      var  tab9 = 0;
+      var  tab10 = 0;
+      var  tab11 = 0;
+      var  tab12 = 0;
+    var limits = 500;
+     var taxnumber = $("#txfieldnum").val();
+    var tbfild ='';
+    for(var i=0;i<taxnumber;i++){
+        var taxincrefield = '<input id="total_tax'+i+'_'+count+'" class="total_tax'+i+'_'+count+'" type="hidden"><input id="all_tax'+i+'_'+count+'" class="total_tax'+i+'" type="hidden" name="tax[]">';
+         tbfild +=taxincrefield;
+    }
+    if (count == limits)
+        alert("You have reached the limit of adding " + count + " inputs");
+    else {
+        var a = "product_name_" + count,
+                tabindex = count * 6,
+                e = document.createElement("tr");
+        tab1 = tabindex + 1;
+        tab2 = tabindex + 2;
+        tab3 = tabindex + 3;
+        tab4 = tabindex + 4;
+        tab5 = tabindex + 5;
+        tab6 = tabindex + 6;
+        tab7 = tabindex + 7;
+        tab8 = tabindex + 8;
+        tab9 = tabindex + 9;
+        tab10 = tabindex + 10;
+        tab11 = tabindex + 11;
+        tab12 = tabindex + 12;
+        e.innerHTML = "<td><select name='prodt' id='prodt_" + count + "' class='form-control product_name' onchange='available_quantity("+ count +");'>"+
+        "<option value='Select the Product' selected>Select the Product</option><?php  foreach($product as $tx){?>"+
+       " <option value='<?php echo $tx['product_name'].'-'.$tx['product_model'];?>'>  <?php echo $tx['product_name'].'-'.$tx['product_model'];  ?></option>"+
+        "<?php } ?> </select><input type='hidden' class='common_product autocomplete_hidden_value  product_id_" + count + "' name='product_id[]' id='SchoolHiddenId /></td><td><input type='text' name='desc[]'' class='form-control text-right ' tabindex='" + tab2 + "'/></td><td><input type='text' name='available_quantity[]' id='available_quantity[]' class='form-control text-right common_avail_qnt available_quantity_" + count + "' value='0' readonly='readonly' /></td><td> <input type='text' name='product_quantity[]' id='cartoon_" + count + "'  required='required' onkeyup='total_amt(" + count + ");'  onchange='total_amt(" + count + ");' id='total_qntt_" + count + "' class='common_qnt total_qntt_" + count + " form-control text-right'  placeholder='0.00' min='0' tabindex='" + tab3 + "'/></td><td><input type='text' name='product_rate[]' id='product_rate_" + count + "' onkeyup='quantity_calculate(" + count + ");' onchange='quantity_calculate(" + count + ");' id='price_item_" + count + "' class='common_rate price_item" + count + " form-control text-right' required placeholder='0.00' min='0' tabindex='" + tab4 + "'/></td><td class='text-right'><input class='common_total_price total_price form-control text-right' type='text' name='total_price[]' id='total_price_" + count + "' value='0.00' readonly='readonly'/></td><td>"+tbfild+"<input type='hidden' id='all_discount_" + count + "' class='total_discount dppr' name='discount_amount[]'/><button tabindex='" + tab5 + "' style='text-align: right;' class='btn btn-danger' type='button' value='Delete' onclick='deleteRow(this)'><i class='fa fa-close'></i></button></td>",
+                document.getElementById(t).appendChild(e),
+                document.getElementById(a).focus(),
+                document.getElementById("add_invoice_item").setAttribute("tabindex", tab6);
+                document.getElementById("details").setAttribute("tabindex", tab7);
+                document.getElementById("invoice_discount").setAttribute("tabindex", tab8);
+                document.getElementById("shipping_cost").setAttribute("tabindex", tab9);    
+                document.getElementById("paidAmount").setAttribute("tabindex", tab10);
+                document.getElementById("full_paid_tab").setAttribute("tabindex", tab11);
+                document.getElementById("add_invoice").setAttribute("tabindex", tab12);
+                count++
+    }
+}
+$('#email_send').click(function(){
+      
+      var data = {
+        mailid:$('#email_info').val(),
+        name_email:$('#name_email').val(),
+        subject_email:$('#subject_email').val(),
+        message_email:$('#message_email').val()
+      };
+      data[csrfName] = csrfHash;
+  
+      $.ajax({
+          type:'POST',
+          data: data, 
+         dataType:"json",
+          url:'<?php echo base_url();?>Cinvoice/sendmail',
+          success: function(result, statut) {
+              if(result.csrfName){
+                 csrfName = result.csrfName;
+                 csrfHash = result.csrfHash;
+              }
+              console.log(result);
+            // $('#date1').val(result);
+         }
+      });
+  });
 
 
 </script>

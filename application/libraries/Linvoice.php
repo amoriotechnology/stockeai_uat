@@ -631,6 +631,7 @@ class Linvoice {
             'taxes'         => $taxfield,
             'tax'           => $taxfield1,
             'product'       =>$prodt,
+            'customer_details'   => $customer_details,
             'customer_name' => isset($customer_details[0]['customer_name'])?$customer_details[0]['customer_name']:'',
             'customer_id'   => isset($customer_details[0]['customer_id'])?$customer_details[0]['customer_id']:'',
             'bank_list'     => $bank_list,
@@ -638,7 +639,7 @@ class Linvoice {
                 'tax_name'=>'ww',
         );
         $invoiceForm = $CI->parser->parse('invoice/add_invoice_form', $data, true);
-     //   $invoiceForm = $CI->parser->parse('invoice/profarma_invoice', $data, true);
+       // $invoiceForm = $CI->parser->parse('invoice/profarma_invoice', $data, true);
         return $invoiceForm;
     }
     public function invoice_add_form1() {
