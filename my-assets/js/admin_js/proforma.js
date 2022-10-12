@@ -701,7 +701,7 @@ $(document).ready(function() {
             },
             error: function(xhr)
             {
-                alert('failed ok1!');
+               // alert('failed ok1!');
             }
 
         });

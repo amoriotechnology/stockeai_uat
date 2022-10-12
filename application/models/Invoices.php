@@ -1642,17 +1642,17 @@ public function availability($product_nam,$product_model){
 
         $result = array();
 
-        foreach ($available_quantity as $k => $v) {
+      //  foreach ($available_quantity as $k => $v) {
 
-            if ($v < $quantity[$k]) {
+           // if ($v < $quantity[$k]) {
 
-                $this->session->set_userdata(array('error_message' => display('you_can_not_buy_greater_than_available_qnty')));
+             //   $this->session->set_userdata(array('error_message' => display('you_can_not_buy_greater_than_available_qnty')));
 
-                redirect('Cinvoice');
+             //   redirect('Cinvoice');
 
-            }
+           // }
 
-        }
+      //  }
 
 
 
@@ -1670,13 +1670,13 @@ public function availability($product_nam,$product_model){
 
 
 
-        if (($this->input->post('customer_name_others',TRUE) == null) && ($this->input->post('customer_id') == null ) && ($this->input->post('customer_name',TRUE) == null )) {
+      //  if (($this->input->post('customer_name_others',TRUE) == null) && ($this->input->post('customer_id') == null ) && ($this->input->post('customer_name',TRUE) == null )) {
 
-            $this->session->set_userdata(array('error_message' => display('please_select_customer')));
+         //   $this->session->set_userdata(array('error_message' => display('please_select_customer')));
 
-            redirect(base_url() . 'Cinvoice');
+        //    redirect(base_url() . 'Cinvoice');
 
-        }
+      //  }
 
 
 
@@ -1689,9 +1689,9 @@ public function availability($product_nam,$product_model){
             $data = array(
 
                 'create_by'    =>$this->session->userdata('user_id'),
-            'customer_name'    => $this->input->post('customer_name_others',TRUE),
+            'customer_name'    => $this->input->post('customer_name',TRUE),
 
-            'customer_address' => $this->input->post('customer_name_others_address',TRUE),
+            'customer_address' => $this->input->post('customer_address',TRUE),
 
             'customer_mobile'  => $this->input->post('customer_mobile',TRUE),
 

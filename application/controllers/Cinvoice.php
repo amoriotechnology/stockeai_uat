@@ -78,7 +78,13 @@ public function insert_profarma_invoice(){
         $email_info = $CI->Invoices->get_email_data();
         echo json_encode($email_info);
     }
-
+    function pdf()
+    {
+        $this->load->library('pdf');
+        
+        $html = $this->load->view('purchase/trucking_invoice_html', [], true);
+        $this->pdf->createPDF($html, 'mypdf', false);
+    }
 
     public function sendmail()
     {

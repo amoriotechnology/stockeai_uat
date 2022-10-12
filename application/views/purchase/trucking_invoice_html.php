@@ -6,56 +6,7 @@ echo base_url() ;
 
 <!-- Add new customer start -->
 <style type="text/css">
-.panel-body{
-  padding:25px;
-}
-    .dot1 {
-  height: 25px;
-  width: 25px;
-  background-color: #D7163A;
 
-  display: inline-block;
-}
-.colorpad:hover;
-{
-
- color: #f4511e;
-}
-.dot2 {
-  height: 25px;
-  width: 25px;
-  background-color: #720303;
-
-  display: inline-block;
-}
-.dot3 {
-  height: 25px;
-  width: 25px;
-  background-color: #71D716;
-
-  display: inline-block;
-}
-.dot4 {
-  height: 25px;
-  width: 25px;
-  background-color: #3616D7;
-
-  display: inline-block;
-}
-.dot5 {
-  height: 25px;
-  width: 25px;
-  background-color: #D7B916;
-
-  display: inline-block;
-}
-.dot6 {
-  height: 25px;
-  width: 25px;
-  background-color: #D79A16;
-
-  display: inline-block;
-}
 #templates>img:hover
 {
 
@@ -74,7 +25,7 @@ border: 1px solid orange;
     font-family: ui-monospace;
 }
 </style>
-<div class="content-wrapper">
+<div class="content-wrapper" >
     <section class="content-header">
         <div class="header-icon">
             <i class="pe-7s-note2"></i>
@@ -125,10 +76,10 @@ border: 1px solid orange;
             {
             ?>
 
-        <div class="col-sm-8" > <div class="panel panel-default">
+        <div class="col-sm-8" > <div class="panel panel-default" id="content">
     <div class="panel-body">
         
-        <div class="row">
+        <div class="row" >
         
               <div class="col-sm-3" id='company_info'>
                   
@@ -219,9 +170,7 @@ border: 1px solid orange;
                         </tfoot>
                      </table>
 
-   <br><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-Preview
-</button>
+   <br>
         </div>
     </div>
   </div></div>
@@ -331,9 +280,7 @@ Preview
                         </tfoot>
                      </table>
 
-   <br><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-Preview
-</button>
+   <br>
         </div>
     </div>
   </div></div>
@@ -446,9 +393,7 @@ Preview
                      </table>
 
 
-   <br><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-Preview
-</button>
+   <br>
         </div>
     </div>
   </div></div>
@@ -545,9 +490,7 @@ Preview
                         </tfoot>
                      </table>
 
-   <br><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-Preview
-</button>
+   <br>
         </div>
     </div>
   </div></div>
@@ -624,9 +567,7 @@ Preview
   </tr>
 </table>
 
-   <br><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
-Preview
-</button>
+   <br>
         </div>
     </div>
   </div></div>
@@ -635,3 +576,47 @@ Preview
 }
 ?>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+$(document).ready(function () {
+ 
+ var pdf = new jsPDF('p','pt','a4');
+    const invoice = document.getElementById("content");
+             console.log(invoice);
+             console.log(window);
+             var pageWidth = 8.5;
+             var margin=0.5;
+             var opt = {
+   lineHeight : 1.2,
+   margin : 0.2,
+   maxLineWidth : pageWidth - margin *1,
+                 filename: 'invoice'+'.pdf',
+                 allowTaint: true,
+                
+                 html2canvas: { scale: 3 },
+                 jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+             };
+              html2pdf().from(invoice).set(opt).toPdf().get('pdf').then(function (pdf) {
+  var totalPages = pdf.internal.getNumberOfPages();
+ for (var i = 1; i <= totalPages; i++) {
+    pdf.setPage(i);
+    pdf.setFontSize(10);
+    pdf.setTextColor(150);
+    
+  }
+  }).save();
+
+   
+   });
+   </script>
