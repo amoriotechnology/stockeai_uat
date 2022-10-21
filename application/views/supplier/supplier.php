@@ -44,7 +44,14 @@
          <div class="row">
             <div class="col-sm-12">
                
+               <?php 
+                                   if($_SESSION['supplier']['create']==1)
+                    {
+
+                        ?>
+
                     <a href="<?php echo base_url('Csupplier') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> Add Vendor </a>
+                <?php } ?>
 
                     <a href="<?php echo base_url('Csupplier/supplier_ledger_report') ?>" class="btn btn-primary m-b-5 m-r-2"><i class="ti-align-justify"> </i> Vendor Overview </a>
 
@@ -60,7 +67,8 @@
 
         <!-- Manage Product report -->
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12" style='<?php if($_SESSION['supplier']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
                 <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
                         <div class="panel-title">

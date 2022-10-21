@@ -32,7 +32,7 @@ border: 2px solid #dce4ec;
             <h1>Proforma Invoice</h1>
             <small>Generate New Proforma Invoice 2</small>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
+                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?>5</a></li>
                 <li><a href="#">Proforma</a></li>
                 <li class="active">Proforma Invoice</li>
             </ol>

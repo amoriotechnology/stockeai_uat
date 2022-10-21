@@ -43,13 +43,25 @@
 	    <div class="row">
             <div class="col-sm-12">
                
-                <?php if($this->permission1->method('add_return','create')->access()){ ?>
+                	<?php 
+
+                    if($_SESSION['return']['create']==1)
+                    {	
+
+                        ?>
+
                   <a href="<?php echo base_url('Cretrun_m')?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('add_return')?> </a>
  <?php }?>
               
             </div>
         </div>
   
+  <?php 
+
+                    if($_SESSION['return']['read']==1)
+                    {	
+
+                        ?>
  <div class="row">
 			<div class="col-sm-12">
 		        <div class="panel panel-default">
@@ -73,7 +85,7 @@
 		        </div>
 		    </div>
 	    </div>
-
+<?php } ?>
   
 		<!-- Manage Invoice report -->
 		<div class="row">

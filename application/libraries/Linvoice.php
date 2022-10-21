@@ -12,21 +12,19 @@ class Linvoice {
         $CI->load->model('Invoices');
         $CI->load->model('Web_settings');
         $CI->load->model('Permission_model');
-        $assign_role=$CI->Permission_model->assign_role();
-        $assign_role= json_decode(json_encode($assign_role), true);
+        
       
 
         $CI->load->library('occational');
         $company_info = $CI->Invoices->retrieve_company();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
-    $_SESSION['sale_update'] =$assign_role[0]['update'];
+ 
         $data = array(
             'title'         => display('manage_invoice'),
             'total_invoice' => $CI->Invoices->count_invoice(),
             'currency'      => $currency_details[0]['currency'],
             'company_info'  => $company_info,
-            'role'  => $assign_role,
-            
+           
         );
 
         $invoiceList = $CI->parser->parse('invoice/invoice',$data, true);
@@ -64,7 +62,7 @@ class Linvoice {
         $CI->load->model('Permission_model');
         $assign_role=$CI->Permission_model->assign_role();
         $assign_role= json_decode(json_encode($assign_role), true);
-        $_SESSION['sale_update']=$assign_role[0]['update'];
+       
 
         $company_info = $CI->Invoices->retrieve_company();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
@@ -73,7 +71,7 @@ class Linvoice {
             'total_invoice' => $CI->Invoices->count_invoice(),
             'currency'      => $currency_details[0]['currency'],
             'company_info'  => $company_info,
-            'role'  => $assign_role,
+   
         );
         $invoiceList = $CI->parser->parse('invoice/packing_list', $data, true);
         return $invoiceList;
@@ -87,9 +85,8 @@ class Linvoice {
         $CI->load->model('Web_settings');
         $CI->load->library('occational');
          $CI->load->model('Permission_model');
-        $assign_role=$CI->Permission_model->assign_role();
-        $assign_role= json_decode(json_encode($assign_role), true);
-         $_SESSION['sale_update']=$assign_role[0]['update'];
+ 
+         
         $company_info = $CI->Invoices->retrieve_company();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $data = array(
@@ -97,7 +94,7 @@ class Linvoice {
             'total_invoice' => $CI->Invoices->count_invoice(),
             'currency'      => $currency_details[0]['currency'],
             'company_info'  => $company_info,
-            'role'  => $assign_role,
+            
         );
         $invoiceList = $CI->parser->parse('invoice/ocean_export_tracking_invoice_list', $data, true);
         return $invoiceList;
@@ -305,7 +302,7 @@ class Linvoice {
         $CI->load->model('Permission_model');
         $assign_role=$CI->Permission_model->assign_role();
         $assign_role= json_decode(json_encode($assign_role), true);
-        $_SESSION['sale_update'] =$assign_role[0]['update'];
+
         $company_info = $CI->Invoices->retrieve_company();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $data = array(
@@ -1066,7 +1063,8 @@ class Linvoice {
         'is_unit'           => $isunit,
         );
 
-    
+        print_r($data);
+    exit();
 
         $chapterList = $CI->parser->parse('invoice/invoice_html', $data, true);
         return $chapterList;

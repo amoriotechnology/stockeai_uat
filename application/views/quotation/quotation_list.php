@@ -45,13 +45,26 @@
   <div class="row">
             <div class="col-sm-12">
                
-                    <a href="<?php echo base_url('Cquotation') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> Add Quotation </a>
+
+               <?php 
+                   if($_SESSION['quotation']['create']==1)
+                   {
+
+                   ?>
+                    <a href="<?php echo base_url('Cquotation') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> Add Quotation</a>
+                <?php  } ?>
 
                     
 
                 
             </div>
         </div>
+
+               <?php 
+                   if($_SESSION['quotation']['read']==1)
+                   {
+
+                   ?>
         <!-- New category -->
         <div class="row">
            
@@ -64,6 +77,12 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive" id="results">
+
+                            <?php 
+                   if($_SESSION['quotation']['read']==1)
+                   {
+
+                   ?>
                             <table id="dataTableExample2" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -159,12 +178,14 @@
                                     </tfoot>
                                 <?php } ?>
                             </table>
+                        <?php } ?>
                             <?php echo $links; ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    <?php } ?>
     </section>
     <input type="hidden" id="quotationkeyupsearch" value="<?php echo base_url('Cquotation/quotaionnkeyup_search'); ?>">
 </div>

@@ -163,9 +163,10 @@ ul.dropdown-submenu>li>a:hover{
                     <ul class="dropdown-submenu">
 
                         <li class="menu-title">Manage Setting</li>
-                         <li><a href="<?php echo base_url('Admin_dashboard/edit_profile') ?>"><i class="pe-7s-users"></i>myManage Companys</a></li>
-                        <li><a href="<?php echo base_url('Admin_dashboard/dashboardsetting') ?>"><i class="ti-dashboard"></i>Add Company</a></li>
-                        <li><a href="<?php echo base_url('Admin_dashboard/change_password_form') ?>"><i class="pe-7s-settings"></i>Manage Company </a></li>
+                         <li><a href="<?php echo base_url('Admin_dashboard/edit_profile') ?>"><i class="pe-7s-users"></i>myManage Company</a></li>
+                    
+
+                    
                         <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Language </a></li>
                         <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Currency</a></li>
                         <li><a href="<?php echo base_url('Admin_dashboard/logout') ?>"><i class="pe-7s-key"></i>Setting </a></li>
@@ -222,21 +223,43 @@ ul.dropdown-submenu>li>a:hover{
                 <img src="<?php echo html_escape($users[0]['logo']) ?>" class="img-circle" alt="User Image">
             </div>
             <div class="info col-md-6">
-                <p><?php echo $this->session->userdata('user_name') ?></p>
+                <p>
+                    
+<?php 
+if($_SESSION['user_type']==1)
+{
+    echo 'Super User';
+}
+
+if($_SESSION['user_type']==2)
+{
+    echo 'Admin User';
+}
+
+if($_SESSION['user_type']==3)
+{
+    echo 'User';
+}
+
+?>
+
+                </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> <?php echo display('online') ?></a>
             </div>
         </div>
-        <!-- sidebar menu -->
-        <ul class="sidebar-menu">
 
-            <li class="<?php
-            if ($this->uri->segment('1') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-                <a href="<?php echo base_url() ?>"><i class="ti-dashboard"></i> <span><?php echo display('dashboard') ?></span>
+
+
+
+<?php if($_SESSION['user_type']==2)
+{
+
+    ?>
+
+<ul class="sidebar-menu">
+
+            <li class="active">
+                <a href="<?php echo base_url(); ?>"><i class="ti-dashboard"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
                         <span class="label label-success pull-right"></span>
                     </span>
@@ -247,232 +270,112 @@ ul.dropdown-submenu>li>a:hover{
 
 
     <!-- Invoice menu start -->
-            <?php if($this->permission1->method('new_invoice','create')->access() || $this->permission1->method('manage_invoice','read')->access() || $this->permission1->method('pos_invoice','create')->access() || $this->permission1->method('gui_pos','create')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cinvoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+
+
+    
+                        <li class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-balance-scale"></i><span><?php echo display('invoice') ?></span>
+                    <i class="fa fa-balance-scale"></i><span>Sale </span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <?php if($this->permission1->method('new_invoice','create')->access()){ ?>
-                    <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cinvoice") && $this->uri->segment('2') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cinvoice/manage_invoice') ?>"><?php echo display('new_invoice') ?></a></li>
-                <?php } ?>
-                <?php if($this->permission1->method('manage_invoice','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_invoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cinvoice/manage_profarma_invoice') ?>">Profarma Invoice</a></li>
-                    <?php } ?>
-                    <?php if($this->permission1->method('pos_invoice','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("pos_invoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cinvoice/manage_packing_list') ?>">Packing List</a></li>
-            <?php } ?>
-            <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cinvoice/manage_ocean_export_tracking') ?>">Ocean Export Tracking</a></li>
-                    <?php } ?>
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_invoice">New Sale</a></li>
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_profarma_invoice">Profarma Invoice</a></li>
+                                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_packing_list">Packing List</a></li>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_ocean_export_tracking">Ocean Export Tracking</a></li>
+                    
 
-
-                      <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cinvoice/manage_trucking') ?>">Trucking</a></li>
-                    <?php } ?>
-
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_trucking">Trucking</a></li>
+                    
 
                 </ul>
             </li>
-             <?php } ?>
-            <!-- Invoice menu end -->
-
-       
-
+        
 
                 <!-- Customer menu start -->
-            <?php if($this->permission1->method('add_customer','create')->access() || $this->permission1->method('manage_customer','read')->access() || $this->permission1->method('credit_customer','read')->access() || $this->permission1->method('paid_customer','read')->access()){?>
-            <li class="treeview <?php
-           if ($this->uri->segment('1') == ("Ccustomer")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                        <li class="treeview  ">
 
-             <a href="<?php echo base_url('Ccustomer/manage_customer') ?>">
-                    <i class="fa fa-handshake-o"></i><span><?php echo display('customer') ?></span>
+             <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">
+                    <i class="fa fa-handshake-o"></i><span>Customer</span>
                  <!--    <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span> -->
                 </a>
 
 
-              <!--   <a href="<?php echo base_url('Cinvoice/manage_invoice') ?>">
-                    <i class="fa fa-balance-scale"></i><span><?php echo display('invoice') ?></span> -->
+              <!--   <a href="<?php echo base_url(); ?>Cinvoice/manage_invoice">
+                    <i class="fa fa-balance-scale"></i><span>Sale</span> -->
                     <!-- <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span> -->
               <!--   </a> -->
           
             </li>
-             <?php } ?>
-            <!-- Customer menu end -->
+       
+                         <!-- Customer menu end -->
 
 
 
             <!-- Customer menu start -->
-            <!-- <?php if($this->permission1->method('add_customer','create')->access() || $this->permission1->method('manage_customer','read')->access() || $this->permission1->method('credit_customer','read')->access() || $this->permission1->method('paid_customer','read')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Ccustomer")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+            <!--             <li class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-handshake-o"></i><span><?php echo display('customer') ?></span>
+                    <i class="fa fa-handshake-o"></i><span>Customer</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('add_customer','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Ccustomer") && $this->uri->segment('2') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"> <a href="<?php echo base_url('Ccustomer/manage_customer') ?>"><?php echo display('manage_customer') ?></a></li>
-                <?php } ?>
-                <?php if($this->permission1->method('manage_customer','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_customer")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-             <a href="<?php echo base_url('Ccustomer/manage_customer') ?>"><?php echo display('manage_customer') ?></a> 
+                                         <li class="treeview  "> <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">Manage Customer</a></li>
+                                                    <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">Manage Customer</a> 
         </li>
-                     <?php } ?>
-            <?php if($this->permission1->method('customer_ledger','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("customer_ledger_report")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-             <a href="<?php echo base_url('Ccustomer/customer_ledger_report') ?>"><?php echo display('customer_ledger') ?></a>
+                                                     <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/customer_ledger_report">Customer Ledger</a>
         </li>
-                     <?php } ?>
-                <?php if($this->permission1->method('credit_customer','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("credit_customer")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-             <a href="<?php echo base_url('Ccustomer/credit_customer') ?>"><?php echo display('credit_customer') ?></a> 
+                                                         <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/credit_customer">Credit Customer</a> 
         </li>
-                     <?php } ?> 
-                     <?php if($this->permission1->method('paid_customer','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("paid_customer")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-             <a href="<?php echo base_url('Ccustomer/paid_customer') ?>"><?php echo display('paid_customer') ?></a> 
+                      
+                                         <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/paid_customer">Paid Customer</a> 
         </li>
-                     <?php } ?> 
-                     <?php if($this->permission1->method('customer_advance','create')->access()){ ?>
-                      <li class="treeview <?php
-            if ($this->uri->segment('2') == ("customer_advance")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-            <a href="<?php echo base_url('Ccustomer/customer_advance') ?>"><?php echo display('customer_advance') ?></a> 
+                      
+                                           <li class="treeview  ">
+            <a href="<?php echo base_url(); ?>Ccustomer/customer_advance">Customer Advance</a> 
         </li>
-                      <?php } ?>
-                </ul>
+                                      </ul>
             </li>
-        <?php }?> -->
+         -->
             <!-- Customer menu end -->
 
 
 
 
                <!-- Product menu start -->
-            <?php if($this->permission1->method('create_product','create')->access() || $this->permission1->method('add_product_csv','create')->access() || $this->permission1->method('manage_product','read')->access() || $this->permission1->method('create_category','create')->access() || $this->permission1->method('manage_category','read')->access() || $this->permission1->method('add_unit','create')->access() || $this->permission1->method('manage_unit','read')->access()){?>
-           <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cproduct") ||$this->uri->segment('1') == ("Cunit")|| $this->uri->segment('1') == ("Ccategory")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                       <li class="treeview  ">
 
-             <a href="<?php echo base_url('Cproduct/manage_product') ?>">
-                    <i class="ti-bag"></i><span><?php echo display('product') ?></span>
+             <a href="<?php echo base_url(); ?>Cproduct/manage_product">
+                    <i class="ti-bag"></i><span>Product</span>
                  
                 </a>
 
        
           
             </li>
-             <?php } ?>
-            <!-- Product menu end -->
+  
+                         <!-- Product menu end -->
+
+
 
 
 
 
                     <!-- Supplier menu start -->
-            <?php if($this->permission1->method('add_supplier','create')->access() || $this->permission1->method('manage_supplier','read')->access() || $this->permission1->method('supplier_ledger_report','read')->access() || $this->permission1->method('supplier_sales_details_all','read')->access()){?>
-           <li class="treeview <?php
-               if ($this->uri->segment('1') == ("Csupplier")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                       <li class="treeview  ">
 
-             <a href="<?php echo base_url('Csupplier/manage_supplier') ?>">
+             <a href="<?php echo base_url(); ?>Csupplier/manage_supplier">
                     <i class="ti-user"></i><span>Vendor</span>
                  
                 </a>
@@ -481,8 +384,8 @@ ul.dropdown-submenu>li>a:hover{
        
           
             </li>
-             <?php } ?>
-            <!-- Supplier menu end -->
+        
+                         <!-- Supplier menu end -->
 
 
 
@@ -491,580 +394,217 @@ ul.dropdown-submenu>li>a:hover{
 
 
 
-                      <?php if($this->permission1->method('add_purchase','create')->access() || $this->permission1->method('manage_purchase','read')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cpurchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                                  <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-shopping-cart"></i><span><?php echo display('purchase') ?></span>
+                    <i class="ti-shopping-cart"></i><span>Expenses</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cpurchase") && $this->uri->segment('2') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cpurchase/manage_purchase') ?>">New Expenses</a></li>
-                       <?php } ?>
-                     <?php if($this->permission1->method('manage_purchase','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_purchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cpurchase/manage_purchase_order') ?>">Purchase Order</a></li>
-                       <?php } ?>
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_purchase">New Expenses</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_purchase_order">Purchase Order</a></li>
+                       
 
 
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_packing_list">Packing List</a></li>
+            
 
-             <?php if($this->permission1->method('manage_purchase','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_purchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cpurchase/manage_packing_list') ?>">Packing List</a></li>
-            <?php } ?>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Ccpurchase/manage_ocean_import_tracking">Ocean Import Tracking</a></li>
+                       
 
-
-                        <?php if($this->permission1->method('manage_purchase','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_purchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Ccpurchase/manage_ocean_import_tracking') ?>">Ocean Import Tracking</a></li>
-                       <?php } ?>
-
-
-                        <?php if($this->permission1->method('manage_purchase','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_purchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Ccpurchase/manage_trucking') ?>">Trucking</a></li>
-                       <?php } ?>
-                </ul>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Ccpurchase/manage_trucking">Trucking</a></li>
+                                       </ul>
             </li>
-        <?php } ?>
+        
 
 
-
-           <!--  <?php if($this->permission1->method('add_purchase','create')->access() || $this->permission1->method('manage_purchase','read')->access()){?>
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cpurchase")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-                <a href="<?php echo base_url('Cpurchase/manage_purchase') ?>">
-                    <i class="ti-shopping-cart"></i><span><?php echo display('purchase') ?></span> -->
+           <!--              <li  class="treeview  ">
+                <a href="<?php echo base_url(); ?>Cpurchase/manage_purchase">
+                    <i class="ti-shopping-cart"></i><span>Expenses</span> -->
                     <!-- <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span> -->
               <!--   </a>
                 
             </li>
-        <?php } ?> -->
+         -->
             <!-- Purchase menu end -->  
              <!-- Quotation Menu Start -->
-         <?php if($this->permission1->method('add_quotation','create')->access() || $this->permission1->method('manage_quotation','read')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cquotation")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-                <a href="<?php echo base_url('Cquotation/manage_quotation') ?>">
-                    <i class="fa fa-book"></i><span><?php echo display('quotation') ?></span>
+            
+                     <li class="treeview  ">
+                <a href="<?php echo base_url(); ?>Cquotation/manage_quotation">
+                    <i class="fa fa-book"></i><span>Quotation</span>
                    
                 </a>
                 <!-- <ul class="treeview-menu" >
-            <?php if($this->permission1->method('add_quotation','create')->access()){ ?>
-                    <li><a href="<?php echo base_url('Cquotation') ?>"><?php echo display('add_quotation') ?></a></li>
-                <?php }?>
-                <?php if($this->permission1->method('manage_quotation','read')->access()){ ?>
-                    <li><a href="<?php echo base_url('Cquotation/manage_quotation') ?>"><?php echo display('manage_quotation') ?></a></li>
-                <?php } ?>
-                </ul> -->
+                                <li><a href="<?php echo base_url(); ?>Cquotation">Add Quotation</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>Cquotation/manage_quotation">Manage Quotation</a></li>
+                                </ul> -->
             </li>
-        <?php }?>
-            <!-- quotation Menu end -->
+        
+                    <!-- quotation Menu end -->
              <!-- Stock menu start -->
-            <?php if($this->permission1->method('stock_report','read')->access() || $this->permission1->method('stock_report_sp_wise','read')->access() || $this->permission1->method('stock_report_pro_wise','read')->access()){?>
-        <li class="treeview <?php if ($this->uri->segment('1') == ("Creport")) { echo 'active';       } else {    echo '';       }
-        ?>" >
+              
+                    <li class="treeview ">
             <a href="#">
-                <i class="ti-bar-chart"></i><span><?php echo display('stock') ?></span>
+                <i class="ti-bar-chart"></i><span>Stock</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                 <?php if($this->permission1->method('stock_report','read')->access()){ ?>
-                <li class="treeview <?php if ($this->uri->segment('1') == ("Creport") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Creport') ?>"><?php echo display('stock_report') ?></a></li>
-            <?php }?>
-
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Creport">Stock Report</a></li>
+            
             </ul>
         </li>
-    <?php }?>
-        <!-- Stock menu end -->
+    
+            <!-- Stock menu end -->
 
 
 
 
         <!-- Taxes menu start -->
-            <?php if($this->permission1->method('stock_report','read')->access() || $this->permission1->method('stock_report_sp_wise','read')->access() || $this->permission1->method('stock_report_pro_wise','read')->access()){?>
-        <li class="treeview <?php if ($this->uri->segment('1') == ("Creport")) { echo 'active';       } else {    echo '';       }
-        ?>" >
-            <a href="<?php echo base_url('Caccounts/add_taxes') ?>">
+                    <li class="treeview ">
+            <a href="<?php echo base_url(); ?>Caccounts/add_taxes">
                 <i class="ti-bar-chart"></i><span>Taxes</span>
               <!--   <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span> -->
             </a>
             <!-- <ul class="treeview-menu">
-                 <?php if($this->permission1->method('stock_report','read')->access()){ ?>
-                <li class="treeview <?php if ($this->uri->segment('1') == ("Creport") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Caccounts/add_taxes') ?>">Add Taxes</a></li>
-            <?php }?>
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Caccounts/add_taxes">Add Taxes</a></li>
+            
 
-
-             <?php if($this->permission1->method('stock_report','read')->access()){ ?>
-                <li class="treeview <?php if ($this->uri->segment('1') == ("Creport") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Caccounts') ?>">Taxes List</a></li>
-            <?php }?>
-
+                             <li class="treeview  "><a href="<?php echo base_url(); ?>Caccounts">Taxes List</a></li>
+            
             </ul>
  -->
 
            
 
         </li>
-    <?php }?>
-        <!-- Taxes menu end -->
+    
+            <!-- Taxes menu end -->
 
 
 
-        <?php if($this->permission1->method('add_return','create')->access() || $this->permission1->method('return_list','read')->access() || $this->permission1->method('supplier_return_list','read')->access() || $this->permission1->method('wastage_return_list','read')->access()){?>
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cretrun_m")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                    <li class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-retweet" aria-hidden="true"></i><span><?php echo display('return'); ?></span>
+                    <i class="fa fa-retweet" aria-hidden="true"></i><span>Return</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('add_return','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('1') == ("Cretrun_m") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cretrun_m') ?>"><?php echo display('return'); ?></a></li>
-                      <?php } ?>
-                     <?php if($this->permission1->method('return_list','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("return_list")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cretrun_m/return_list') ?>"><?php echo display('stock_return_list') ?></a></li>
-                      <?php } ?>
-                     <?php if($this->permission1->method('supplier_return_list','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("supplier_return_list")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cretrun_m/supplier_return_list') ?>"><?php echo display('supplier_return_list') ?></a></li>
-                      <?php } ?>
-                    <?php if($this->permission1->method('wastage_return_list','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("wastage_return_list")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cretrun_m/wastage_return_list') ?>"><?php echo display('wastage_return_list') ?></a></li>
-                      <?php } ?>
-
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m">Return</a></li>
+                                                               <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/return_list">Stock Return List</a></li>
+                                                               <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/supplier_return_list">Supplier Return List</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/wastage_return_list">Wastage Return List</a></li>
+                      
                 </ul>
             </li>
+        
 
-<?php } ?>
+
 
             <!-- Report menu start -->
-             <?php if($this->permission1->method('add_closing','create')->access() || $this->permission1->method('closing_report','read')->access() || $this->permission1->method('all_report','read')->access() || $this->permission1->method('todays_customer_receipt','read')->access() || $this->permission1->method('todays_sales_report','read')->access() || $this->permission1->method('retrieve_dateWise_DueReports','read')->access() || $this->permission1->method('todays_purchase_report','read')->access() || $this->permission1->method('purchase_report_category_wise','read')->access() || $this->permission1->method('product_sales_reports_date_wise','read')->access() || $this->permission1->method('sales_report_category_wise','read')->access() || $this->permission1->method('shipping_cost_report','read')->access()){?>
-            <li  class="treeview <?php
-            if ($this->uri->segment('2') == ("all_report") || $this->uri->segment('2') == ("todays_sales_report") || $this->uri->segment('2') == ("todays_purchase_report") || $this->uri->segment('2') == ("product_sales_reports_date_wise") || $this->uri->segment('2') == ("total_profit_report") || $this->uri->segment('2') == ("purchase_report_category_wise") || $this->uri->segment('2') == ("sales_report_category_wise") || $this->uri->segment('2') == ("filter_purchase_report_category_wise") || $this->uri->segment('2') == ("sales_report_category_wise") || $this->uri->segment('2') == ("todays_customer_receipt") || $this->uri->segment('2') == ("filter_sales_report_category_wise") || $this->uri->segment('2') == ("filter_customer_wise_receipt") || $this->uri->segment('2') == ("closing") || $this->uri->segment('2') == ("closing_report") || $this->uri->segment('2') == ("date_wise_closing_reports") || $this->uri->segment('2') == ("retrieve_dateWise_Shippingcost") || $this->uri->segment('2') == ("product_sales_search_reports") || $this->uri->segment('2') == ("user_sales_report") || $this->uri->segment('2') == ("retrieve_dateWise_DueReports") || $this->uri->segment('2') == ("sales_return") || $this->uri->segment('2') == ("supplier_return")|| $this->uri->segment('2') == ("retrieve_dateWise_tax")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                         <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-book"></i><span><?php echo display('report') ?></span>
+                    <i class="ti-book"></i><span>Report</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('add_closing','create')->access()){ ?>
-                 <li class="treeview <?php if ($this->uri->segment('2') == ("closing")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/closing') ?>"><?php echo display('closing') ?></a></li>
-                  <?php } ?>
-             <?php if($this->permission1->method('closing_report','read')->access()){ ?>
-                   <li class="treeview <?php if ($this->uri->segment('2') == ("closing_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/closing_report') ?>"><?php echo display('closing_report') ?></a></li>
-                    <?php } ?>
-             <?php if($this->permission1->method('all_report','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("all_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/all_report') ?>"><?php echo display('todays_report') ?></a></li>
-                     <?php } ?>
-             <?php if($this->permission1->method('todays_customer_receipt','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("todays_customer_receipt")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/todays_customer_receipt') ?>"><?php echo display('todays_customer_receipt') ?></a></li>
-                     <?php } ?>
-             <?php if($this->permission1->method('todays_sales_report','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("todays_sales_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/todays_sales_report') ?>"><?php echo display('sales_report') ?></a></li>
-                     <?php } ?>
-                     <?php if($this->permission1->method('user_wise_sales_report','read')->access()){ ?>
-                       <li class="treeview <?php if ($this->uri->segment('2') == ("user_sales_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/user_sales_report') ?>"><?php echo display('user_wise_sales_report') ?></a></li>
-                         <?php } ?>
-             <?php if($this->permission1->method('retrieve_dateWise_DueReports','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("retrieve_dateWise_DueReports")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/retrieve_dateWise_DueReports') ?>"><?php echo display('due_report'); ?></a></li>
-                     <?php } ?>
-                      <?php if($this->permission1->method('shipping_cost_report','read')->access()){ ?>
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("retrieve_dateWise_Shippingcost")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/retrieve_dateWise_Shippingcost') ?>"><?php echo display('shipping_cost_report'); ?></a></li>
-                       <?php } ?>
-             <?php if($this->permission1->method('todays_purchase_report','read')->access()){ ?>
-                    <li><a href="<?php echo base_url('Admin_dashboard/todays_purchase_report') ?>"><?php echo display('purchase_report') ?></a></li>
-                     <?php } ?>
-             <?php if($this->permission1->method('purchase_report_category_wise','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("purchase_report_category_wise")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/purchase_report_category_wise') ?>"><?php echo display('purchase_report_category_wise') ?></a></li>
-                     <?php } ?>
-             <?php if($this->permission1->method('product_sales_reports_date_wise','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("product_sales_reports_date_wise")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/product_sales_reports_date_wise') ?>"><?php echo display('sales_report_product_wise') ?></a></li>
-                     <?php } ?>
-             <?php if($this->permission1->method('sales_report_category_wise','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("sales_report_category_wise")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/sales_report_category_wise') ?>"><?php echo display('sales_report_category_wise') ?></a></li>
-                     <?php } ?>
-                     <?php if($this->permission1->method('invoice_return','read')->access()){ ?>
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("sales_return")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/sales_return') ?>"><?php echo display('invoice_return') ?></a></li>
-                       <?php } ?>
-                       <?php if($this->permission1->method('supplier_return','read')->access()){ ?>
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("supplier_return")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/supplier_return') ?>"><?php echo display('supplier_return') ?></a></li>
-                      <?php } ?>
-                       <?php if($this->permission1->method('tax_report','read')->access()){ ?>
-                     <li class="treeview <?php if ($this->uri->segment('2') == ("retrieve_dateWise_tax")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/retrieve_dateWise_tax') ?>"><?php echo display('tax_report') ?></a></li>
-                      <?php } ?>
-                      <?php if($this->permission1->method('profit_report','read')->access()){ ?>
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("total_profit_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Admin_dashboard/total_profit_report') ?>"><?php echo display('profit_report') ?></a></li>
-                    <?php } ?>
-                </ul>
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/closing">Closing</a></li>
+                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/closing_report">Closing Report</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/all_report">Todays Report</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/todays_customer_receipt">Todays Customer Receipt</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/todays_sales_report">Sales Report</a></li>
+                                                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/user_sales_report">User Wise Sales Report</a></li>
+                                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_DueReports">Due Report</a></li>
+                                                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_Shippingcost">Shipping Cost Report</a></li>
+                                                        <li><a href="<?php echo base_url(); ?>Admin_dashboard/todays_purchase_report">Expenses Report</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/purchase_report_category_wise">Expenses Report (Category wise)</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/product_sales_reports_date_wise">Sales Report (Product Wise)</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/sales_report_category_wise">Sales Report (Category wise)</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/sales_return">Sales Return</a></li>
+                                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/supplier_return">Supplier Return</a></li>
+                                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_tax">Tax Report</a></li>
+                                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/total_profit_report">Profit Report (Sale Wise)</a></li>
+                                    </ul>
             </li>
-        <?php }?>
-            <!-- Report menu end -->
+                    <!-- Report menu end -->
 
 
 <!--New Account start-->
- <?php if($this->permission1->method('show_tree','read')->access() || $this->permission1->method('supplier_payment','create')->access()|| $this->permission1->method('customer_receive','create')->access() || $this->permission1->method('debit_voucher','create')->access() || $this->permission1->method('credit_voucher','create')->access() || $this->permission1->method('aprove_v','read')->access() || $this->permission1->method('contra_voucher','create')->access() || $this->permission1->method('journal_voucher','create')->access()){?>
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("accounts")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+             <li class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-money"></i><span><?php echo display('accounts') ?></span>
+                    <i class="fa fa-money"></i><span>Accounts</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('show_tree','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("show_tree")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/show_tree') ?>"><?php echo display('c_o_a'); ?></a></li>
-                <?php }?>
-                 <?php if($this->permission1->method('supplier_payment','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("supplier_payment")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/supplier_payment') ?>"><?php echo display('supplier_payment'); ?></a></li>
-                    <?php }?>
-                      <?php if($this->permission1->method('customer_receive','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("customer_receive")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/customer_receive') ?>"><?php echo display('customer_receive'); ?></a></li>
-                    <?php }?>
-
-                     <?php if($this->permission1->method('cash_adjustment','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("cash_adjustment")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/cash_adjustment') ?>"><?php echo display('cash_adjustment'); ?></a></li>
-                    <?php }?>
-                     <?php if($this->permission1->method('debit_voucher','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("debit_voucher")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/debit_voucher') ?>"><?php echo display('debit_voucher') ?></a></li>
-                     <?php }?>
-                      <?php if($this->permission1->method('credit_voucher','create')->access()){ ?>
-                     <li class="treeview <?php if ($this->uri->segment('2') == ("credit_voucher")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/credit_voucher') ?>"><?php echo display('credit_voucher'); ?></a></li>
-                     <?php }?>
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/show_tree">Chart of Account</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/supplier_payment">Supplier Payment</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/customer_receive">Customer Receive</a></li>
                     
-                      <?php if($this->permission1->method('contra_voucher','create')->access()){ ?>
-                       <li class="treeview <?php if ($this->uri->segment('2') == ("contra_voucher")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/contra_voucher') ?>"><?php echo display('contra_voucher'); ?></a></li>
-                     <?php }?>
-                      <?php if($this->permission1->method('journal_voucher','create')->access()){ ?>
-                        <li class="treeview <?php if ($this->uri->segment('2') == ("journal_voucher")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/journal_voucher') ?>"><?php echo display('journal_voucher'); ?></a></li> 
-                     <?php }?>
-
-                       <?php if($this->permission1->method('aprove_v','read')->access()){ ?>
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("aprove_v")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/aprove_v') ?>"><?php echo display('voucher_approval'); ?></a></li> 
-                     <?php }?>
-                    <?php if($this->permission1->method('ac_report','create')->access()){ ?>
-                             <li class="treeview <?php
-                    if ($this->uri->segment('2') == ("voucher_report") || $this->uri->segment('2') == ("cash_book") || $this->uri->segment('2') == ("bank_book") || $this->uri->segment('2') == ("general_ledger")|| $this->uri->segment('2') == ("trial_balance")|| $this->uri->segment('2') == ("profit_loss_report")|| $this->uri->segment('2') == ("cash_flow_report")|| $this->uri->segment('2') == ("inventory_ledger")|| $this->uri->segment('2') == ("coa_print")) {
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }
-                    ?>"><a href=""><?php echo display('report') ?>
-                            <span class="pull-right-container">
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_adjustment">Cash Adjustment</a></li>
+                                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/debit_voucher">Debit Voucher</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/credit_voucher">Credit Voucher</a></li>
+                                         
+                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/contra_voucher">Contra Voucher</a></li>
+                                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/journal_voucher">Journal Voucher</a></li> 
+                     
+                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/aprove_v">Vouchar Approval</a></li> 
+                                                                      <li class="treeview  "><a href="">Report                            <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                    <?php if($this->permission1->method('cash_book','read')->access()){ ?>
-                 <li class="treeview <?php if ($this->uri->segment('2') == ("cash_book")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/cash_book') ?>"><?php echo display('cash_book'); ?></a></li>
-                <?php }?>
-                <?php if($this->permission1->method('inventory_ledger','read')->access()){ ?>
-                     <li class="treeview <?php if ($this->uri->segment('2') == ("inventory_ledger")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/inventory_ledger') ?>"><?php echo display('Inventory_ledger'); ?></a></li>
-                <?php } ?>
-                  <?php if($this->permission1->method('bank_book','read')->access()){ ?>
-                            <li class="treeview <?php if ($this->uri->segment('2') == ("bank_book")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/bank_book') ?>"><?php echo display('bank_book'); ?></a></li>
-                      <?php } ?>
-                      <?php if($this->permission1->method('general_ledger','read')->access()){ ?>
-                            <li class="treeview <?php if ($this->uri->segment('2') == ("general_ledger")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/general_ledger') ?>"><?php echo display('general_ledger'); ?></a></li>
-                      <?php } ?>
-                       <?php if($this->permission1->method('trial_balance','read')->access()){ ?>
-                            <li class="treeview <?php if ($this->uri->segment('2') == ("trial_balance")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/trial_balance') ?>"><?php echo display('trial_balance'); ?></a></li>
-                     <?php } ?>
-                              <li class="treeview <?php if ($this->uri->segment('2') == ("profit_loss_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/profit_loss_report') ?>"><?php echo display('profit_loss'); ?></a></li>
-                     <?php if($this->permission1->method('cash_flow_report','read')->access()){ ?>
-                              <li class="treeview <?php if ($this->uri->segment('2') == ("cash_flow_report")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/cash_flow_report') ?>"><?php echo display('cash_flow'); ?></a></li>
-                     <?php } ?>
-                      <?php if($this->permission1->method('coa_print','read')->access()){ ?>
-                               <li class="treeview <?php if ($this->uri->segment('2') == ("coa_print")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('accounts/coa_print') ?>"><?php echo display('coa_print'); ?></a></li>
-                    <?php } ?>
-                        </ul>   
+                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_book">Cash Book</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/inventory_ledger">Inventory Ledger</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/bank_book">Bank Book</a></li>
+                                                                        <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/general_ledger">General Ledger</a></li>
+                                                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/trial_balance">Trial Balance</a></li>
+                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/profit_loss_report">Profit Loss</a></li>
+                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_flow_report">Cash Flow</a></li>
+                                                                          <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/coa_print">Coa Print</a></li>
+                                            </ul>   
 
             </li>
-        <?php } ?>
-                </ul>
+                        </ul>
             </li>
-           <?php } ?>
-<!-- New Account End -->
+
+
+           <!-- New Account End -->
 
             <!-- Bank menu start -->
-              <?php if($this->permission1->method('add_bank','create')->access() || $this->permission1->method('bank_transaction','create')->access() || $this->permission1->method('bank_list','read')->access()){?>
-            <li  class="treeview <?php
-            if ($this->uri->segment('2') == ("index") || $this->uri->segment('2') == ("bank_list") || $this->uri->segment('2') == ("bank_ledger") || $this->uri->segment('2') == ("bank_transaction")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                          <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-briefcase"></i><span><?php echo display('bank') ?></span>
+                    <i class="ti-briefcase"></i><span>Bank</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                      <?php if($this->permission1->method('add_bank','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('1') == ("Csettings") && $this->uri->segment('2') == ("index")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Csettings/index') ?>"><?php echo display('add_new_bank') ?></a></li>
-                <?php }?>
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/index">Add New Bank</a></li>
+                                
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_list">Manage Bank</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_transaction">Bank Transaction</a></li>
                 
-                  <?php if($this->permission1->method('bank_list','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("bank_list")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Csettings/bank_list') ?>"><?php echo display('manage_bank') ?></a></li>
-                <?php }?>
-                  <?php if($this->permission1->method('bank_transaction','create')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("bank_transaction")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Csettings/bank_transaction') ?>"><?php echo display('bank_transaction') ?></a></li>
-                <?php }?>
-
-                  <?php if($this->permission1->method('bank_ledger','read')->access()){ ?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("bank_ledger")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Csettings/bank_ledger') ?>"><?php echo display('bank_ledger') ?></a></li>
-                <?php }?>
-                </ul>
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_ledger">Bank Ledger</a></li>
+                                </ul>
             </li>
-        <?php } ?>
-            <!-- Bank menu end -->
+                    <!-- Bank menu end -->
 
            
 
 
 
-           
+         
 
 
 
@@ -1072,14 +612,7 @@ ul.dropdown-submenu>li>a:hover{
 
 
                 <!-- Human Resource New menu start -->
-            <?php if($this->permission1->method('new_invoice','create')->access() || $this->permission1->method('manage_invoice','read')->access() || $this->permission1->method('pos_invoice','create')->access() || $this->permission1->method('gui_pos','create')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cinvoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                        <li class="treeview  ">
                 <a href="#">
                     <i class="fa fa-balance-scale"></i><span>Human Resource</span>
                     <span class="pull-right-container">
@@ -1087,85 +620,28 @@ ul.dropdown-submenu>li>a:hover{
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <?php if($this->permission1->method('new_invoice','create')->access()){ ?>
-                    <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cinvoice") && $this->uri->segment('2') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/add_employee') ?>">Employee Info (W4 form)</a></li>
-                <?php } ?>
-                <?php if($this->permission1->method('manage_invoice','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_invoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/manage_employee') ?>">Time sheet</a></li>
-                    <?php } ?>
-                    <?php if($this->permission1->method('pos_invoice','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("pos_invoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/pay_slip_list') ?>">Pay slip / Checks per user</a></li>
-            <?php } ?>
-            <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/payroll_setting') ?>">Payroll settings</a></li>
-                    <?php } ?>
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_employee">Employee Info (W4 form)</a></li>
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/manage_employee">Time sheet</a></li>
+                                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/pay_slip_list">Pay slip / Checks per user</a></li>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/payroll_setting">Payroll settings</a></li>
+                    
 
-
-                      <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/add_expense_item') ?>">Expense</a></li>
-                    <?php } ?>
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_expense_item">Expense</a></li>
+                    
 
 
 
-
-                       <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/add_office_loan') ?>">Office loan</a></li>
-                    <?php } ?>
+                                           <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_office_loan">Office loan</a></li>
+                    
 
 
-
-                     <?php if($this->permission1->method('gui_pos','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("gui_pos")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Chrm/payroll_reports') ?>">Payroll reports</a></li>
-                    <?php } ?>
-
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/payroll_reports">Payroll reports</a></li>
+                    
 
 
                 </ul>
             </li>
-             <?php } ?>
-            <!-- Human Resource New menu end -->
+                         <!-- Human Resource New menu end -->
 
 
 
@@ -1177,17 +653,10 @@ ul.dropdown-submenu>li>a:hover{
 
 
 
-             <?php if($this->permission1->method('create_service','create')->access() || $this->permission1->method('manage_service','read')->access() || $this->permission1->method('service_invoice','create')->access() || $this->permission1->method('manage_service_invoice','read')->access()){?>
-                 
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cservice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                              
+            <li class="treeview  ">
 
-             <a href="<?php echo base_url('Cweb_setting/email_setting') ?>">
+             <a href="<?php echo base_url(); ?>Cweb_setting/email_setting">
                     <i class="ti-user"></i><span>Email</span>
                  
                 </a>
@@ -1199,12 +668,10 @@ ul.dropdown-submenu>li>a:hover{
        
           
             </li>
-             <?php } ?>
-
+             
 
               
          
-
 
 
 
@@ -1214,17 +681,10 @@ ul.dropdown-submenu>li>a:hover{
 
 
                             
-            <?php if($this->permission1->method('create_service','create')->access() || $this->permission1->method('manage_service','read')->access() || $this->permission1->method('service_invoice','create')->access() || $this->permission1->method('manage_service_invoice','read')->access()){?>
-                 
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cservice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                             
+            <li class="treeview  ">
 
-             <a href="<?php echo base_url('Cservice/manage_service') ?>">
+             <a href="<?php echo base_url(); ?>Cservice/manage_service">
                     <i class="ti-user"></i><span>Service</span>
                  
             </a>
@@ -1233,44 +693,28 @@ ul.dropdown-submenu>li>a:hover{
        
           
             </li>
-             <?php } ?>
-            <!-- service menu end -->
+                         <!-- service menu end -->
 
 
 
 
-             <?php if($this->permission1->method('create_service','create')->access() || $this->permission1->method('manage_service','read')->access() || $this->permission1->method('service_invoice','create')->access() || $this->permission1->method('manage_service_invoice','read')->access()){?>
-                 
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cservice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                              
+            <li class="treeview  ">
 
              <a href="fa fa-asl-interpreting">
                     <i class="ti-user"></i><span>Manage Invoice Template</span>
                  
-                 
+                </a>
 
 
                  <ul class="treeview-menu">
                 
                     <li class="treeview">
-                        <a href="<?php echo base_url('Cweb_setting/invoice_template') ?>">Sales Invoice</a>
+                        <a href="<?php echo base_url(); ?>Cweb_setting/invoice_template">Sales Invoice</a>
                     </li>
-                    
 
-                     
-                    <li class="treeview">
-                        <a href="<?php echo base_url('Cweb_setting/invoice_design') ?>"> Invoice Design</a>
-                    </li>
-                    <li class="treeview">
-                        <a href="<?php echo base_url('Cweb_setting/invoice_content') ?>">Invoice Content</a>
-                    </li>
-                    <li class="treeview">
-                        <a href="<?php echo base_url('Cweb_setting/email_template') ?>">Email Template</a>
+                     <li class="treeview">
+                        <a href="<?php echo base_url(); ?>Cweb_setting/expense_invoice_template">Expense Invoice</a>
                     </li>
                
 
@@ -1280,68 +724,27 @@ ul.dropdown-submenu>li>a:hover{
        
           
             </li>
-             <?php } ?>
-
+             
 
 
 <!-- 
 
-             <?php if($this->permission1->method('create_service','create')->access() || $this->permission1->method('manage_service','read')->access() || $this->permission1->method('service_invoice','create')->access() || $this->permission1->method('manage_service_invoice','read')->access()){?>
-           
-            <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Cservice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                        
+            <li  class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-asl-interpreting"></i><span><?php echo display('service') ?></span>
+                    <i class="fa fa-asl-interpreting"></i><span>Service</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <?php if($this->permission1->method('create_service','create')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Cservice") && $this->uri->segment('2') == ("")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cservice') ?>"><?php echo display('add_service') ?></a></li>
-                <?php } ?>
-                 <?php if($this->permission1->method('manage_service','read')->access()){ ?>
-                    <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_service")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cservice/manage_service') ?>"><?php echo display('manage_service') ?></a></li>
-                      <?php } ?>
-                       <?php if($this->permission1->method('service_invoice','create')->access()){ ?>
-                       <li class="treeview <?php
-            if ($this->uri->segment('2') == ("service_invoice_form")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cservice/service_invoice_form') ?>"><?php echo display('service_invoice') ?></a></li>
-                       <?php } ?>
-                        <?php if($this->permission1->method('manage_service_invoice','read')->access()){ ?>
-                       <li class="treeview <?php
-            if ($this->uri->segment('2') == ("manage_service_invoice")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>"><a href="<?php echo base_url('Cservice/manage_service_invoice') ?>"><?php echo display('manage_service_invoice') ?></a></li>
-                       <?php } ?>
-                </ul>
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>Cservice">Add Service</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>Cservice/manage_service">Manage Service</a></li>
+                                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Cservice/service_invoice_form">Service Invoice</a></li>
+                                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Cservice/manage_service_invoice">Manage Service Invoice</a></li>
+                                       </ul>
             </li>
-        <?php } ?>
- -->
+         -->
 
 
       
@@ -1349,136 +752,60 @@ ul.dropdown-submenu>li>a:hover{
            
 
             <!-- Software Settings menu start -->
-              <?php if($this->permission1->method('manage_company','read')->access() ||$this->permission1->method('manage_company','create')->access() || $this->permission1->method('add_user','create')->access() || $this->permission1->method('manage_user','read')->access() || $this->permission1->method('add_language','create')->access() || $this->permission1->method('add_currency','create')->access() || $this->permission1->method('soft_setting','create')->access() || $this->permission1->method('add_role','create')->access() ||$this->permission1->method('role_list','read')->access() || $this->permission1->method('user_assign','create')->access() || $this->permission1->method('sms_configure','create')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Company_setup") || $this->uri->segment('1') == ("User") || $this->uri->segment('1') == ("Cweb_setting") || $this->uri->segment('1') == ("Language") || $this->uri->segment('1') == ("Currency") || $this->uri->segment('1') == ("Permission")|| $this->uri->segment('1') == ("Csms") || $this->uri->segment('1') == ("Backup_restore")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                          <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-settings"></i><span><?php echo display('settings') ?></span>
+                    <i class="ti-settings"></i><span>Settings</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                       <!-- Software Settings menu start -->
-              <?php if($this->permission1->method('manage_company','read')->access() ||$this->permission1->method('manage_company','create')->access() || $this->permission1->method('add_user','create')->access() || $this->permission1->method('manage_user','read')->access() || $this->permission1->method('add_language','create')->access() || $this->permission1->method('add_currency','create')->access() || $this->permission1->method('soft_setting','create')->access() || $this->permission1->method('back_up','create')->access() || $this->permission1->method('back_up','read')->access() || $this->permission1->method('restore','create')->access() || $this->permission1->method('sql_import','create')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("Company_setup") || $this->uri->segment('1') == ("User") || $this->uri->segment('1') == ("Cweb_setting") || $this->uri->segment('1') == ("Language") || $this->uri->segment('1') == ("Currency")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                          <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-settings"></i> <span><?php echo display('web_settings') ?></span>
+                    <i class="ti-settings"></i> <span>Manage Settings</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                     <?php if($this->permission1->method('manage_company','read')->access() || $this->permission1->method('manage_company','update')->access()){?>
-                    
-                <?php }?>
-                <?php if($this->permission1->method('add_user','create')->access()){?>
-                    
-                <?php }?>
-                  <?php if($this->permission1->method('manage_user','read')->access()){?>
-                    <li class="treeview <?php if ($this->uri->segment('2') == ("manage_user")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('User/manage_user') ?>"><?php echo 'Manage Admin'; //display('manage_users') ?> </a></li>
-                <?php }?>
-                <?php if($this->permission1->method('add_language','create')->access() || $this->permission1->method('add_language','update')->access()){?>
-                  
-                <?php }?>
-                  <?php if($this->permission1->method('add_currency','create')->access()){?>
-                    <li class="treeview <?php if ($this->uri->segment('1') == ("Currency") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Currency') ?>"><?php echo display('currency') ?> </a></li>
-                <?php }?>
-                <?php if($this->permission1->method('soft_setting','create')->access() || $this->permission1->method('soft_setting','update')->access()){?>
-                    <li class="treeview <?php if ($this->uri->segment('1') == ("Cweb_setting") && $this->uri->segment('2') == ("")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cweb_setting') ?>"><?php echo display('setting') ?> </a></li>
-                <?php }?>
-
-                 <?php if($this->permission1->method('mail_setting','create')->access()){?>
-                    <li class="treeview <?php if ($this->uri->segment('1') == ("Cweb_setting") && $this->uri->segment('2') == ("mail_setting")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cweb_setting/mail_setting') ?>"><?php echo display('mail_setting') ?> </a></li>
-                <?php }?>
-                 <li style="display:none" class="treeview <?php if ($this->uri->segment('1') == "Cweb_setting" && $this->uri->segment('2') == "app_setting"){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Cweb_setting/app_setting') ?>"><?php echo display('app_setting') ?> </a></li>
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Company_setup/manage_company">myManage Company</a></li>
+                                             
+                                                   
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Language">Language </a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Currency">Currency </a></li>
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Cweb_setting">Setting </a></li>
+                
+                                     <li class="treeview  "><a href="<?php echo base_url(); ?>Cweb_setting/mail_setting">Mail Setting </a></li>
+                                 <li style="display:none" class="treeview  "><a href="<?php echo base_url(); ?>Cweb_setting/app_setting">App Settings </a></li>
                 </ul>
             </li>
-        <?php }?>
-         <!-- Role permission start -->
+                 <!-- Role permission start -->
 
 
 
 
-     <?php if($this->permission1->method('add_role','create')->access() ||$this->permission1->method('role_list','read')->access() || $this->permission1->method('user_assign','create')->access()){?>
-         <li  class="treeview <?php
-            if ($this->uri->segment('1') == ("Permission")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+              <li class="treeview  ">
                 <a href="#">
-                    <i class="ti-key"></i> <span><?php echo display('role_permission') ?></span>
+                    <i class="ti-key"></i> <span>Role Permission</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
              
-                    <?php if($this->permission1->method('add_role','create')->access()){?>
-                        <li class="treeview <?php if ($this->uri->segment('2') == ("add_role")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Permission/add_role')?>"><?php echo display('add_role') ?></a></li>
-                    <?php }?>
-                      <?php if($this->permission1->method('role_list','read')->access()){?>
-                        <li class="treeview <?php if ($this->uri->segment('2') == ("role_list")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Permission/role_list')?>"><?php echo display('role_list') ?></a></li>
-                    <?php }?>
-                    <?php if($this->permission1->method('user_assign','create')->access()){?>
-                        <li class="treeview <?php if ($this->uri->segment('2') == ("user_assign")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Permission/user_assign')?>"><?php echo display('user_assign_role')?></a></li>
-                    <?php }?>
-                 
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Permission/add_role">Add Role</a></li>
+                                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Permission/role_list">Role List</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>Permission/user_assign">User Assign Role</a></li>
+                                     
 
                     </ul>
                 </li>
-            <?php }?>
-                <!-- Role permission End -->
- <?php if($this->permission1->method('sms_configure','create')->access()){?>
-                <!-- sms menu start -->
-                 <li class="treeview <?php if ($this->uri->segment('1') == ("Csms")) { echo "active";}else{ echo " ";}?>">
+                            <!-- Role permission End -->
+                 <!-- sms menu start -->
+                 <li class="treeview  ">
                 <a href="#">
-                    <i class="fa fa-comments"></i> <span><?php echo display('sms'); ?></span>
+                    <i class="fa fa-comments"></i> <span>SMS</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -1486,100 +813,610 @@ ul.dropdown-submenu>li>a:hover{
                 <ul class="treeview-menu">
                 
                 
-                      <li class="treeview <?php if ($this->uri->segment('2') == ("configure")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Csms/configure')?>"><?php echo display('sms_configure'); ?></a></li>
+                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csms/configure">SMS Configure</a></li>
                      
  
                 </ul>
              </li>
-         <?php }?>
+         
 
 
-
-          <?php if($this->permission1->method('sms_configure','create')->access()){?>
-                <!-- sms menu start -->
-                 <li class="treeview <?php if ($this->uri->segment('1') == ("Csms")) { echo "active";}else{ echo " ";}?>">
-                <a href="<?php echo base_url('Cservice/help_desk') ?>">
+                          <!-- sms menu start -->
+                 <li class="treeview  ">
+                <a href="<?php echo base_url(); ?>Cservice/help_desk">
                     <i class="fa fa-comments"></i> <span>Help</span>
                    
                 </a>
          
              </li>
-         <?php }?>
-
+         
 
 
 
                 <!-- sms menu end -->
                  <!-- Synchronizer setting start -->
-              <?php if($this->permission1->method('back_up','create')->access() || $this->permission1->method('back_up','read')->access() || $this->permission1->method('restore','create')->access() || $this->permission1->method('sql_import','create')->access()){?>
-            <li style="display:none;" class="treeview <?php
-            if ($this->uri->segment('2') == ("form") || $this->uri->segment('2') == ("synchronize") || $this->uri->segment('1') == ("Backup_restore")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
+                          <li style="display:none;" class="treeview  ">
                 <a href="#">
-                    <i class="ti-reload"></i>  <span><?php echo display('data_synchronizer') ?></span>
+                    <i class="ti-reload"></i>  <span>Data Synchronizer</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul style="display:none"  class="treeview-menu">
+                <ul style="display:none" class="treeview-menu">
                 
-                    <?php if($this->permission1->method('restore','create')->access()){ ?>
-           <li class="treeview <?php if ($this->uri->segment('2') == ("restore_form")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Backup_restore/restore_form') ?>"><?php echo display('restore') ?></a></li>
-           <?php }?>
-                 <?php if($this->permission1->method('sql_import','create')->access()){ ?>
-                <li class="treeview <?php if ($this->uri->segment('2') == ("import_form")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Backup_restore/import_form') ?>"><?php echo display('import') ?></a></li>
-                <?php }?>
+                               <li class="treeview  "><a href="<?php echo base_url(); ?>Backup_restore/restore_form">Restore</a></li>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Backup_restore/import_form">Import</a></li>
+                
+                     <li class="treeview  "><a href="<?php echo base_url(); ?>Backup_restore/download">Back Up</a></li>
+                </ul>
+            </li>
+                    <!-- Synchronizer setting end -->
+                
+                </ul>
+            </li>
+                    <!-- Software Settings menu end -->
 
-                     <li class="treeview <?php if ($this->uri->segment('2') == ("backup_create")){
-                        echo "active";
-                    } else {
-                        echo " ";
-                    }?>"><a href="<?php echo base_url('Backup_restore/download') ?>"><?php echo display('backup') ?></a></li>
+        </ul>
+
+
+<?php } ?>
+
+
+
+<!-- //////////////////////////////////////////////////// -->   
+
+
+
+
+
+        <!-- sidebar menu -->
+<?php if($_SESSION['user_type']==3)
+{
+
+    ?>
+
+<ul class="sidebar-menu">
+
+            <li class="active">
+                <a href="<?php echo base_url(); ?>"><i class="ti-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                        <span class="label label-success pull-right"></span>
+                    </span>
+                </a>
+            </li>
+
+
+
+
+    <!-- Invoice menu start -->
+
+
+    <?php 
+    if($_SESSION['sales']['create']==1  || $_SESSION['sales']['read']==1 || $_SESSION['sales']['update']==1 || $_SESSION['sales']['delete']==1 )
+        { ?>
+    
+                        <li class="treeview  ">
+                <a href="#">
+                    <i class="fa fa-balance-scale"></i><span>Sale </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_invoice">New Sale</a></li>
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_profarma_invoice">Profarma Invoice</a></li>
+                                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_packing_list">Packing List</a></li>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_ocean_export_tracking">Ocean Export Tracking</a></li>
+                    
+
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Cinvoice/manage_trucking">Trucking</a></li>
+                    
+
                 </ul>
             </li>
-        <?php }?>
-            <!-- Synchronizer setting end -->
-              
-                </ul>
+        <?php } ?>
+                         <!-- Invoice menu end -->
+
+       
+<?php 
+    if($_SESSION['customer']['create']==1  || $_SESSION['customer']['read']==1 || $_SESSION['customer']['update']==1 || $_SESSION['customer']['delete']==1 )
+        { ?>
+
+                <!-- Customer menu start -->
+                        <li class="treeview  ">
+
+             <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">
+                    <i class="fa fa-handshake-o"></i><span>Customer</span>
+                 <!--    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span> -->
+                </a>
+
+
+              <!--   <a href="<?php echo base_url(); ?>Cinvoice/manage_invoice">
+                    <i class="fa fa-balance-scale"></i><span>Sale</span> -->
+                    <!-- <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span> -->
+              <!--   </a> -->
+          
             </li>
-        <?php }?>
-                  <!-- Quotation Menu Start -->
-                  <?php if($this->permission1->method('add_quotation','create')->access() || $this->permission1->method('manage_quotation','read')->access()){?>
-            <li class="treeview <?php
-            if ($this->uri->segment('1') == ("User")) {
-                echo "active";
-            } else {
-                echo " ";
-            }
-            ?>">
-                <a href="<?php echo base_url('User/index') ?>">
-                    <i class="fa fa-book"></i><span>Add Company</span>
+        <?php } ?>
+                         <!-- Customer menu end -->
+
+
+
+            <!-- Customer menu start -->
+            <!--             <li class="treeview  ">
+                <a href="#">
+                    <i class="fa fa-handshake-o"></i><span>Customer</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                         <li class="treeview  "> <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">Manage Customer</a></li>
+                                                    <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/manage_customer">Manage Customer</a> 
+        </li>
+                                                     <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/customer_ledger_report">Customer Ledger</a>
+        </li>
+                                                         <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/credit_customer">Credit Customer</a> 
+        </li>
+                      
+                                         <li class="treeview  ">
+             <a href="<?php echo base_url(); ?>Ccustomer/paid_customer">Paid Customer</a> 
+        </li>
+                      
+                                           <li class="treeview  ">
+            <a href="<?php echo base_url(); ?>Ccustomer/customer_advance">Customer Advance</a> 
+        </li>
+                                      </ul>
+            </li>
+         -->
+            <!-- Customer menu end -->
+
+
+
+<?php 
+    if($_SESSION['product']['create']==1  || $_SESSION['product']['read']==1 || $_SESSION['product']['update']==1 || $_SESSION['product']['delete']==1 )
+        { ?>
+               <!-- Product menu start -->
+                       <li class="treeview  ">
+
+             <a href="<?php echo base_url(); ?>Cproduct/manage_product">
+                    <i class="ti-bag"></i><span>Product</span>
+                 
+                </a>
+
+       
+          
+            </li>
+        <?php } ?>
+                         <!-- Product menu end -->
+
+
+
+
+<?php 
+    if($_SESSION['supplier']['create']==1  || $_SESSION['supplier']['read']==1 || $_SESSION['supplier']['update']==1 || $_SESSION['supplier']['delete']==1 )
+        { ?>
+
+                    <!-- Supplier menu start -->
+                       <li class="treeview  ">
+
+             <a href="<?php echo base_url(); ?>Csupplier/manage_supplier">
+                    <i class="ti-user"></i><span>Vendor</span>
+                 
+                </a>
+
+           
+       
+          
+            </li>
+        <?php } ?>
+                         <!-- Supplier menu end -->
+
+
+
+            
+                     <!-- Purchase menu start -->
+
+<?php 
+    if($_SESSION['purchase']['create']==1  || $_SESSION['purchase']['read']==1 || $_SESSION['purchase']['update']==1 || $_SESSION['purchase']['delete']==1 )
+        { ?>
+
+                                  <li class="treeview  ">
+                <a href="#">
+                    <i class="ti-shopping-cart"></i><span>Expenses</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_purchase">New Expenses</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_purchase_order">Purchase Order</a></li>
+                       
+
+
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Cpurchase/manage_packing_list">Packing List</a></li>
+            
+
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Ccpurchase/manage_ocean_import_tracking">Ocean Import Tracking</a></li>
+                       
+
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Ccpurchase/manage_trucking">Trucking</a></li>
+                                       </ul>
+            </li>
+        
+<?php } ?>
+
+           <!--              <li  class="treeview  ">
+                <a href="<?php echo base_url(); ?>Cpurchase/manage_purchase">
+                    <i class="ti-shopping-cart"></i><span>Expenses</span> -->
+                    <!-- <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span> -->
+              <!--   </a>
+                
+            </li>
+         -->
+            <!-- Purchase menu end -->  
+             <!-- Quotation Menu Start -->
+             <?php 
+    if($_SESSION['quotation']['create']==1  || $_SESSION['quotation']['read']==1 || $_SESSION['quotation']['update']==1 || $_SESSION['quotation']['delete']==1 )
+        { ?>
+                     <li class="treeview  ">
+                <a href="<?php echo base_url(); ?>Cquotation/manage_quotation">
+                    <i class="fa fa-book"></i><span>Quotation</span>
                    
                 </a>
                 <!-- <ul class="treeview-menu" >
-   
-                </ul> -->
+                                <li><a href="<?php echo base_url(); ?>Cquotation">Add Quotation</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>Cquotation/manage_quotation">Manage Quotation</a></li>
+                                </ul> -->
             </li>
-        <?php }?>
-            <!-- quotation Menu end -->
-            <!-- Software Settings menu end -->
+        <?php } ?>
+                    <!-- quotation Menu end -->
+             <!-- Stock menu start -->
+              <?php 
+    if($_SESSION['stock']['create']==1  || $_SESSION['stock']['read']==1 || $_SESSION['stock']['update']==1 || $_SESSION['stock']['delete']==1 )
+        { ?>
+                    <li class="treeview ">
+            <a href="#">
+                <i class="ti-bar-chart"></i><span>Stock</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Creport">Stock Report</a></li>
+            
+            </ul>
+        </li>
+    <?php } ?>
+            <!-- Stock menu end -->
 
+
+<?php 
+    if($_SESSION['tax']['create']==1  || $_SESSION['tax']['read']==1 || $_SESSION['tax']['update']==1 || $_SESSION['tax']['delete']==1 )
+        { ?>
+
+        <!-- Taxes menu start -->
+                    <li class="treeview ">
+            <a href="<?php echo base_url(); ?>Caccounts/add_taxes">
+                <i class="ti-bar-chart"></i><span>Taxes</span>
+              <!--   <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span> -->
+            </a>
+            <!-- <ul class="treeview-menu">
+                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Caccounts/add_taxes">Add Taxes</a></li>
+            
+
+                             <li class="treeview  "><a href="<?php echo base_url(); ?>Caccounts">Taxes List</a></li>
+            
+            </ul>
+ -->
+
+           
+
+        </li>
+    <?php } ?>
+            <!-- Taxes menu end -->
+
+<?php 
+    if($_SESSION['return']['create']==1  || $_SESSION['return']['read']==1 || $_SESSION['return']['update']==1 || $_SESSION['return']['delete']==1 )
+        { ?>
+
+                    <li class="treeview  ">
+                <a href="#">
+                    <i class="fa fa-retweet" aria-hidden="true"></i><span>Return</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m">Return</a></li>
+                                                               <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/return_list">Stock Return List</a></li>
+                                                               <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/supplier_return_list">Supplier Return List</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>Cretrun_m/wastage_return_list">Wastage Return List</a></li>
+                      
+                </ul>
+            </li>
+        <?php } ?>
+
+<?php 
+    if( $_SESSION['report']['read']==1 )
+        { ?>
+
+            <!-- Report menu start -->
+                         <li class="treeview  ">
+                <a href="#">
+                    <i class="ti-book"></i><span>Report</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/closing">Closing</a></li>
+                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/closing_report">Closing Report</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/all_report">Todays Report</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/todays_customer_receipt">Todays Customer Receipt</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/todays_sales_report">Sales Report</a></li>
+                                                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/user_sales_report">User Wise Sales Report</a></li>
+                                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_DueReports">Due Report</a></li>
+                                                                 <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_Shippingcost">Shipping Cost Report</a></li>
+                                                        <li><a href="<?php echo base_url(); ?>Admin_dashboard/todays_purchase_report">Expenses Report</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/purchase_report_category_wise">Expenses Report (Category wise)</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/product_sales_reports_date_wise">Sales Report (Product Wise)</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/sales_report_category_wise">Sales Report (Category wise)</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/sales_return">Sales Return</a></li>
+                                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/supplier_return">Supplier Return</a></li>
+                                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/retrieve_dateWise_tax">Tax Report</a></li>
+                                                                  <li class="treeview  "><a href="<?php echo base_url(); ?>Admin_dashboard/total_profit_report">Profit Report (Sale Wise)</a></li>
+                                    </ul>
+            </li>
+                    <!-- Report menu end -->
+
+<?php 
+}
+    if(  $_SESSION['accounts']['read']==1)
+        { ?>
+<!--New Account start-->
+             <li class="treeview  ">
+                <a href="#">
+                    <i class="fa fa-money"></i><span>Accounts</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/show_tree">Chart of Account</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/supplier_payment">Supplier Payment</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/customer_receive">Customer Receive</a></li>
+                    
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_adjustment">Cash Adjustment</a></li>
+                                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/debit_voucher">Debit Voucher</a></li>
+                                                                <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/credit_voucher">Credit Voucher</a></li>
+                                         
+                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/contra_voucher">Contra Voucher</a></li>
+                                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/journal_voucher">Journal Voucher</a></li> 
+                     
+                                             <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/aprove_v">Vouchar Approval</a></li> 
+                                                                      <li class="treeview  "><a href="">Report                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_book">Cash Book</a></li>
+                                                     <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/inventory_ledger">Inventory Ledger</a></li>
+                                                              <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/bank_book">Bank Book</a></li>
+                                                                        <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/general_ledger">General Ledger</a></li>
+                                                                         <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/trial_balance">Trial Balance</a></li>
+                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/profit_loss_report">Profit Loss</a></li>
+                                                   <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/cash_flow_report">Cash Flow</a></li>
+                                                                          <li class="treeview  "><a href="<?php echo base_url(); ?>accounts/coa_print">Coa Print</a></li>
+                                            </ul>   
+
+            </li>
+                        </ul>
+            </li>
+
+            <?php 
+}
+    if($_SESSION['bank']['create']==1  || $_SESSION['bank']['read']==1 || $_SESSION['bank']['update']==1 || $_SESSION['bank']['delete']==1 )
+        { ?>
+           <!-- New Account End -->
+
+            <!-- Bank menu start -->
+                          <li class="treeview  ">
+                <a href="#">
+                    <i class="ti-briefcase"></i><span>Bank</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/index">Add New Bank</a></li>
+                                
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_list">Manage Bank</a></li>
+                                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_transaction">Bank Transaction</a></li>
+                
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>Csettings/bank_ledger">Bank Ledger</a></li>
+                                </ul>
+            </li>
+                    <!-- Bank menu end -->
+
+           
+
+
+
+           <?php 
+}
+    if($_SESSION['hrm_management']['create']==1  || $_SESSION['hrm_management']['read']==1 || $_SESSION['hrm_management']['update']==1 || $_SESSION['hrm_management']['delete']==1 )
+        { ?>
+
+
+
+
+
+
+                <!-- Human Resource New menu start -->
+                        <li class="treeview  ">
+                <a href="#">
+                    <i class="fa fa-balance-scale"></i><span>Human Resource</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_employee">Employee Info (W4 form)</a></li>
+                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/manage_employee">Time sheet</a></li>
+                                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/pay_slip_list">Pay slip / Checks per user</a></li>
+                                            <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/payroll_setting">Payroll settings</a></li>
+                    
+
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_expense_item">Expense</a></li>
+                    
+
+
+
+                                           <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/add_office_loan">Office loan</a></li>
+                    
+
+
+                                         <li class="treeview  "><a href="<?php echo base_url(); ?>Chrm/payroll_reports">Payroll reports</a></li>
+                    
+
+
+                </ul>
+            </li>
+                         <!-- Human Resource New menu end -->
+
+
+<?php } ?>
+
+
+
+
+
+
+
+
+                              
+            <li class="treeview  ">
+
+             <a href="<?php echo base_url(); ?>Cweb_setting/email_setting">
+                    <i class="ti-user"></i><span>Email</span>
+                 
+                </a>
+
+
+                
+
+           
+       
+          
+            </li>
+             
+
+              
+         
+
+
+
+ <?php 
+
+    if($_SESSION['service']['create']==1  || $_SESSION['service']['read']==1 || $_SESSION['service']['update']==1 || $_SESSION['service']['delete']==1 )
+        { ?>
+
+      
+            <!-- service menu start -->
+
+
+                            
+                             
+            <li class="treeview  ">
+
+             <a href="<?php echo base_url(); ?>Cservice/manage_service">
+                    <i class="ti-user"></i><span>Service</span>
+                 
+            </a>
+
+           
+       
+          
+            </li>
+                         <!-- service menu end -->
+<?php } ?>
+
+
+
+                              
+            
+
+
+
+
+                        
+           
+  
+
+
+      
+
+           
+
+            <!-- Software Settings menu start -->
+                          <
         </ul>
+<?php } ?>
+
+
+<?php if($_SESSION['user_type']==1)
+{
+
+    ?>
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="<?php echo base_url(); ?>"><i class="ti-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                        <span class="label label-success pull-right"></span>
+                    </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="<?php echo base_url('User'); ?>"> <span>Add company</span>
+                    <span class="pull-right-container">
+                        <span class="label label-success pull-right"></span>
+                    </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="<?php echo base_url('User'); ?>"><span><i class="ti-user"></i>Add Admin User</span>
+                    <span class="pull-right-container">
+                        <span class="label label-success pull-right"></span>
+                    </span>
+                </a>
+            </li>
+           
+            <li class="">
+                <a href="<?php echo base_url('User'); ?>"><span>Manage company</span>
+                    <span class="pull-right-container">
+                        <span class="label label-success pull-right"></span>
+                    </span>
+                </a>
+            </li>
+           
+        </ul>
+
+    <?php } ?>
+
+
+
+    
     </div> <!-- /.sidebar -->
 </aside>

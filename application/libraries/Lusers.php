@@ -8,7 +8,7 @@ class Lusers {
 
     public function user_list() {
         $CI = & get_instance();
-        $CI->load->model('Userm');
+        
         $user_list = $CI->Userm->user_list();
         $i = 0;
         // print_r($user_list);
@@ -26,6 +26,8 @@ class Lusers {
         $userList = $CI->parser->parse('users/user', $data, true);
         return $userList;
     }
+
+
 
     #=============User Search item===============#
 
@@ -55,6 +57,26 @@ class Lusers {
             'title' => display('manage_users')
         );
         $userForm = $CI->parser->parse('users/add_user_form', $data, true);
+        return $userForm;
+    }
+
+     #==============User edit form===========#
+
+    public function company_edit_form($data) {
+           $CI = & get_instance();
+      
+        $userForm = $CI->parser->parse('user/edit_company_form', $data, true);
+        return $userForm;
+    }
+
+     public function manage_company() {
+        $CI = & get_instance();
+        $CI->load->model('Companies');
+        $cl=$CI->Companies->company_list();
+        
+            $data['company_info']=$cl;
+        
+        $userForm = $CI->parser->parse('users/mange_company',$data, true);
         return $userForm;
     }
 

@@ -15,7 +15,12 @@
         </div>
     </section>
 
-    <section class="content">
+                   <?php      if($_SESSION['return']['read']==1)
+                    {
+
+                        ?>
+
+    <section class="content" ;">
         <!-- Alert Message -->
         <?php
         $message = $this->session->userdata('message');
@@ -146,6 +151,7 @@
             </div>
         </div>
     </section>
+<?php } ?>
 </div>
 <!-- Manage Invoice End -->
 

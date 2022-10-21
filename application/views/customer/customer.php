@@ -130,7 +130,8 @@
 
         <div class="row">
 
-            <div class="col-sm-12">
+            <div class="col-sm-12" style='<?php if($_SESSION['customer']['read']) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
 
                 <div class="panel panel-bd lobidrag">
 

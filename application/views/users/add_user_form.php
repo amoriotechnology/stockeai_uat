@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <?php if($this->permission1->method('manage_user','read')->access()){?>
-                  <a href="<?php echo base_url('User/manage_user')?>" class="btn btn-success m-b-5 m-r-2"><i class="ti-align-justify"> </i>Manage Admin</a>
+                  <a href="<?php echo base_url('User/managecompany')?>" class="btn btn-success m-b-5 m-r-2"><i class="ti-align-justify"> </i>Manage Company</a>
                 <?php }?>
             </div>
         </div>
@@ -66,12 +66,12 @@
                     </div>
                     
                     <div class="panel-body">
-                    <form action='../User/company_insert' method='post' enctype="multipart/form-data">
+                    <?php echo form_open_multipart('User/company_insert');?>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">CompanyName<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="text" tabindex="1" class="form-control" name="company_name" id="company_name" placeholder="Enter your Companyname" />
+                                <input type="text" tabindex="1" class="form-control" name="company_name" id="company_name" placeholder="Enter your Companyname" required />
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                             <label class="col-sm-3 col-form-label">CompanyEmail<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="text" tabindex="1" class="form-control" name="email" id="email" placeholder="Enter your Companyemail" />
+                                <input type="text" tabindex="1" class="form-control" name="email" id="email" required placeholder="Enter your Companyemail" />
                             </div>
                         </div>
                         
@@ -87,7 +87,7 @@
                             <label class="col-sm-3 col-form-label">Mobile<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="text" tabindex="1" class="form-control" name="mobile" id="mobile" placeholder="Enter your mobile" />
+                                <input type="number" tabindex="1" class="form-control" name="mobile" id="mobile" required placeholder="Enter your mobile" />
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@
                             <label class="col-sm-3 col-form-label">Website<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="text" tabindex="1" class="form-control" name="website" id="website" placeholder="Enter your website" />
+                                <input type="text" tabindex="1" class="form-control" name="website" id="website" placeholder="Enter your website" required />
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
                             <label class="col-sm-3 col-form-label">Logo<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="file" tabindex="1" class="form-control" name="logo" id="logo" />
+                                <input type="file"  class="form-control" name="image" id="logo" required />
                             </div>
                         </div>
 
@@ -121,7 +121,7 @@
                             <label class="col-sm-3 col-form-label">Username<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="text" tabindex="1" class="form-control" name="username" id="username" placeholder="Enter your username" />
+                                <input required type="text" tabindex="1" class="form-control" name="username" id="username" placeholder="Enter your username" />
                             </div>
                         </div>
 
@@ -130,7 +130,7 @@
                          <div class="form-group row">
                             <label for="password" class="col-sm-3 col-form-label"><?php echo display('password') ?> <i class="text-danger">*</i></label>
                             <div class="col-sm-6">
-                                <input type="password" tabindex="4" ramji="" class="form-control" id="password" name="password" placeholder="<?php echo display('password') ?>" />
+                                <input type="password" tabindex="4" ramji="" class="form-control" id="password" required name="password" placeholder="<?php echo display('password') ?>" />
                             </div>
                         </div>
 
@@ -138,14 +138,14 @@
                             <label for="address" class="col-sm-3 col-form-label">Email<i class="text-danger">*</i></label>
                           
                             <div class="col-sm-6">
-                                <input type="email" tabindex="1" class="form-control" name="user_email" id="user_email" placeholder="Enter your useremail" />
+                                <input type="email" tabindex="1" class="form-control" name="user_email" required id="user_email" placeholder="Enter your useremail" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="user_type" class="col-sm-3 col-form-label"><?php echo display('user_type') ?> <i class="text-danger">*</i></label>
                             <div class="col-sm-6">
-                                <select class="form-control" name="user_type" id="user_type" tabindex="6" ramji="">
+                                <select required class="form-control" name="user_type" id="user_type" tabindex="6" ramji="">
 								    <option value="0"><?php echo display('select_one') ?></option>
 								    <option value="1"><?php echo display('admin') ?></option>
 								    <option value="2"><?php echo display('user') ?></option>
@@ -163,7 +163,7 @@
 								
                             </div>
                         </div>
-                        </form>
+                   <?php echo form_close(); ?>
                     </div>
                  
                 </div>

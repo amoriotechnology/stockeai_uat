@@ -50,7 +50,14 @@
                     <a href="<?php echo base_url('Ccpurchase/trucking') ?>" class="btn btn-info m-b-5 m-r-2">Create Trucking Inv</a>
                        <?php } ?>
 		            	</div>
-		            	<div class="col-sm-7">
+		            	<?php 
+		           
+                    if($_SESSION['purchase']['read']==1)
+                    {
+
+                        ?>
+
+		            	<div class="col-sm-7" >
 		             
 		             		<?php echo form_open('','class="form-inline"')?>
 
@@ -68,12 +75,18 @@
 		                  
 		             <?php echo form_close()?>
 		            </div>
+		        <?php } ?>
 		        </div>
 		    </div>
 		 </div>
 
 
+<?php 
+		           
+                    if($_SESSION['purchase']['read']==1)
+                    {
 
+                        ?>
 
 		<!-- Manage Purchase report -->
 		<div class="row">
@@ -124,6 +137,7 @@
 		      <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">
 		      <input type="hidden" id="currency" value="{currency}" name="">
 		</div>
+	<?php } ?>
 	</section>
 </div>
 <!-- Manage Purchase End -->

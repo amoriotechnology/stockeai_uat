@@ -15,7 +15,14 @@
         </div>
     </section>
 
-    <section class="content">
+    <?php
+
+                        if($_SESSION['return']['read']==1)
+                        {
+
+                            ?>
+
+    <section class="content" style="">
 
         <!-- Alert Message -->
         <?php
@@ -103,6 +110,7 @@
         
        
     </section>
+<?php } ?>
 </div>
 
 

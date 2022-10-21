@@ -45,25 +45,30 @@
 		        <div class="panel panel-default">
 		            <div class="panel-body"> 
 		            	<div class="row">
-		            		<?php 
-
-		            		if($role[4]['create']==1)
-		            			{ ?>
+		            	
 
 		            	<div class="col-sm-2">
-		            		 <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
+		            	 <?php 
+                    if($_SESSION['purchase']['create']==1)
+                    {
+
+                        ?>
+
                     <a href="<?php echo base_url('Cpurchase/add_packing_list') ?>" class="btn btn-info m-b-5 m-r-2">Create Packing List</a>
-                       <?php } ?>
+                 
 		            	</div>
 		            <?php  } ?>
+		             <?php 
+                    if($_SESSION['purchase']['create']==1)
+                    {
+
+                        ?>
 		            	<div class="col-sm-7">
+>
 		             
 		             		<?php echo form_open('','class="form-inline"')?>
 
-		             		<?php 
-
-		            		if($role[4]['read']==1)
-		            			{ ?>
+		            
 		                    <div class="form-group">
 		                        <label class="" for="from_date"><?php echo display('from') ?></label>
 		                        <input type="text" name="from_date" class="form-control datepicker" id="from_date" value="" placeholder="<?php echo display('start_date') ?>" >
@@ -78,7 +83,8 @@
 		                  
 		             <?php echo form_close()?>
 		            </div>
-		           <?php } ?>
+		          <?php } ?>
+		      
 		        </div>
 		    </div>
 		    
@@ -86,22 +92,24 @@
 		    </div>
 
 
+ <?php 
+                    if($_SESSION['purchase']['create']==1)
+                    {
 
+                        ?>
 
 		<!-- Manage Purchase report -->
 		<div class="row">
-		    <div class="col-sm-12">
+		    <div class="col-sm-12" <?php if($_SESSION['purchase']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>
+>
 		        <div class="panel panel-bd lobidrag">
-		            <div class="panel-heading">
+		            <div class="panel-heading" style="display: none;">
 		                <div class="panel-title">
 		                  
 		                </div>
 		              
 		            </div>
-		            <?php 
-
-		            		if($role[4]['read']==1)
-		            			{ ?>
+		          
 		            <div class="panel-body">
 		                <div class="table-responsive">
 		                    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="PackingOrderList"> 
@@ -134,12 +142,13 @@
 		                </div>
 		               
 		            </div>
-		          <?php } ?>
+		        
 		        </div>
 		    </div>
 		      <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">
 		      <input type="hidden" id="currency" value="{currency}" name="">
 		</div>
+	<?php } ?>
 	</section>
 </div>
 <!-- Manage Purchase End -->

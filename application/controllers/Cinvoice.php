@@ -64,18 +64,17 @@ public function insert_profarma_invoice(){
        // echo $content = $CI->linvoice->invoice_add_form();
        $CI->load->model('Invoices');
        $data['customer'] = $CI->Invoices->profarma_invoice_customer();
-<<<<<<< HEAD
-       $data['voucher_no'] = $CI->Invoices->profarma_voucher_no();
-        $data['role']=$assign_role;
 
-=======
+       $data['voucher_no'] = $CI->Invoices->profarma_voucher_no();
+ 
+
        $data=array(
         'customer' => $CI->Invoices->profarma_invoice_customer(),
         'voucher_no' => $CI->Invoices->profarma_voucher_no()
        );
 
       
->>>>>>> 0c62dedca41ccc3eb0709f68142ac842bbb454f5
+
         $content = $this->load->view('invoice/profarma_invoice', $data, true);
         //$content='';
         $this->template->full_admin_html_view($content);
@@ -366,7 +365,9 @@ redirect('Cinvoice');
 
     // ================= manual sale insert ============================
 
+    
     public function manual_sales_insert(){
+
 
         $CI = & get_instance();
 
@@ -414,6 +415,7 @@ print_r($data);
         echo json_encode($data);
 
     }
+
 
 
         public function insert_ocean_export() {
@@ -847,7 +849,7 @@ print_r($data);
 
     public function manage_invoice() {
 
-// echo 3;
+
 
         $CI = & get_instance();
 
@@ -879,7 +881,7 @@ print_r($data);
 
 
         $data['invoice'] = $CI->Invoices->get_profarma_invoice();
-        $_SESSION['sale_update'] =$assign_role[0]['update'];
+
         $data['role']=$assign_role;
 
         $content = $this->load->view('invoice/profarma_invoice_list', $data, true);
@@ -1733,23 +1735,37 @@ print_r($data);
 
 
 
-    //Retrive right now inserted data to cretae html
 
     public function invoice_inserted_data($invoice_id) {
 
+              $CI = & get_instance();
+             $CI->load->model('Invoices');
+             $data=array();
+             $data['company_info']= $CI->Invoices->company_info();
+            $data['cinvoice_form']= $CI->Invoices->invoice_form($invoice_id);
+             $product= $CI->Invoices->product($invoice_id);
+             $data['product']=$product[0];
+             $data['bill_to']= $CI->Invoices->bill_to($invoice_id);
+             $data['design']= $CI->Invoices->tempdesign();
 
-        // echo 2;
 
-        $CI = & get_instance();
+                
+             print_r($data['product']);
+         
+          
+             
 
-        $CI->auth->check_admin_auth();
+         
+             
 
-        $CI->load->library('linvoice');
 
-        $content = $CI->linvoice->invoice_html_data($invoice_id);
 
-        $this->template->full_admin_html_view($content);
 
+    
+
+ $content = $this->load->view('invoice/new_invoice_pdf', $data, true);
+
+$this->template->full_admin_html_view($content);
     }
 
 

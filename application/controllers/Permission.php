@@ -279,13 +279,26 @@ $this->load->model('Permission_model');
             }
 
 
-                $sql = "insert into role_permission 
+                 $sql = "insert into role_permission 
          values (null,'".$array[$i]['name']."','".$insert_id."','".$creates."','".$reads."','".$updates."','".$deletes."')";
  $this->db->query($sql);
          }
+    
           $this->load->helper('url');
           $this->session->set_userdata(array('message' => display('successfully_added')));
           redirect('/Permission/role_list', 'refresh');  
+    }
+    else
+    {
+
+        ?>
+        <script type="text/javascript">
+            alert('Role name already exits');
+        </script>  
+
+        <?php 
+         $this->session->set_userdata(array('message' => display('Name Already exits')));
+          redirect('/Permission/add_role', 'refresh');  
     }
 
 }

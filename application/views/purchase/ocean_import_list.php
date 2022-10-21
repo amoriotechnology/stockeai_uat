@@ -46,11 +46,23 @@
 		            <div class="panel-body"> 
 		            	<div class="row">
 		            	<div class="col-sm-3">
-		            		 <?php if($this->permission1->method('add_purchase','create')->access()){ ?>
+		            		  <?php 
+                    if($_SESSION['purchase']['create']==1)
+                    {
+
+                        ?>
+
                     <a href="<?php echo base_url('Ccpurchase/ocean_import_tracking') ?>" class="btn btn-info m-b-5 m-r-2">Create Ocean Import Invoice</a>
-                       <?php } ?>
+                     <?php } ?>
 		            	</div>
-		            	<div class="col-sm-7">
+		            	 <?php 
+                    if($_SESSION['purchase']['read']==1)
+                    {
+
+                        ?>
+
+		            	<div class="col-sm-7" <?php if($_SESSION['purchase']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>
+>
 		             
 		             		<?php echo form_open('','class="form-inline"')?>
 
@@ -68,6 +80,7 @@
 		                  
 		             <?php echo form_close()?>
 		            </div>
+		        <?php } ?>
 		           
 		        </div>
 		    </div>
@@ -76,11 +89,16 @@
 		    </div>
 
 
+<?php 
+                    if($_SESSION['purchase']['read']==1)
+                    {
 
+                        ?>
 
 		<!-- Manage Purchase report -->
 		<div class="row">
-		    <div class="col-sm-12">
+		    <div class="col-sm-12" <?php if($_SESSION['purchase']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>
+>
 		        <div class="panel panel-bd lobidrag">
 		            <div class="panel-heading">
 		                <div class="panel-title">
@@ -129,6 +147,7 @@
 		      <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">
 		      <input type="hidden" id="currency" value="{currency}" name="">
 		</div>
+	<?php } ?>
 	</section>
 </div>
 <!-- Manage Purchase End -->

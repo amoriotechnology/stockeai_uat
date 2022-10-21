@@ -3,6 +3,14 @@
 	<section class="content">
 		<!-- Alert Message -->
   
+
+  <?php 
+
+                    if($_SESSION['return']['read']==0)
+                    {
+
+                        ?>
+
 		<!-- Manage Invoice report -->
 		<div class="row">
 		    <div class="col-sm-12">
@@ -69,6 +77,7 @@
 		        </div>
 		    </div>
 		</div>
+	<?php } ?>
 	</section>
 </div>
 <!-- Manage Invoice End -->

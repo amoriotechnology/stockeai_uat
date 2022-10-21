@@ -855,6 +855,51 @@ if (!empty($best_sales_product))
     }
 
     public function userauth() {
+
+
+        
+             $sql='select * from user_login where username="'.$_POST['username'].'"';
+
+             $query=$this->db->query($sql);
+             $row=$query->result_array();
+             $user_id=$row[0]['user_id'];
+             $user_type=$row[0]['user_type'];
+             $sql='select * from sec_role where user_id='.$user_id;
+                $query=$this->db->query($sql);
+             $row=$query->result_array();
+              $roleid=$row[0]['id'];
+              if($roleid>0)
+              {
+              $sql='select * from role_permission where role_id='.$roleid;
+                $query=$this->db->query($sql);
+             $row=$query->result_array();
+
+
+             $_SESSION['user_type']=$user_type;
+             $_SESSION['sales']=$row[0];
+             $_SESSION['customer']=$row[1];
+             $_SESSION['product']=$row[2];
+             $_SESSION['supplier']=$row[3];
+             $_SESSION['purchase']=$row[4];
+             $_SESSION['stock']=$row[5];
+             $_SESSION['return']=$row[6];
+             $_SESSION['report']=$row[7];
+             $_SESSION['accounts']=$row[8];
+             $_SESSION['bank']=$row[9];
+             $_SESSION['tax']=$row[10];
+             $_SESSION['hrm_management']=$row[11];
+             $_SESSION['service']=$row[12];
+             $_SESSION['commission']=$row[13];
+             $_SESSION['setting']=$row[14];
+             $_SESSION['quotation']=$row[15];
+
+
+         }
+
+
+ 
+
+
         if (!$this->input->post('username',TRUE)) {
             $this->output->set_header("Location: " . base_url() . 'Admin_dashboard/login', TRUE, 302);
         }
@@ -884,6 +929,8 @@ if (!empty($best_sales_product))
          $this->session->set_flashdata("email_sent","Error in sending Email.");
         //$this->load->view('user/admin_auth_form', $data, true);
         //echo $this->session->userdata('otp');
+
+
      redirect(base_url() . 'Admin_dashboard/do_login');
        echo $content = $this->parser->parse('user/admin_auth_form', $data, true);
 
@@ -894,6 +941,18 @@ if (!empty($best_sales_product))
     #==============Valid user check=======#
 
     public function do_login() {
+
+      
+        
+
+
+
+
+
+
+  
+
+
         $error = '';
         $setting_detail = $this->Web_settings->retrieve_setting_editdata();
 

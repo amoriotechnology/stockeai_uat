@@ -90,13 +90,19 @@
 
                
 
-    
                     <?php 
-                    if($role[0]['create']==1)
-                    {
-                    ?>
-                    <a href="<?php echo base_url('Cinvoice/profarma_invoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> New Profarma Invoice </a>
-                <?php } ?>
+                   if($_SESSION['sales']['create']==1)
+                   {
+
+                   ?>
+
+
+
+                    
+                    
+                    <a href="<?php echo base_url('Cinvoice/profarma_invoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> New Profarma Invoice</a>
+                </div><?php } ?>
+              
 
                 
 
@@ -114,25 +120,17 @@
 
         <div class="row">
 
-             <div class="col-sm-12">
+             <div class="col-sm-12" >
 
                 <div class="panel panel-default">
 
-                    <div class="panel-body"> 
+                    <div class="panel-body" > 
 
                         <div class="col-sm-10">
 
                         <?php echo form_open('', array('class' => 'form-inline', 'method' => 'get')) ?>
 
-                        <?php
-
-                      
-
-                        $today = date('Y-m-d');
-
-                            if($role[0]['read']==1)
-                            {
-                        ?>
+                       
 
                         <div class="form-group">
 
@@ -156,7 +154,6 @@
 
                         <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
 
-<?php  } ?>
 
                         <?php echo form_close() ?>
 
@@ -182,17 +179,15 @@
 
         <div class="row">
 
-            <div class="col-sm-12">
+            <div class="col-sm-12" style='<?php if($_SESSION['sales']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
 
                 <div class="panel panel-bd lobidrag">
 
                     <div class="panel-heading">
 
                     </div>
-                    <?php 
-
-                    if($role[0]['read']==1)
-                        { ?>
+                 
                     <div class="panel-body">
 
                         <div class="table-responsive" >
@@ -248,7 +243,7 @@
 
 
                     </div>
-                <?php } ?>
+         
                 </div>
 
                 <input type="hidden" id="total_invoice" value="<?php echo $total_invoice;?>" name="">

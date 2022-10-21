@@ -69,7 +69,8 @@
 
         <!-- Manage Product report -->
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12" style='<?php if($_SESSION['product']['read']) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
                 <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
                         <div class="panel-title">

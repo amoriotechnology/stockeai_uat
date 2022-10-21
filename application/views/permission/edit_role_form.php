@@ -64,7 +64,7 @@
                 
                     
                     <tr>                     <td><?php echo display($value['name']);?></td>
-                        <td><input type="checkbox" name="create[<?php  echo $value['id']; ?>]" <?php if($role[$i]['create']==1){ echo 'checked';} ?>>Create</td> 
+                            <td><input type="checkbox" name="create[<?php  echo $value['id']; ?>]" <?php if($role[$i]['create']==1){ echo 'checked';} ?>>Create</td> 
                        <td><input type="checkbox" name="read[<?php  echo $value['id']; ?>]"  <?php if($role[$i]['read']==1){ echo 'checked';} ?> >Read </td>
                       
                       <td><input type="checkbox" name="update[<?php  echo $value['id']; ?>]" <?php if($role[$i]['update']==1){ echo 'checked';} ?> >Update</td> 

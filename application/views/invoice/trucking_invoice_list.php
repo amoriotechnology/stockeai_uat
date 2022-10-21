@@ -46,22 +46,20 @@
                     <div class="panel-body"> 
                         <div class="row">
                         <div class="col-sm-2">
-                           <?php 
-if($role[0]['create']==1)
-                             {
+                             <?php 
+                    if($_SESSION['sales']['create']==1)
+                    {
 
-?>
+                        ?>
+
 
                     <a href="<?php echo base_url('Cinvoice/trucking') ?>" class="btn btn-info m-b-5 m-r-2">Create Trucking Invoice</a>
                        <?php } ?>
                         </div>
-                         <?php 
-if($role[0]['create']==1)
-                             {
+                         
 
-?>
-
-                        <div class="col-sm-7">
+                        <div class="col-sm-7" style='<?php if($_SESSION['sales']['read']) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
                      
                             <?php echo form_open('','class="form-inline"')?>
 
@@ -81,7 +79,7 @@ if($role[0]['create']==1)
 
                      <?php echo form_close()?>
                     </div>
-                    <?php } ?>
+                
                 </div>
             </div>
          </div>
@@ -91,7 +89,8 @@ if($role[0]['create']==1)
 
         <!-- Manage Purchase report -->
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12" style='<?php if($_SESSION['sales']['read']) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
                 <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
                         <div class="panel-title">
@@ -107,7 +106,7 @@ if($role[0]['read']==1)
 
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="truckingList"> 
+                            <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="trucking['read']==1"> 
                                 <thead>
                                     <tr>
                                         <th><?php echo display('sl') ?></th>
@@ -186,7 +185,7 @@ $(function() {
      var total_purchase_no = $("#total_purchase_no").val();
      var base_url = $("#base_url").val();
        var currency = $("#currency").val();
- var purchasedatatable = $('#truckingList').DataTable({ 
+ var purchasedatatable = $('#trucking['read']==1').DataTable({ 
              responsive: true,
 
              "aaSorting": [[4, "desc" ]],
@@ -206,31 +205,31 @@ $(function() {
                            }, className: "btn-sm prints"
             }
             , {
-                extend: "csv", title: "PurchaseLIst",exportOptions: {
+                extend: "csv", title: "Purchase['read']==1",exportOptions: {
                        columns: [ 0,1,2,3,4,5] //Your Colume value those you want print
                            }, className: "btn-sm prints",charset: 'UTF-16LE'
             }
             , {
                 extend: "excel",exportOptions: {
                        columns: [0,1,2,3,4,5 ] //Your Colume value those you want print
-                           }, title: "PurchaseLIst", className: "btn-sm prints"
+                           }, title: "Purchase['read']==1", className: "btn-sm prints"
             }
             , {
                 extend: "pdf",exportOptions: {
                     columns: [0,1,2,3,4,5,6] //Your Colume value those you want print
-                        }, title: "PurchaseList", className: "btn-sm prints"
+                        }, title: "Purchase['read']==1", className: "btn-sm prints"
             }
             , {
                 extend: "print",exportOptions: {
                        columns: [ 0,1,2,3,4,5] //Your Colume value those you want print
-                           },title: "<center> PurchaseLIst</center>", className: "btn-sm prints"
+                           },title: "<center> Purchase['read']==1</center>", className: "btn-sm prints"
             }
             ],
 
             
             'serverMethod': 'post',
             'ajax': {
-               'url':base_url + 'Cinvoice/CheckTruckingList',
+               'url':base_url + 'Cinvoice/CheckTrucking['read']==1',
                  "data": function ( data) {
          data.fromdate = $('#from_date').val();
          data.todate = $('#to_date').val();

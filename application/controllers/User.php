@@ -16,6 +16,13 @@ class User extends CI_Controller {
         $this->auth->check_admin_auth();
     }
 
+
+#=============User Manage Company===============#
+public function managecompany()
+{
+  $content = $this->lusers->manage_company();
+        $this->template->full_admin_html_view($content);
+}   
     #==============User page load============#
 
     public function index() {
@@ -25,49 +32,91 @@ class User extends CI_Controller {
 
     #===============User Search Item===========#
 
+ public function company_edit($id){
+
+
+  $sql='select * from company_information where company_id='.$id;
+ $query=$this->db->query($sql);
+$row=$query->result_array();  
+  $sql='select * from user_login where cid='.$id;
+ $query=$this->db->query($sql);
+$row1=$query->result_array(); 
+   
+    $data=array(
+        'company_info'=>$row,
+        'user_info'=>$row1,
+);
+ 
+   $content = $this->lusers->company_edit_form($data);
+        
+ $this->template->full_admin_html_view($content);
+
+
+ }
+public function company_update()
+{
+
+}
+
+
     public function company_insert(){
-     
 
-        $config = array(
-            'upload_path' => "assets/dist/images/profile/",
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-            'encrypt_name' => true
-        );   
-        $this->load->library('upload',$config);
+        
+/////////////upload//////////////
+       if (!empty($_FILES)) {   
+    $tempFile = $_FILES['image']['tmp_name'];
+    $temp = $_FILES["image"]["name"];
+    $path_parts = pathinfo($temp);
+    $t = preg_replace('/\s+/', '', microtime());
+    $fileName = $path_parts['filename']. $t . '.' . $path_parts['extension'];
+    
 
-        if($this->upload->do_upload('logo'))
-        {
-            $view = $this->upload->data();
-            $logo = base_url($config['upload_path'] . $view['file_name']);
-        }else{
-            $view = $this->upload->data();
-            $logo = base_url($config['upload_path'] . $view['file_name']);
-        }
+    
+    $upload=move_uploaded_file($tempFile,'assets/images/logo/'.$fileName);
+    
 
-        $data['company_name'] = $this->input->post('company_name');
-        $data['email'] = $this->input->post('email');
-        $data['mobile'] = $this->input->post('mobile');
-        $data['address'] = $this->input->post('address');
-        $data['website'] = $this->input->post('website');
-        $data['logo'] = $logo;
+    if($upload)
+    {
+        
+        // insert Company information///////////////
 
+        $uid=$_SESSION['user_id'];
 
-       $this->db->insert('company_information', $data);
+        $data = array(
+            'company_name'    =>$this->input->post('company_name',true),
+            'email' => $this->input->post('email',true),
+            'address'      => $this->input->post('address',true),
+            'mobile'   => $this->input->post('mobile',true),
+            'website'  => $this->input->post('website',true),
+            'logo'       => 'assets/images/logo/'.$fileName,
+            'create_by'     => $uid,
+            'status'     => 0
+        );
 
-        $last_insert_id = $this->db->insert_id();
-        // echo '<pre>';
-        // print_r($last_insert_id); 
-        // echo '</pre>';
-        // exit();
-        $data1['username'] = $this->input->post('username');
-        $data1['password'] = $this->input->post('password');
-        $data1['user_email'] = $this->input->post('user_email');
-        $data1['user_type'] = $this->input->post('user_type');
-        $data1['cid'] = $last_insert_id;
-        $this->db->insert('user_login', $data1);
-      
-        redirect(base_url('User'));
+         $this->db->insert('company_information',$data);
+
+         $cid= $this->db->insert_id();
+
+         $data = array(
+            'username'    =>$this->input->post('username',true),
+            'password' => md5($this->input->post('password',true)),
+            'user_type'      => $this->input->post('user_type',true),
+            'security_code'   => $this->input->post('mobile',true),
+            'email'  => $this->input->post('user_email',true),
+            'status'       =>1,
+            'cid'     => $cid
+           
+        );
+         $insert=$this->db->insert('user_login',$data);
+
+         if($insert)
+         {
+            redirect('user/managecompany');
+         }
     }
+    
+}
+}
 
 
     public function user_search_item() {

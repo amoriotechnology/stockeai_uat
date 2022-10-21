@@ -10,11 +10,11 @@ class Companies extends CI_Model {
 		return $this->db->count_all("company_information");
 	}
 	#=============Company List=============#
-	public function company_list($limit,$page)
+	public function company_list()
 	{
 		$this->db->select('*');
 		$this->db->from('company_information');
-		$this->db->limit($limit, $page);
+	
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			return $query->result_array();	

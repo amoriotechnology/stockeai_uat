@@ -45,20 +45,20 @@
 		        <div class="panel panel-default">
 		            <div class="panel-body"> 
 		            	<div class="row">
-		            	<div class="col-sm-2">
-		            	
-		            		 	<?php 
+		            	<div class="col-sm-2" >
+		            	   <?php 
+                    if($_SESSION['sales']['create']==1)
+                    {
 
-		            		 	if($role[0]['create']==1)
-		            		 		{ ?>
+                        ?>
+
+		            		
                     <a href="<?php echo base_url('Cinvoice/add_packing_list') ?>" class="btn btn-info m-b-5 m-r-2">Create Packing List</a>
-                       <?php } ?>
+               <?php } ?>
 		            	</div>
-		            	<?php 
-		            		if($role[0]['read']==1)
-		            		{
-		            	?>
-		            	<div class="col-sm-7">
+		            
+		            	<div class="col-sm-7" style='<?php if($_SESSION['sales']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
 		             
 		             		<?php echo form_open('','class="form-inline"')?>
 
@@ -74,7 +74,7 @@
 
 		                    <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
 		                  
-		                  <?php } ?>
+		                  
 		             <?php echo form_close()?>
 		            </div>
 		           
@@ -89,7 +89,8 @@
 
 		<!-- Manage Purchase report -->
 		<div class="row">
-		    <div class="col-sm-12">
+		    <div class="col-sm-12" style='<?php if($_SESSION['sales']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'
+>
 		        <div class="panel panel-bd lobidrag">
 		            <div class="panel-heading">
 		                <div class="panel-title">
@@ -97,12 +98,7 @@
 		                </div>
 		              
 		            </div>
-		            <?php 
-
-		            	if($role[0]['read']==1)
-		            		{
-
-		            			?>
+		         
 		            <div class="panel-body">
 		                <div class="table-responsive">
 		                    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="PackingOrderList"> 
@@ -131,7 +127,7 @@
 		                </div>
 		               
 		            </div>
-		          <?php } ?>
+		      
 		        </div>
 		    </div>
 		      <input type="hidden" id="total_purchase_no" value="<?php echo $total_purhcase;?>" name="">

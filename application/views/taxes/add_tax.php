@@ -141,6 +141,11 @@
 
         </div>
 
+<?php  
+                    if($_SESSION['tax']['read']==1)
+                    {
+
+                        ?>
 
 
         <!-- new tax -->
@@ -385,6 +390,7 @@
             </div>
 
         </div>
+    <?php } ?>
 
     </section>
 

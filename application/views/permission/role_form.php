@@ -26,10 +26,14 @@
 
     <section class="content">
         <!-- Alert Message -->
-       
+       <?php
+        $message = $this->session->userdata('message');
+        if (isset($message)) {
+            ?>
          <div class="alert alert-success" >
-  <strong>Success!</strong>Roles Updated Successfully
+  <strong>Success!</strong><?php echo $message; ?>
 </div>
+<?php } ?>
 
 
 

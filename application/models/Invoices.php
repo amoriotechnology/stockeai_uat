@@ -1581,7 +1581,6 @@ public function availability($product_nam,$product_model){
 
 
     //Count invoice
-
     public function invoice_entry() {
 
         $this->load->model('Web_settings');
@@ -1909,7 +1908,7 @@ public function availability($product_nam,$product_model){
 
         );
 
-    print_r($datainv);
+    //print_r($datainv);
 
         $this->db->insert('invoice', $datainv);
 
@@ -1932,7 +1931,7 @@ public function availability($product_nam,$product_model){
 
 
    $cusifo = $this->db->select('*')->from('customer_information')->where('customer_id',$customer_id)->get()->row();
-
+echo $this->db->last_query();
     $headn = $customer_id.'-'.$cusifo->customer_name;
 
     $coainfo = $this->db->select('*')->from('acc_coa')->where('HeadName',$headn)->get()->row();
@@ -2153,7 +2152,7 @@ public function availability($product_nam,$product_model){
 
         $rate                = $this->input->post('product_rate',TRUE);
 
-        $p_id                = $this->input->post('product_id',TRUE);
+        $p_id                = $this->input->post('prodt',TRUE);
 
         $total_amount        = $this->input->post('total_price',TRUE);
 
@@ -2175,7 +2174,7 @@ public function availability($product_nam,$product_model){
 
             $product_rate = $rate[$i];
 
-            $product_id = $p_id[$i];
+            $product_id = $p_id;
 
             $serial_no  = (!empty($serial_n[$i])?$serial_n[$i]:null);
 
@@ -2202,7 +2201,7 @@ public function availability($product_nam,$product_model){
 
                 'invoice_id'         => $invoice_id,
 
-                'product_id'         => $product_id,
+                'product_id'         =>$product_id,
 
                 'serial_no'          => $serial_no,
 
@@ -2230,11 +2229,11 @@ public function availability($product_nam,$product_model){
 
             );
 
-            if (!empty($quantity)) {
+//print_r($data1);
 
                 $this->db->insert('invoice_details', $data1);
 
-            }
+            
 
         }
 
@@ -2273,7 +2272,6 @@ public function availability($product_nam,$product_model){
         return $invoice_id;
 
     }
-
 
     private function stripHTMLtags($str)
     {
@@ -4052,6 +4050,112 @@ public function customerinfo_rpt($customer_id){
 
         return true;
     }
+
+    
+    public function company_info()
+    {
+
+       
+      $sql='SELECT * from company_information as c 
+      join 
+
+      user_login as u
+      on 
+      u.cid=c.company_id 
+      where u.id='.$_SESSION['user_id'];
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+
+            return $query->result_array();
+
+        }
+
+        return false;
+
+
+
+
+    } 
+
+    public function invoice_form($invoice_id)
+    {
+
+          $sql='SELECT * FROM `invoice` where invoice_id='.$invoice_id;
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+
+            return $query->result_array();
+
+        }
+
+        return false;
+
+
+
+        
+    }
+    public function bill_to($invoice_id)
+    {
+
+              $sql='SELECT c.* from invoice as i JOIN customer_information as c on c.customer_id=i.customer_id where i.invoice_id='.$invoice_id;
+
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows() > 0) {
+
+                return $query->result_array();
+
+            }
+
+            return false;
+
+
+
+            
+    }
+
+      public function product($invoice_id)
+    {
+        
+        
+
+
+              $sql='SELECT b.* FROM `invoice_details` as a join product_information b on a.product_id=b.product_name where a.invoice_id='.$invoice_id;
+
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows() > 0) {
+
+               return  $query->result_array();
+
+    }
+
+}
+
+ public function tempdesign()
+    {
+        
+        
+
+
+              $sql='SELECT * FROM `invoice_design` where uid='.$_SESSION['user_id'];
+
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows() > 0) {
+
+                return $query->result_array();
+
+    }
+
+}   
 
 }
 

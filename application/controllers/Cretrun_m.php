@@ -239,7 +239,7 @@ class Cretrun_m extends CI_Controller {
         #
         #pagination ends
         #  
-        $content = $this->lreturn->wastage_return_list($links, $config["per_page"], $page);
+    $content = $this->lreturn->wastage_return_list($links, $config["per_page"], $page);
         $this->template->full_admin_html_view($content);
     }
 

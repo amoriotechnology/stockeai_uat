@@ -20,7 +20,7 @@
 
             <ol class="breadcrumb">
 
-                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
+                <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?>55</a></li>
 
                 <li><a href="#"><?php echo display('invoice') ?></a></li>
 
@@ -92,15 +92,15 @@
 
 
 
-
                     <?php 
-
-                    if($role[0]['create']==1)
+                    if($_SESSION['sales']['create']==1)
                     {
 
-                    ?>
-                    <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?></a>
-                <?php } ?>
+                        ?>
+                  
+                    <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?>55</a>
+                    <?php } ?>
+            
                  
 
            <!--    <?php if($this->permission1->method('pos_invoice','create')->access()){ ?>
@@ -145,11 +145,6 @@
                         ?>
 
 
-<?php 
-
-if($role[0]['read']==1)
-{
-?>
                         <div class="form-group">
 
                             <label class="" for="from_date"><?php echo display('start_date') ?></label>
@@ -174,7 +169,7 @@ if($role[0]['read']==1)
 
                         <button type="button" id="btn-filter" class="btn btn-success"><?php echo display('find') ?></button>
 
-                        <?php } ?>
+                  
 
                         <?php echo form_close() ?>
 
@@ -202,17 +197,12 @@ if($role[0]['read']==1)
 
             <div class="col-sm-12">
 
-                <div class="panel panel-bd lobidrag" style='<?php if($role[0]['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'>
+                <div class="panel panel-bd lobidrag" style='<?php if($_SESSION['sales']['read']==1) {echo  "display:block"; } else{echo  "display:none";} ?>'>
 
                     <div class="panel-heading">
 
                     </div>
-                        <?php 
-                                //    if($role[0]['read']==1)
-                                //    {
-                                    
-                                
-                        ?>
+                       
 
                     <div class="panel-body" >
 
